@@ -100,7 +100,7 @@ public class ServiceUser implements IService<User> {
         User u = new User();
         try {
             // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
-             String req = "SELECT * FROM `user` WHERE email = \" "+mail+ "\"";
+             String req = "SELECT * FROM `user` WHERE email = \" "+mail+ " \"";
 //            String req = "SELECT * FROM `user` WHERE email = ?";
             // Statement st = cnx.createStatement();
 
