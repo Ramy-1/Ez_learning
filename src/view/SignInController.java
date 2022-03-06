@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.MainPanelController;
+//import controller.MainPanelController;
 import helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
-import util.MyConnection;
+import utils.DataSource;
 
 /**
  * FXML Controller class
@@ -38,7 +38,7 @@ import util.MyConnection;
  * @author karim
  */
 public class SignInController implements Initializable {
-    
+
     @FXML
     private TextField username;
 
@@ -49,8 +49,7 @@ public class SignInController implements Initializable {
     private Button loginButton;
 
     Window window;
-    
-  
+
     private double x, y;
 
     /**
@@ -59,9 +58,8 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    
+    }
+
     private boolean isValidated() {
 
         window = loginButton.getScene().getWindow();
@@ -86,82 +84,85 @@ public class SignInController implements Initializable {
         }
         return false;
     }
-    
-    public void SignIn(ActionEvent event) throws IOException{
-         if (this.isValidated()) {
+
+    public void SignIn(ActionEvent event) throws IOException {
+        if (this.isValidated()) {
             PreparedStatement ps;
             ResultSet rs;
 
             String query = "select * from user WHERE email = ? and pwd = ?";
             try {
-                PreparedStatement pst= new MyConnection().getConnection().prepareStatement(query);
+                PreparedStatement pst = new MyConnection().getConnection().prepareStatement(query);
                 pst.setString(1, username.getText());
                 pst.setString(2, password.getText());
                 rs = pst.executeQuery();
 
                 if (rs.next()) {
-                    
+
                     Stage stage = (Stage) loginButton.getScene().getWindow();
                     stage.close();
-                    
+
                     int colind = rs.findColumn("role");
                     System.out.println(colind);
                     Object role = rs.getObject(colind);
                     System.out.println(role);
                     Stage stage2 = new Stage();
-                    if(role.toString().equals("admin")){
-                        Parent root = FXMLLoader.load(getClass().getResource("/dashboard/dashboardAdmin.fxml"));
-                        /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/components/dashboard.fxml"));
-                           BorderPane borderpane = (BorderPane) loader.load();
-                           Node menu = FXMLLoader.load(getClass().getResource("/components/admin.fxml"));
-                        
-                           borderpane.setLeft(menu);*/
-                         
-                          Scene scene = new Scene(root);
-                          scene.setFill(Color.TRANSPARENT);
+                    if (role.toString().equals("admin")) {
+                        Parent root = FXMLLoader.load(getClass().getResource("/dashboard/Home.fxml"));
+                        /*
+                         * FXMLLoader loader = new
+                         * FXMLLoader(getClass().getResource("/components/dashboard.fxml"));
+                         * BorderPane borderpane = (BorderPane) loader.load();
+                         * Node menu =
+                         * FXMLLoader.load(getClass().getResource("/components/admin.fxml"));
+                         * 
+                         * borderpane.setLeft(menu);
+                         */
+
+                        Scene scene = new Scene(root);
+                        scene.setFill(Color.TRANSPARENT);
                         stage2.setScene(scene);
                         stage2.initStyle(StageStyle.UNDECORATED);
                         stage2.initStyle(StageStyle.TRANSPARENT);
                         stage2.setTitle("Admin Panel");
-                        //drag it here
+                        // drag it here
                         root.setOnMousePressed(events -> {
                             x = events.getSceneX();
                             y = events.getSceneY();
                         });
                         root.setOnMouseDragged(events -> {
 
-                       stage2.setX(events.getScreenX() - x);
+                            stage2.setX(events.getScreenX() - x);
 
-                       stage2.setY(events.getScreenY() - y);
+                            stage2.setY(events.getScreenY() - y);
 
                         });
                         stage2.show();
-                        }
-                    else if(role.toString().equals("student")){
+                    } else if (role.toString().equals("student")) {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/dashboard.fxml"));
                         BorderPane borderpane = (BorderPane) loader.load();
                         Node menu = FXMLLoader.load(getClass().getResource("/Menu/student.fxml"));
-                        //MainPanelController mwc = loader.getController();
-                        borderpane.setLeft(menu);
-                        Scene scene = new Scene(borderpane);                   
-                        stage.setScene(scene);                   
-                        stage.setTitle("Admin Panel");
-                    stage.show();
-                    }
-                    else if(role.toString().equals("recruter")){}
-                    else if(role.toString().equals("university")){}
-                    else{
-                           FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/dashboard.fxml"));
-                        BorderPane borderpane = (BorderPane) loader.load();
-                       Node menu = FXMLLoader.load(getClass().getResource("/Menu/formateur.fxml"));
-                        //MainPanelController mwc = loader.getController();
+                        // MainPanelController mwc = loader.getController();
                         borderpane.setLeft(menu);
                         Scene scene = new Scene(borderpane);
-                        stage.setScene(scene);                   
-                    stage.setTitle("Admin Panel");
-                    stage.show();
+                        stage.setScene(scene);
+                        stage.setTitle("Admin Panel");
+                        stage.show();
+                    } else if (role.toString().equals("recruter")) {
+                    } else if (role.toString().equals("university")) {
+                    } else {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/dashboard.fxml"));
+                        BorderPane borderpane = (BorderPane) loader.load();
+                        Node menu = FXMLLoader.load(getClass().getResource("/Menu/formateur.fxml"));
+                        // MainPanelController mwc = loader.getController();
+                        borderpane.setLeft(menu);
+                        Scene scene = new Scene(borderpane);
+                        stage.setScene(scene);
+                        stage.setTitle("Admin Panel");
+                        stage.show();
                     }
-                      // Parent root = FXMLLoader.load(getClass().getResource("/view/MainPanelView.fxml"));
+                    // Parent root =
+                    // FXMLLoader.load(getClass().getResource("/view/MainPanelView.fxml"));
                 } else {
                     AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
                             "Verifier votre email et mot de passe.");
