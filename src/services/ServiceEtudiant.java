@@ -1,5 +1,6 @@
 package services;
 
+import interfaces.IService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,14 +9,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import modeles.Cour;
-import modeles.Etudiant;
-import modeles.User;
-import utils.DataSource;
+import model.Cour;
+import model.Etudiant;
+import model.User;
+import util.DataSource;
 
 public class ServiceEtudiant implements IService {
 
     Connection cnx = DataSource.getInstance().getCnx();
+
 
     public List<Cour> addCours(Etudiant e) {
         List<Cour> cours = new ArrayList<>();
@@ -54,8 +56,6 @@ public class ServiceEtudiant implements IService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        ServiceUser sU = new ServiceUser();
-        sU.add(u);
 
     }
 
@@ -102,8 +102,7 @@ public class ServiceEtudiant implements IService {
             ps.setInt(10, e.getScore());
 
             ps.setInt(11, e.getId());
-            ServiceUser sU = new ServiceUser();
-            sU.update(e);
+
             return true;
         } catch (Exception e) {
             return false;
@@ -120,8 +119,6 @@ public class ServiceEtudiant implements IService {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Etudiant supprimer");
-            ServiceUser sU = new ServiceUser();
-            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

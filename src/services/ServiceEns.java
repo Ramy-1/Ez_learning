@@ -1,5 +1,6 @@
 package services;
 
+import interfaces.IService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modeles.Cour;
-import modeles.Enseignant;
-import utils.DataSource;
+import model.Cour;
+import model.Enseignant;
+import util.DataSource;
 
 public class ServiceEns implements IService {
     Connection cnx = DataSource.getInstance().getCnx();
@@ -51,8 +52,6 @@ public class ServiceEns implements IService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        ServiceUser sU = new ServiceUser();
-        sU.add(e);
     }
 
     @Override
@@ -113,9 +112,6 @@ public class ServiceEns implements IService {
             ps.setString(9, e.getSection());
             ps.setInt(10, e.getId());
 
-            ServiceUser sU = new ServiceUser();
-
-            sU.update(e);
             return true;
         } catch (Exception e) {
             return false;
@@ -132,8 +128,6 @@ public class ServiceEns implements IService {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Enseignant supprimer");
-            ServiceUser sU = new ServiceUser();
-            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

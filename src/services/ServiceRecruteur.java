@@ -1,5 +1,6 @@
 package services;
 
+import interfaces.IService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import modeles.Recruteur;
-import modeles.User;
-import utils.DataSource;
+import model.Recruteur;
+import model.User;
+import util.DataSource;
 
 public class ServiceRecruteur implements IService {
     Connection cnx = DataSource.getInstance().getCnx();
@@ -35,8 +36,6 @@ public class ServiceRecruteur implements IService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        ServiceUser sU = new ServiceUser();
-        sU.add(e);
 
     }
 
@@ -65,7 +64,7 @@ public class ServiceRecruteur implements IService {
     public List getAll() {
         List<Recruteur> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `recruteur`";
+            String req = "SELECT * FROM `Recruteur`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -96,8 +95,7 @@ public class ServiceRecruteur implements IService {
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getsociete());
             ps.setInt(9, e.getId());
-            ServiceUser sU = new ServiceUser();
-            sU.update(e);
+
             return true;
         } catch (Exception e) {
             return false;
@@ -114,8 +112,6 @@ public class ServiceRecruteur implements IService {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Recruteur supprimer");
-            ServiceUser sU = new ServiceUser();
-            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
