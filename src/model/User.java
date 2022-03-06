@@ -66,7 +66,7 @@ public class User {
 
         User u = sU.getByMail(mail);
         System.out.println(u);
-         System.out.println(crypPassword(password).length());
+         System.out.println(crypPassword(password));
         return crypPassword(password).equals(u.getPwd());
     }
 
