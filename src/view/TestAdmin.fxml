@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="531.0" prefWidth="886.0" style="-fx-background-radius: 10;" styleClass="secondary-color" stylesheets="@../style/DarkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TestAdminController">
+   <children>
+      <Line endX="100.0" layoutX="496.0" layoutY="47.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
+      <TextField fx:id="txtTitre" layoutX="603.0" layoutY="127.0" prefHeight="27.0" prefWidth="270.0" promptText="Titre" styleClass="tf" />
+      <TextArea fx:id="txtDescription" layoutX="601.0" layoutY="174.0" prefHeight="200.0" prefWidth="282.0" styleClass="text-area" />
+      <Button layoutX="619.0" layoutY="429.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="712.0" layoutY="429.0" mnemonicParsing="false" text="Button" />
+      <Button layoutX="803.0" layoutY="429.0" mnemonicParsing="false" text="Button" />
+      <ScrollPane layoutX="32.0" layoutY="128.0" prefHeight="276.0" prefWidth="556.0" stylesheets="@../../../RestaurantMgtSampleUI-master/src/home/style.css">
+         <content>
+            <ListView fx:id="list" prefHeight="274.0" prefWidth="554.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
