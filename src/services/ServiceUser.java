@@ -115,7 +115,7 @@ public class ServiceUser implements IService<User> {
             // String req = "SELECT * FROM `user` WHERE email = ? ";
             // PreparedStatement ps = cnx.prepareStatement(req);
             // ps.setString(1, mail);
-            System.out.println(req);
+//            System.out.println(req);
             // System.out.println("*******");
             ResultSet rs = st.executeQuery(req);
 
@@ -123,6 +123,7 @@ public class ServiceUser implements IService<User> {
                 User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
                         rs.getString(6), rs.getString(7));
                 u = us;
+                System.out.println(u);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

@@ -95,25 +95,25 @@ public class SignInController implements Initializable {
 
             User u = new User();
 
-            System.out.println("*********");
-            boolean valid = u.Login(username.getText(), password.getText());
-            System.out.println("****" + valid + "****");
-            if (valid) {
+            System.out.println((u.Login(username.getText(), password.getText())));
+            if (u.Login(username.getText(), password.getText())) {
 
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.close();
 
                 Stage stage2 = new Stage();
                 ServiceUser sU = new ServiceUser();
-                Role r = sU.getByMail(username.getText()).getRole();
+                u = sU.getByMail(username.getText());
+                Role r = u.getRole();
+                r = Role.admin;
                 switch (r) {
                     case admin:
                         Parent root = FXMLLoader.load(getClass().getResource("/controller/Home.fxml"));
                         Scene scene = new Scene(root);
-                        scene.setFill(Color.TRANSPARENT);
+                        // scene.setFill(Color.TRANSPARENT);
                         stage2.setScene(scene);
-                        stage2.initStyle(StageStyle.UNDECORATED);
-                        stage2.initStyle(StageStyle.TRANSPARENT);
+                        // stage2.initStyle(StageStyle.UNDECORATED);
+                        // stage2.initStyle(StageStyle.TRANSPARENT);
                         stage2.setTitle("Admin Panel");
                         // drag it here
                         root.setOnMousePressed(events -> {
@@ -133,16 +133,16 @@ public class SignInController implements Initializable {
                     default:
                         break;
                 }
+            } else {
+                AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                        "3assbaa");
             }
 
             // String query = "select * from user WHERE email = ? and pwd = ?";
             // try {
-
             // if (rs.next()) {
-
             // Stage stage = (Stage) loginButton.getScene().getWindow();
             // stage.close();
-
             // int colind = rs.findColumn("role");
             // System.out.println(colind);
             // Object role = rs.getObject(colind);
@@ -160,7 +160,6 @@ public class SignInController implements Initializable {
             // *
             // * borderpane.setLeft(menu);
             // */
-
             // Scene scene = new Scene(root);
             // scene.setFill(Color.TRANSPARENT);
             // stage2.setScene(scene);
@@ -173,17 +172,13 @@ public class SignInController implements Initializable {
             // y = events.getSceneY();
             // });
             // root.setOnMouseDragged(events -> {
-
             // stage2.setX(events.getScreenX() - x);
-
             // stage2.setY(events.getScreenY() - y);
-
             // });
             // stage2.show();
             // } else if (role.toString().equals("student")) {
             // Parent root =
             // FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
-
             // Scene scene = new Scene(root);
             // stage.setScene(scene);
             // stage.setTitle("Student Panel");

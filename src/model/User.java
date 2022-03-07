@@ -65,8 +65,7 @@ public class User {
     public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
 
         User u = sU.getByMail(mail);
-        System.out.println(u);
-         System.out.println(crypPassword(password));
+        System.out.println(crypPassword(password));
         return crypPassword(password).equals(u.getPwd());
     }
 
