@@ -49,7 +49,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#listUserClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="User" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#listUserClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List utilisateur" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -67,7 +67,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#SocieteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Societe" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEtudiantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Etudiant" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#UniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Universite" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEnseignantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Enseignant" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -103,7 +103,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ReclamationClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListRecruteurClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -118,7 +118,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#EvenementClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Evenement" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -141,7 +141,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#SendEmailClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Send E-Mail" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Send E-Mail" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>

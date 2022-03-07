@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 import java.net.URL;
@@ -75,6 +75,8 @@ public class HomeController implements Initializable {
     @FXML
     private Label lbl_currentprojects;
     @FXML
+    private Label lbl_pending;
+    @FXML
     private Label lbl_completed;
     @FXML
     private ScrollPane Scrollepane;
@@ -84,8 +86,6 @@ public class HomeController implements Initializable {
     @FXML
     private Circle re;
     private double lastX,lastY,lastWidth,lastHeight;
-    @FXML
-    private Circle close1;
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
@@ -130,6 +130,7 @@ public class HomeController implements Initializable {
         refreshNodes();
     }
 
+    @FXML
     private void ListEtudiantClicked(ActionEvent event) {
 //        boxifyVBoxes();
         pnl_scroll.getChildren().clear();
@@ -157,6 +158,7 @@ public class HomeController implements Initializable {
         }
     }
 
+    @FXML
     private void ListEnseignantClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
 
@@ -183,6 +185,7 @@ public class HomeController implements Initializable {
         }
     }
 
+    @FXML
     private void ListRecruteurClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
 
@@ -269,6 +272,7 @@ public class HomeController implements Initializable {
         }
     }
     
+    @FXML
     private void ListUniversiteClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
 
@@ -296,12 +300,10 @@ public class HomeController implements Initializable {
         }
     }
     
-    @FXML
     public void closeWindow(){
           System.exit(0);
     }
     
-    @FXML
     public void ReWindow(){
         re.setOnMouseClicked(events -> {
           Node n = (Node)events.getSource(); 
@@ -344,7 +346,6 @@ public class HomeController implements Initializable {
       }
          });
     }
-    @FXML
     public void MiWindow(){
          mi.setOnMouseClicked(events -> {
              Node n = (Node)events.getSource(); 
@@ -384,26 +385,6 @@ public class HomeController implements Initializable {
             i++;
         }
     
-    }
-
-    @FXML
-    private void SocieteClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void UniversiteClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void ReclamationClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void EvenementClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void SendEmailClicked(ActionEvent event) {
     }
 
 }
