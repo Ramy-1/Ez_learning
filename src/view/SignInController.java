@@ -108,7 +108,7 @@ public class SignInController implements Initializable {
                 r = Role.admin;
                 switch (r) {
                     case admin:
-                        Parent root = FXMLLoader.load(getClass().getResource("/controller/Home.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
                         Scene scene = new Scene(root);
                         // scene.setFill(Color.TRANSPARENT);
                         stage2.setScene(scene);
