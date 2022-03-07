@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package controller;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

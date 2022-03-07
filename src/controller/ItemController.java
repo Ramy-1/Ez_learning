@@ -26,6 +26,7 @@ import model.Etudiant;
 import model.Recruteur;
 import model.Role;
 import static model.Role.Recruteur;
+import model.Universite;
 import model.User;
 import services.ServiceUser;
 
@@ -69,6 +70,10 @@ public class ItemController implements Initializable {
     private Label LabelSection;
     @FXML
     private Label LabelScore;
+    @FXML
+    private Label labelPrenom;
+    @FXML
+    private Label labelNom;
 
 //    public ItemController(String haja) {
 //        this.test = haja;
@@ -120,10 +125,21 @@ public class ItemController implements Initializable {
             File file = new File("src/dashboard/images/admin.png");
             Img.setImage(new Image(file.toURI().toString()));
         }
+        
+        if (U.getRole() == Role.universite) {
+            Universite e = (Universite) U;
+            File file = new File("src/dashboard/images/teacher.png");
+            Img.setImage(new Image(file.toURI().toString()));
+            LabelSection.setText("Universite");
+           prenom.setVisible(false);
+            LabelScore.setText("Universite");
+            labelNom.setText("Titre");
+            labelNom.setStyle("display:none;");
+        }
         if (U.getRole() == Role.empty) {
             LabelScore.setVisible(false);
             LabelSection.setVisible(false);
-
+            labelPrenom.setVisible(false);
             section.setText("");
             score.setText("");
         }

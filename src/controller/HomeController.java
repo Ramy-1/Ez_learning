@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,16 +34,21 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.Enseignant;
 import model.Etudiant;
 import model.Recruteur;
 import static model.Role.Recruteur;
+import model.Universite;
 import model.User;
 import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import services.serviceUniversite;
 
 /**
  *
@@ -54,6 +60,7 @@ public class HomeController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
+    serviceUniversite sUn = new serviceUniversite();
 
     @FXML
     private VBox pnl_scroll;
@@ -65,6 +72,12 @@ public class HomeController implements Initializable {
     private Label lbl_completed;
     @FXML
     private ScrollPane Scrollepane;
+    
+    @FXML
+    private Circle mi;
+    @FXML
+    private Circle re;
+    private double lastX,lastY,lastWidth,lastHeight;
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
@@ -252,5 +265,92 @@ public class HomeController implements Initializable {
 
         }
     }
+    
+    @FXML
+    private void ListUniversiteClicked(ActionEvent event) {
+        pnl_scroll.getChildren().clear();
+
+        List<Universite> listU = sUn.getAll();
+        System.out.println(listU);
+        Node[] nodes = new Node[listU.size()];
+        int i = 0;
+
+        for (Universite each : listU) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+            ItemController cont = new ItemController();
+            try {
+                cont.U = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+    }
+    
+    public void closeWindow(){
+          System.exit(0);
+    }
+    
+    public void ReWindow(){
+        re.setOnMouseClicked(events -> {
+          Node n = (Node)events.getSource(); 
+ 
+      Window w = n.getScene().getWindow(); 
+ 
+      double currentX = w.getX(); 
+      double currentY = w.getY(); 
+      double currentWidth = w.getWidth(); 
+      double currentHeight = w.getHeight(); 
+
+      Screen screen = Screen.getPrimary(); 
+      Rectangle2D bounds = screen.getVisualBounds(); 
+ 
+       if( currentX != bounds.getMinX() && 
+         currentY != bounds.getMinY() && 
+         currentWidth != bounds.getWidth() && 
+         currentHeight != bounds.getHeight() ) { 
+ 
+         w.setX(bounds.getMinX()); 
+         w.setY(bounds.getMinY()); 
+         w.setWidth(bounds.getWidth()); 
+         w.setHeight(bounds.getHeight()); 
+ 
+         lastX = currentX;  // save old dimensions 
+         lastY = currentY; 
+         lastWidth = currentWidth; 
+         lastHeight = currentHeight; 
+        
+ 
+       } else { 
+ 
+         // de-maximize the window (not same as minimize) 
+ 
+         w.setX(lastX); 
+         w.setY(lastY); 
+         w.setWidth(lastWidth); 
+         w.setHeight(lastHeight); 
+          
+      }
+         });
+    }
+    public void MiWindow(){
+         mi.setOnMouseClicked(events -> {
+             Node n = (Node)events.getSource(); 
+ 
+      Window w = n.getScene().getWindow(); 
+      
+          Stage stage = (Stage) w;
+
+            stage.setIconified(true);
+         });
+    }
+    
 
 }

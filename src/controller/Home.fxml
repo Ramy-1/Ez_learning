@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
@@ -103,6 +104,21 @@
                </padding>
             </JFXButton>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListRecruteurClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/reliabilty.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -234,6 +250,25 @@
                </padding>
             </Label>
             <JFXButton onAction="#AddClicked" text="Add" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="1263.0" style="-fx-background-radius: 15 15 0 0;">
+         <children>
+            <Circle fx:id="mi" fill="#e3e244" onMouseClicked="#MiWindow" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-cursor: hand;">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Circle>
+            <Circle fx:id="re" fill="#43c733" onMouseClicked="#ReWindow" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-cursor: hand;">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Circle>
+            <Circle fx:id="close1" fill="#f03d3d" onMouseClicked="#closeWindow" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" style="-fx-cursor: hand;">
+               <HBox.margin>
+                  <Insets right="3.0" />
+               </HBox.margin>
+            </Circle>
          </children>
       </HBox>
    </children>
