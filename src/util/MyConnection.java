@@ -20,7 +20,7 @@ public class MyConnection {
     private String password = "";
     Connection connection;
     public static MyConnection instance;
-
+    private static Connection connection2;
     
     public MyConnection() {
         try {
@@ -46,5 +46,32 @@ public class MyConnection {
     public Connection getCnx(){
    return cnx ;
    }   
+  
+    public  Connection etablirConnection() {
+        
+        try {
+               connection2 = DriverManager.getConnection(url, login, password);
+               System.out.println("connexion établie");
+
+        }catch(Exception ex) {
+            System.out.println("connexion échouée"+ex.getMessage());
+            
+        }
+     
+        return connection2;
+    }
+    
+    
+    
+    public static Connection getInstance2() {
+        
+        if(connection2== null ) {
+            
+            new MyConnection().etablirConnection();
+        }
+        return connection2;
+        
+        
+    }
 }
 

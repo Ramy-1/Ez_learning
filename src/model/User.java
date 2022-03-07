@@ -65,7 +65,7 @@ public class User {
     public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
 
         User u = sU.getByMail(mail);
-        // System.out.println(crypPassword(password).length());
+        System.out.println(crypPassword(password));
         return crypPassword(password).equals(u.getPwd());
     }
 
@@ -90,6 +90,23 @@ public class User {
         this.role = Role.empty;
     }
 
+    public User(String nom, int phone, String email, String pwd, String carte_banq, Role role) {
+        this.nom = nom;
+        this.phone = phone;
+        this.email = email;
+        this.pwd = pwd;
+        this.carte_banq = carte_banq;
+        this.role = role;
+    }
+
+    public User(String nom, int phone, String email, String pwd, String carte_banq) {
+        this.nom = nom;
+        this.phone = phone;
+        this.email = email;
+        this.pwd = pwd;
+        this.carte_banq = carte_banq;
+    }
+    
     @Override
     public String toString() {
         return "{"

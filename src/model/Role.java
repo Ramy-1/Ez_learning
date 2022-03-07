@@ -16,6 +16,7 @@ public enum Role {
     enseignant,
     Recruteur,
     admin,
+    universite,
     empty;
 
     public Role value(String x) {
@@ -33,6 +34,9 @@ public enum Role {
                 break;
             case "admin":
                 r = admin;
+                break;
+            case "universite":
+                r = universite;
                 break;
 
             default:

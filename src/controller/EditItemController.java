@@ -29,11 +29,13 @@ import model.Enseignant;
 import model.Etudiant;
 import model.Recruteur;
 import model.Role;
+import model.Universite;
 import model.User;
 import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import services.serviceUniversite;
 
 /**
  * FXML Controller class
@@ -65,6 +67,10 @@ public class EditItemController implements Initializable {
     private TextField score;
     @FXML
     private ImageView Img;
+    @FXML
+    private Label labelPrenom;
+    @FXML
+    private Label labelNom;
     /**
      * Initializes the controller class.
      */
@@ -74,6 +80,7 @@ public class EditItemController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
+    serviceUniversite sUni = new serviceUniversite();
     @FXML
     private TextField psw;
     ObservableList types = FXCollections.observableArrayList(
@@ -101,7 +108,7 @@ public class EditItemController implements Initializable {
             // section.setText(u.get);
             // score.setText(u.get);
         }
-        ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin");
+        ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin","universite");
         typeBox.getItems().addAll(types);
         // typeUser.setItems(types);
         typeBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
@@ -145,6 +152,17 @@ public class EditItemController implements Initializable {
 
                 // score.setText(e.getUniversite());
             }
+            if ((roleEnum) == Role.universite) {
+           // Universite uni = (Universite) U;
+                System.out.println("hello");
+            File file = new File("src/dashboard/images/teacher.png");
+            Img.setImage(new Image(file.toURI().toString()));
+            //LabelSection.setText("Universite");
+           prenom.setVisible(false);
+          //  LabelScore.setText("Universite");
+            labelNom.setText("Titre");
+            labelNom.setStyle("display:none;");
+        }
             if (roleEnum == Role.admin) {
                 File file = new File("src/dashboard/images/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
