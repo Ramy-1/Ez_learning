@@ -43,6 +43,8 @@ import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import services.serviceReclamation;
+import model.Reclamation;
 
 /**
  *
@@ -54,7 +56,7 @@ public class HomeController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
-
+   serviceReclamation srr =new serviceReclamation();
     @FXML
     private VBox pnl_scroll;
     @FXML
@@ -216,8 +218,6 @@ public class HomeController implements Initializable {
 //        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
     }
 
-    @FXML
-
     public void reload(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -251,6 +251,34 @@ public class HomeController implements Initializable {
                     .otherwise(unfocusBackground));
 
         }
+    }
+
+    @FXML
+    private void RClicked(ActionEvent event) {
+   pnl_scroll.getChildren().clear();
+
+        List<Reclamation> listR = srr.afficherReclamation();
+        Node[] nodes = new Node[listR.size()];
+        int i = 0;
+
+        for (Reclamation each : listR) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Reclamation.fxml"));
+            ReclamationController cont = new ReclamationController();
+            try {
+                cont.R = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+    
     }
 
 }
