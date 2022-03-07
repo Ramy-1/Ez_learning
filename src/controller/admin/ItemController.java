@@ -154,8 +154,8 @@ public class ItemController implements Initializable {
     private void DeleteClicked(ActionEvent event) throws IOException {
         sU.delete(U);
 
-        HomeController Close = new HomeController();
-        Close.reload(event);
+        ItemController Close = new ItemController();
+//        Close.reload(event);
 
     }
 
@@ -178,7 +178,7 @@ public class ItemController implements Initializable {
         stage.setTitle("My New Stage Title");
         stage.setScene(new Scene(loader.load()));
         stage.show();
-        HomeController Close = new HomeController();
+        ItemController Close = new ItemController();
 //        Close.reload(event);
 //        Parent root = FXMLLoader.load(getClass().getResource("EditItem.fxml"));
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

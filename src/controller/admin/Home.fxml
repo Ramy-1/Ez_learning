@@ -233,24 +233,6 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#RClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projections.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
             <Label fx:id="lbl_completed" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Revenue = $$$" textFill="#171717">
                <font>
                   <Font size="13.0" />
@@ -260,24 +242,6 @@
                </padding>
             </Label>
             <JFXButton onAction="#AddClicked" text="Add" />
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="217.0" layoutY="10.0" onAction="#RClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projections.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="1263.0" style="-fx-background-radius: 15 15 0 0;">

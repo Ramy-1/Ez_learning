@@ -5,6 +5,7 @@
  */
 package controller.admin;
 
+import controller.Universite.UniversiteItemController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class HomeController implements Initializable {
 
         for (User each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -141,7 +142,7 @@ public class HomeController implements Initializable {
 
         for (Etudiant each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -168,7 +169,7 @@ public class HomeController implements Initializable {
 
         for (Enseignant each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -196,7 +197,7 @@ public class HomeController implements Initializable {
 
         for (Recruteur each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -283,7 +284,7 @@ public class HomeController implements Initializable {
 
         for (Universite each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);

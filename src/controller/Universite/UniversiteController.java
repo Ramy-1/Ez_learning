@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller.Universite;
 
+import controller.admin.ReclamationController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ import services.serviceUniversite;
  *
  * @author oXCToo
  */
-public class HomeController implements Initializable {
+public class UniversiteController implements Initializable {
 
     ServiceUser sU = new ServiceUser();
     ServiceEtudiant sE = new ServiceEtudiant();
@@ -108,7 +109,7 @@ public class HomeController implements Initializable {
 
         for (User each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -119,7 +120,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -141,7 +142,7 @@ public class HomeController implements Initializable {
 
         for (Etudiant each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -152,7 +153,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -168,7 +169,7 @@ public class HomeController implements Initializable {
 
         for (Enseignant each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -179,7 +180,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -196,7 +197,7 @@ public class HomeController implements Initializable {
 
         for (Recruteur each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -207,7 +208,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -283,7 +284,7 @@ public class HomeController implements Initializable {
 
         for (Universite each : listU) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
+            UniversiteItemController cont = new UniversiteItemController();
             try {
                 cont.U = each;
                 loader.setController(cont);
@@ -294,7 +295,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -380,7 +381,7 @@ public class HomeController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UniversiteController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }

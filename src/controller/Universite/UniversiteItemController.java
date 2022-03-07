@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.Universite;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,14 +35,14 @@ import services.ServiceUser;
  *
  * @author mrram
  */
-public class ItemController implements Initializable {
+public class UniversiteItemController implements Initializable {
 
     ServiceUser sU = new ServiceUser();
 
     private Label Username;
 
     String test;
-    User U;
+    public User U;
     @FXML
     private Label prenom;
     @FXML
@@ -154,8 +154,8 @@ public class ItemController implements Initializable {
     private void DeleteClicked(ActionEvent event) throws IOException {
         sU.delete(U);
 
-        HomeController Close = new HomeController();
-        Close.reload(event);
+//        HomeController Close = new HomeController();
+//    Close.reload(event);
 
     }
 
@@ -178,7 +178,7 @@ public class ItemController implements Initializable {
         stage.setTitle("My New Stage Title");
         stage.setScene(new Scene(loader.load()));
         stage.show();
-        HomeController Close = new HomeController();
+//        HomeController Close = new HomeController();
 //        Close.reload(event);
 //        Parent root = FXMLLoader.load(getClass().getResource("EditItem.fxml"));
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

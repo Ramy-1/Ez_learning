@@ -27,7 +27,7 @@ public class FinalProject extends Application {
        private double x, y;
     @Override
     public void start(Stage primaryStage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("/controller/Home.fxml"));        
+      Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));        
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.ReponseRecController">
    <children>
       <Pane layoutX="27.0" layoutY="30.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
          <children>
@@ -20,7 +21,7 @@
                </image>
             </ImageView>
             <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
-            <Label fx:id="typerec" layoutX="123.0" layoutY="18.0" text="typerec" textFill="#3a1c9d">
+            <Label fx:id="typerec" layoutX="362.0" layoutY="19.0" text="typerec" textFill="#3a1c9d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -30,12 +31,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="167.0" text="Détails de la réclamation :" textFill="#aeacac">
+            <Label layoutX="51.0" layoutY="167.0" text="Détails de la réponse :" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="279.0" layoutY="113.0" text="Cours " textFill="#aeacac">
+            <Label layoutX="279.0" layoutY="113.0" text="id reclamation" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,37 +46,38 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="idcours" layoutX="287.0" layoutY="139.0" text="SGBD" textFill="#4d4c4c">
+            <Label fx:id="idrec" layoutX="287.0" layoutY="139.0" text="SGBD" textFill="#4d4c4c">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="descrec" layoutX="46.0" layoutY="185.0" prefHeight="70.0" prefWidth="830.0" text="phone" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="660.0" layoutY="22.0" text="Date Reclamation" textFill="#aeacac">
+            <Label layoutX="693.0" layoutY="23.0" text="Date Reclamation" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="daterec" layoutX="672.0" layoutY="42.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: #aeacac;" text="01/01/2022" textFill="#fffefe">
+            <Label fx:id="daterec" layoutX="705.0" layoutY="49.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: #aeacac;" text="01/01/2022" textFill="#fffefe">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
+            <Pane layoutY="285.0" prefHeight="53.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
                <children>
-                  <Button layoutX="338.0" layoutY="15.0" mnemonicParsing="false" onAction="#RepondreClicked" prefHeight="39.0" prefWidth="102.0" text="Repondre" />
-                  <Button layoutX="478.0" layoutY="15.0" mnemonicParsing="false" onAction="#EffacerClicked" prefHeight="39.0" prefWidth="102.0" text="Effacer" />
+                  <Button layoutX="321.0" layoutY="7.0" mnemonicParsing="false" onAction="#AjoutReponseClicked" prefHeight="39.0" prefWidth="102.0" text="Repondre" />
+                  <Button layoutX="468.0" layoutY="7.0" mnemonicParsing="false" onAction="#AnnulerClicked" prefHeight="39.0" prefWidth="102.0" text="Annuler" />
                </children>
             </Pane>
-            <Label fx:id="id" layoutX="123.0" layoutY="51.0" text="Ref: 20178" textFill="#b2b0b0">
+            <Label fx:id="idreponse" layoutX="123.0" layoutY="51.0" text="Ref: 20178" textFill="#b2b0b0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label layoutX="122.0" layoutY="19.0" text="Reponse à une reclamation " textFill="#3a1c9d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descrep" layoutX="36.0" layoutY="205.0" prefHeight="70.0" prefWidth="826.0" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.admin;
 
 import com.jfoenix.controls.JFXTextArea;
 import java.net.URL;
@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import model.Reclamation;
@@ -44,7 +45,7 @@ public class ReponseRecController implements Initializable {
     @FXML
     private Label idrec;
     @FXML
-    private JFXTextArea descrep;
+    private TextArea descrep;
     @FXML
     private Label daterec;
     @FXML
