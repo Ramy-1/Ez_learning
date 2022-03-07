@@ -19,13 +19,15 @@ public class Evenement {
     private String heure;
     private String lien;
     private String imgEv;
+    private int nbrParticipant;
+    
     
     private int idUni;
 
     public Evenement() {
     }
 
-    public Evenement(int idEvent, String idOrg, String description, Date date, String heure, String lien, String imgEv) {
+    public Evenement(int idEvent, String idOrg, String description, Date date, String heure, String lien, String imgEv,int nbrParticipant) {
         this.idEvent = idEvent;
         this.idOrg = idOrg;
         this.description = description;
@@ -33,32 +35,38 @@ public class Evenement {
         this.heure = heure;
         this.lien = lien;
         this.imgEv = imgEv;
+        this.nbrParticipant = nbrParticipant;
     }
 
-    public Evenement(String idOrg, String description, Date date, String heure, String lien, String imgEv) {
+    public Evenement(String idOrg, String description, Date date, String heure, String lien, String imgEv,int nbrParticipant) {
         this.idOrg = idOrg;
         this.description = description;
         this.date = date;
         this.heure = heure;
         this.lien = lien;
         this.imgEv = imgEv;
+        
+        this.nbrParticipant = nbrParticipant;
     }
 
-    public Evenement(String idOrg, String description, Date date, String heure, String lien, String imgEv, int idUni) {
+    public Evenement(String idOrg, String description, Date date, String heure, String lien, String imgEv,int nbrParticipant, int idUni) {
         this.idOrg = idOrg;
         this.description = description;
         this.date = date;
+        
         this.heure = heure;
         this.lien = lien;
         this.imgEv = imgEv;
         this.idUni = idUni;
     }
 
-    public Evenement(String idOrg, String description, Date date, String lien) {
+    public Evenement(String idOrg, String description, Date date, String lien,int nbrParticipant) {
         this.idOrg = idOrg;
         this.description = description;
         this.date = date;
         this.lien = lien;
+        
+        this.nbrParticipant = nbrParticipant;
     }
 
     
@@ -127,13 +135,23 @@ public class Evenement {
         this.idUni = idUni;
     }
 
-    @Override
-    public String toString() {
-        return "Evenement{" + "idEvent=" + idEvent + ", idOrg=" + idOrg + ", description=" + description + ", date=" + date + ", heure=" + heure + ", lien=" + lien + ", imgEv=" + imgEv + ", idUni=" + idUni + '}';
+
+    public int getNbrParticipant() {
+        return nbrParticipant;
     }
 
+    public void setNbrParticipant(int nbrParticipant) {
+        this.nbrParticipant = nbrParticipant;
+    }
     
-   
+    
+
+    
+    @Override
+    public String toString() {
+        return "Evenement{" + "idEvent=" + idEvent + ", idOrg=" + idOrg + ", description=" + description + ", date=" + date + ", heure=" + heure + ", lien=" + lien + ", imgEv=" + imgEv + '}';
+    }
+    
     
    
 }
