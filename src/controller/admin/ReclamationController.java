@@ -8,15 +8,17 @@ package controller.admin;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import services.serviceReclamation;
 import model.Reclamation;
 
@@ -29,7 +31,7 @@ import model.Reclamation;
 public class ReclamationController implements Initializable {
  
     serviceReclamation sr = new serviceReclamation();
-    public Reclamation R = new Reclamation();
+    Reclamation R = new Reclamation();
     
     @FXML
     private AnchorPane mainAnchor;
@@ -69,7 +71,7 @@ public class ReclamationController implements Initializable {
         ReponseRecController cont = new ReponseRecController();
         cont.id_reponse = R.getIdrec();
         cont.rec = R;
-        
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseRec.fxml"));
         loader.setController(cont);
@@ -83,6 +85,14 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private void EffacerClicked(ActionEvent event) {
+     sr.supprimerReclamation(R);
+      HomeController homeless = new HomeController();
+        try {
+            homeless.reload(event);
+        } catch (IOException ex) {
+            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
 }
