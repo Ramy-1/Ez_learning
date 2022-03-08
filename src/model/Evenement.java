@@ -27,6 +27,16 @@ public class Evenement {
     public Evenement() {
     }
 
+    public Evenement(int idEvent, String idOrg, String description, Date date, String heure, int nbrParticipant) {
+        this.idEvent = idEvent;
+        this.idOrg = idOrg;
+        this.description = description;
+        this.date = date;
+        this.heure = heure;
+        
+        this.nbrParticipant = nbrParticipant;
+    }
+
     public Evenement(int idEvent, String idOrg, String description, Date date, String heure, String lien, String imgEv,int nbrParticipant) {
         this.idEvent = idEvent;
         this.idOrg = idOrg;
@@ -59,15 +69,27 @@ public class Evenement {
         this.imgEv = imgEv;
         this.idUni = idUni;
     }
-
-    public Evenement(String idOrg, String description, Date date, String lien,int nbrParticipant) {
+    
+    
+    public Evenement(String idOrg, String description, Date date, String heure,int nbrParticipant) {
+        this.idOrg = idOrg;
+        this.description = description;
+        this.date = date;
+        
+        this.heure = heure;
+   
+    }
+  
+    public Evenement(String idOrg, String description, Date date, String heure,String lien,int nbrParticipant) {
         this.idOrg = idOrg;
         this.description = description;
         this.date = date;
         this.lien = lien;
         
-        this.nbrParticipant = nbrParticipant;
+        this.heure = heure;
+   
     }
+
 
     
     

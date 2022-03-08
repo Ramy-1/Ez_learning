@@ -21,7 +21,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Categorie;
 import model.Cours;
-import util.MyConnection;
+import model.LikeCours;
+import rania.MyConnection;
 
 /**
  *
@@ -30,8 +31,9 @@ import util.MyConnection;
 public class serviceCours implements ICours{
 
     
-        public Connection myConnection = MyConnection.getInstance2();
-   public     ObservableList<Cours>obList = FXCollections.observableArrayList();
+        public Connection myConnection = (Connection) MyConnection.getInstance();
+   public     ObservableList<Cours>obList = FXCollections.observableArrayList();   public     ObservableList<LikeCours>obListLike = FXCollections.observableArrayList();
+
 
     @Override
     public void ajouterCours(Cours C) {
@@ -68,6 +70,7 @@ public class serviceCours implements ICours{
                 C.setDescription(rs.getString("description"));
                 C.setDuree(rs.getInt("duree"));
                                 C.setDatecreate(rs.getDate("datecreate"));
+                C.setEtat(rs.getInt("etat"));
 
                 C.setSupport(rs.getString("support"));
                 C.setIdcat(rs.getInt("idcat"));
@@ -127,7 +130,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         Date date = rs.getDate("datecreate");
         int duree  = rs.getInt("duree");
         int iduni = rs.getInt("idcat");
-        boolean etat = rs.getBoolean("etat");
+        int etat = rs.getInt("etat");
         if(iduni ==idcat) {
                     Cours c = new Cours(titre, desc, duree, date,etat);
         list.add(c);
@@ -181,30 +184,29 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         
         try{
                    if(userLikeExist(iduser, idcours) == true) {
-                System.out.println("tu as deja liker ce cours d'id="+idcours);
-                return false;
+                System.out.println("UPDATE="+!dislikeCours(idcours,1));
+                      return dislikeCours(idcours, 1);
             }
-            if(like == 1 || like == 0) {
-                
-            } String request = "INSERT INTO `like_cours`( `iduser`, `id`,`like_etat`) VALUES ('"+iduser+"','"+idcours+"','"+like+"')";
+                   else{
+            } String request = "INSERT INTO `like_cours`( `iduser`, `like_etat`,`id`) VALUES ('"+iduser+"','"+1+"','"+idcours+"')";
             Statement st = myConnection.createStatement();
              st.executeUpdate(request);
              if(like == 1) {
                 System.out.println("Like cours ajoutee avec succes");
+                return true;
 
              }else if(like == 0) {
                 System.out.println("Dislike cours ajoutee avec succes");
+                return false;
 
              }
-             else {
-                 System.out.println("Like € [1,0]");
-             }
+             
        
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }       
         
-        return true;
+        return false;
     }
 
     @Override
@@ -332,7 +334,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         
     //JOINTURE
         @Override
-    public List<Cours> afficherCoursLiker() {
+    public ObservableList<Cours> afficherCoursLiker() {
  
         
         String sql ="SELECT *" +
@@ -349,9 +351,9 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         Date date = rs.getDate("datecreate");
         int duree  = rs.getInt("duree");
         int iduni = rs.getInt("idcat");
-        boolean etat = rs.getBoolean("etat");
+        int etat = rs.getInt("etat");
                     Cours c = new Cours(titre, desc, duree, date,etat);
-        list.add(c);
+        obList.add(c);
         
 
         
@@ -360,7 +362,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
     }catch(Exception ex) {
         ex.printStackTrace();
     }
-    return list;
+    return obList;
     }
 
     @Override
@@ -371,7 +373,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
             Statement st = myConnection.createStatement();
         st.executeUpdate(request3);
         
-        if(c.isEtat() == true)
+        if(c.isEtat() == 1)
         System.out.println("cours activé");
    
         else
@@ -386,7 +388,101 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         
     }
 
+    public ObservableList<LikeCours>  afficherCoursLikerParCours(int id) {
+         int i=0;
+      try{
+            String query ="SELECT  *  FROM like_cours cou" +"  JOIN cours lic ON cou.id ="+id ;        
+        PreparedStatement st = myConnection.prepareStatement(query);
+      ResultSet rs = st.executeQuery();
+            
+      while (rs.next()) {
+    int iduser = rs.getInt("iduser");
+        int etaat = rs.getInt("like_etat");
+        
+        int idcours = rs.getInt("id");         
+        
+        LikeCours likeCours = new LikeCours(iduser,idcours,etaat);
+        obListLike.add(likeCours);
+        
 
+        
+        
+      }
+    }catch(Exception ex) {
+        ex.printStackTrace();
+    }
+    return obListLike;
+    }
+
+    public ObservableList<LikeCours> afficherLikeCours()  {
+    String sql ="SELECT * FROM like_cours";        
+      
+    try{
+          PreparedStatement st = myConnection.prepareStatement(sql);
+      ResultSet rs = st.executeQuery();
+            
+      
+      while (rs.next()) {
+          int iduser = rs.getInt("iduser");
+        int etaat = rs.getInt("like_etat");
+        
+        int idcours = rs.getInt("id");
+        boolean etat = rs.getBoolean("like_etat");
+        
+        LikeCours likeCours = new LikeCours(iduser, idcours, etaat);
+        obListLike.add(likeCours);
+        }
+        
+    }catch(Exception exx) {
+        exx.printStackTrace();
+    }
+  
+
+
+      return  obListLike;
+    }
+
+    public boolean dislikeCours(int idc,int etat) {
+  try{      
+        String request3="UPDATE `like_cours` SET `like_etat`='"+0+"' WHERE `id` ="+idc ;
+            Statement st = myConnection.createStatement();
+               st.executeUpdate(request3);
+
+  
+        
+       
+     }
+     catch(SQLException ex){
+     System.err.println(ex.getMessage());
+     } 
+           return true;
+
+    }
+    
+     public ObservableList<Cours> afficherCoursActive(int etat) {
+        String request1 = "SELECT * FROM cours WHERE etat ="+etat;
+        try {
+            Statement st = myConnection.createStatement();
+            ResultSet rs = st.executeQuery(request1);
+             while (rs.next()){
+               Cours C= new Cours();
+               C.setId(rs.getInt(1));
+               C.setTitre(rs.getString("titre"));
+                C.setDescription(rs.getString("description"));
+                C.setDuree(rs.getInt("duree"));
+                                C.setDatecreate(rs.getDate("datecreate"));
+                C.setEtat(rs.getInt("etat"));
+
+                C.setSupport(rs.getString("support"));
+                C.setIdcat(rs.getInt("idcat"));
+               
+               obList.add(C);
+             }
+        } catch (SQLException ex) {
+     System.err.println(ex.getMessage());
+        }
+    
+        return obList;     }
 }
 
 

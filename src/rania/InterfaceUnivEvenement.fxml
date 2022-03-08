@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="883.0" stylesheets="@stylehseet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.InterfaceUnivEvenementController">
+   <children>
+      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="791.0">
+         <children>
+            <BorderPane fx:id="border_pane" prefHeight="500.0" prefWidth="883.0" style="-fx-background-color: #fff;">
+               <left>
+                  <Pane prefHeight="537.0" prefWidth="225.0" styleClass="left" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox layoutX="23.0" layoutY="14.0" spacing="5.0">
+                           <children>
+                              <Circle fx:id="btnClose" fill="#f44336" onMouseClicked="#handleMouseEvent" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fill="#fbdd2d" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Circle fill="#00c71c" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+                           </children>
+                        </HBox>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="61.0" layoutY="170.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../util/images/s4s.png" />
+                           </image>
+                           <styleClass>
+                              <String fx:value="envoyer_btn" />
+                              <String fx:value="content-area-circle-btns" />
+                              <String fx:value="img" />
+                           </styleClass>
+                        </ImageView>
+                        <Label layoutX="55.0" layoutY="170.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="EAZY LEARNING">
+                           <font>
+                              <Font name="Impact" size="20.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btn_manage_cours" alignment="CENTER" buttonType="RAISED" layoutX="31.0" layoutY="233.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToCours" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Gestion Universite" textFill="#4059a9">
+                           <font>
+                              <Font name="Impact" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <stylesheets>
+                              <URL value="@utils/css/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </JFXButton>
+                        <JFXButton fx:id="btn_manage_evenement" alignment="CENTER" buttonType="RAISED" layoutX="31.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Gestion Evenement" textFill="#4059a9">
+                           <font>
+                              <Font name="Impact" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <stylesheets>
+                              <URL value="@utils/css/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </JFXButton>
+                        <JFXButton fx:id="btn_manage_evenement1" alignment="CENTER" buttonType="RAISED" layoutX="31.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#GoToC" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Gestion Cours" textFill="#4059a9">
+                           <font>
+                              <Font name="Impact" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <stylesheets>
+                              <URL value="@utils/css/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </JFXButton>
+                     </children>
+                     <stylesheets>
+                        <URL value="@util/stylehseet.css" />
+                        <URL value="@../util/stylehseet.css" />
+                     </stylesheets>
+                  </Pane>
+               </left>
+               <center>
+                  <StackPane fx:id="stackPane" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="pnl_modif" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <TextField fx:id="email_modif_txt" layoutX="208.0" layoutY="152.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Modifier Universite">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nom_modif_txt" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <TextField fx:id="adr_modif_txt" layoutX="208.0" layoutY="190.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="nom">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="email">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_Modif" alignment="CENTER" buttonType="RAISED" layoutX="242.0" layoutY="273.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActionModif" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Modifier" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <Label layoutX="34.0" layoutY="191.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="adresse">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_add_cours" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Ajout Cours">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="titre_txt" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <TextField fx:id="duree_txt" layoutX="208.0" layoutY="151.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Titre">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Duree">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_add_cours" alignment="CENTER" buttonType="RAISED" layoutX="242.0" layoutY="410.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActionAddCours" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Ajouter " textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TextField fx:id="supp_txt" layoutX="208.0" layoutY="197.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="198.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Support">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="desc_txt" layoutX="204.0" layoutY="232.0" prefHeight="158.0" prefWidth="239.0" />
+                              <Label layoutX="34.0" layoutY="286.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Description">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_lst_cours" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
+                           <children>
+                              <Label fx:id="rec21" layoutX="95.0" layoutY="47.0" prefHeight="32.0" prefWidth="314.0" style="-fx-text-fill: linear-gradient(to bottom left,#6F4CBB,#431FA0);" styleClass="labeltitre" text="           List Cours">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="25.0" />
+                                 </font>
+                                 <stylesheets>
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </Label>
+                              <ImageView fx:id="btnBackFeedback1" fitHeight="31.0" fitWidth="39.0" layoutX="17.0" layoutY="34.0" onDragDetected="#handleMouseEvent" onMouseClicked="#handleMouseEvent" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/images/back.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton fx:id="btnAddFormCours" alignment="CENTER" buttonType="RAISED" layoutX="190.0" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addCours" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" styleClass="envoyer_btn" text="Ajouter Cours" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TableView fx:id="tableview1" layoutX="46.0" layoutY="109.0" prefHeight="247.0" prefWidth="488.0">
+                                 <columns>
+                                    <TableColumn fx:id="col_titre" prefWidth="152.79998016357422" text="titre" />
+                                    <TableColumn fx:id="col_supp" prefWidth="174.39996337890625" text="support" />
+                                    <TableColumn fx:id="col_action_modif" prefWidth="83.2000732421875" text="Modifier" />
+                                    <TableColumn fx:id="col_action_supp" prefWidth="83.2000732421875" text="Supprimer" />
+                                    <TableColumn fx:id="col_nom11" prefWidth="143.199951171875" text="support" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnl_modifcours" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Modifier Cours">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="titre_modif_txt" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Titre">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Duree">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_Cours_Modif" alignment="CENTER" buttonType="RAISED" layoutX="225.0" layoutY="392.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActionModif" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Modifier" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TextArea fx:id="desc_txt_modif" layoutX="205.0" layoutY="187.0" prefHeight="126.0" prefWidth="236.0" />
+                              <TextField fx:id="duree_txt_modif" layoutX="208.0" layoutY="140.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="216.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Description">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="supp_txt_modif" layoutX="208.0" layoutY="336.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="336.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Support">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_add_Un" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Ajout Universite">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nomuniv_txt" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <TextField fx:id="email_txt" layoutX="208.0" layoutY="151.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="nom">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="email">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_add_univ" alignment="CENTER" buttonType="RAISED" layoutX="242.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActionAddUniv" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Ajouter " textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TextField fx:id="adr_txt" layoutX="208.0" layoutY="203.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="33.0" layoutY="204.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Addresse">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_add_ev" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Ajouter Evenement">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="org_txt" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Organisateur">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Date">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_add_ev" alignment="CENTER" buttonType="RAISED" layoutX="242.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActionAddEv" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Ajouter" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TextField fx:id="heure_picker" layoutX="208.0" layoutY="203.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="33.0" layoutY="204.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Heure">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="participant_txt" layoutX="208.0" layoutY="250.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="251.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="ParticipantNbrs">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="desc_txt" layoutX="201.0" layoutY="334.0" prefHeight="68.0" prefWidth="238.0" />
+                              <Label layoutX="27.0" layoutY="356.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Description">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="date_picker" layoutX="205.0" layoutY="152.0" prefHeight="25.0" prefWidth="230.0" />
+                              <TextField fx:id="lien_txt" layoutX="208.0" layoutY="292.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="293.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="lien">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_modif_Event" prefHeight="350.0" prefWidth="566.0" styleClass="left">
+                           <children>
+                              <Label layoutX="225.0" layoutY="35.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Modifier Evenement">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="org_txt_modif" layoutX="208.0" layoutY="102.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="103.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Organisateur">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="34.0" layoutY="152.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Date">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_modif_ev" alignment="CENTER" buttonType="RAISED" layoutX="242.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonActioModifEv" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" style="-fx-background-color: white;" styleClass="envoyer_btn" text="Modifier" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TextField fx:id="heure_picker_modif" layoutX="208.0" layoutY="203.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="33.0" layoutY="204.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Lien">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="participant_txt_modif" layoutX="208.0" layoutY="250.0" prefHeight="25.0" prefWidth="231.0" />
+                              <Label layoutX="34.0" layoutY="251.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="ParticipantNbrs">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="desc_txt_modif" layoutX="205.0" layoutY="300.0" prefHeight="68.0" prefWidth="238.0" />
+                              <Label layoutX="34.0" layoutY="322.0" prefHeight="24.0" prefWidth="209.0" stylesheets="@../../../PiDev/src/pidev/utils/css/stylehseet.css" text="Description">
+                                 <font>
+                                    <Font name="Impact" size="20.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="date_picker_modif" layoutX="205.0" layoutY="152.0" prefHeight="25.0" prefWidth="230.0" />
+                           </children>
+                           <stylesheets>
+                              <URL value="@util/stylehseet.css" />
+                              <URL value="@../util/stylehseet.css" />
+                           </stylesheets>
+                        </Pane>
+                        <Pane fx:id="pnl_lst_un" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
+                           <children>
+                              <Label fx:id="rec2" layoutX="95.0" layoutY="47.0" prefHeight="32.0" prefWidth="314.0" style="-fx-text-fill: linear-gradient(to bottom left,#6F4CBB,#431FA0);" styleClass="labeltitre" text="           List Universites">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="25.0" />
+                                 </font>
+                                 <stylesheets>
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </Label>
+                              <ImageView fx:id="btnBackFeedback" fitHeight="31.0" fitWidth="39.0" layoutX="17.0" layoutY="34.0" onDragDetected="#handleMouseEvent" onMouseClicked="#handleMouseEvent" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/images/back.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton fx:id="btnAddFormU" alignment="CENTER" buttonType="RAISED" layoutX="188.0" layoutY="394.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addUn" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" styleClass="envoyer_btn" text="Ajouter Universite" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TableView fx:id="tableviewUn" layoutX="5.0" layoutY="109.0" prefHeight="247.0" prefWidth="558.0">
+                                 <columns>
+                                    <TableColumn fx:id="col_nom" prefWidth="130.3999571800232" text="Nom" />
+                                    <TableColumn fx:id="col_email" prefWidth="131.20001220703125" text="email" />
+                                    <TableColumn fx:id="col_action" prefWidth="172.0" text="Modifier" />
+                                    <TableColumn fx:id="col_action1" prefWidth="123.20004272460938" text="Supprimer" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnl_lst_ev" prefHeight="477.0" prefWidth="673.0" style="-fx-background-color: #ffff;">
+                           <children>
+                              <Label fx:id="rec22" layoutX="95.0" layoutY="47.0" prefHeight="32.0" prefWidth="424.0" style="-fx-text-fill: linear-gradient(to bottom left,#6F4CBB,#431FA0);" styleClass="labeltitre" text="           List Des Evenements">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="25.0" />
+                                 </font>
+                                 <stylesheets>
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </Label>
+                              <ImageView fx:id="btnBackFeedback2" fitHeight="31.0" fitWidth="39.0" layoutX="17.0" layoutY="34.0" onDragDetected="#handleMouseEvent" onMouseClicked="#handleMouseEvent" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/images/back.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton fx:id="btnAddFormEvent" alignment="CENTER" buttonType="RAISED" layoutX="188.0" layoutY="394.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addEv" prefHeight="35.0" prefWidth="163.0" ripplerFill="#4059a9" styleClass="envoyer_btn" text="Ajouter Evenement" textFill="#4059a9">
+                                 <font>
+                                    <Font name="Impact" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <stylesheets>
+                                    <URL value="@utils/css/stylehseet.css" />
+                                    <URL value="@../util/stylehseet.css" />
+                                 </stylesheets>
+                              </JFXButton>
+                              <TableView fx:id="tableviewE" layoutX="5.0" layoutY="109.0" prefHeight="247.0" prefWidth="647.0">
+                                 <columns>
+                                    <TableColumn fx:id="col_org" prefWidth="141.0" text="Organis" />
+                                    <TableColumn fx:id="col_date" prefWidth="122.0" text="Date" />
+                                    <TableColumn fx:id="col_lien" minWidth="0.0" prefWidth="167.0" text="Lien" />
+                                    <TableColumn fx:id="col_action_modf_ev" prefWidth="100.0" text="Modfiier" />
+                                    <TableColumn fx:id="col_action_supp_ev" prefWidth="158.0" text="Supprimer" />
+                                 </columns>
+                              </TableView>
+                              <TextField fx:id="txt_filter" layoutX="505.0" layoutY="50.0" onKeyPressed="#searchAction" prefHeight="25.0" prefWidth="145.0" promptText="Recherche Evenement..." />
+                              <Hyperlink fx:id="top_ev_txt" layoutX="398.0" layoutY="398.0" onAction="#goToTopEvenets" text="Consulter Top Evenements" textFill="#400a0a">
+                                 <font>
+                                    <Font name="Century Gothic" size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </Pane>
+                     </children></StackPane>
+               </center>
+               <children>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="42.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" ripplerFill="#4059a9" styleClass="envoyer_btn" stylesheets="@../util/css/stylehseet.css" text="Envoyer" textFill="#4059a9">
+                     <font>
+                        <Font name="Impact" size="17.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="219.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" ripplerFill="#4059a9" styleClass="envoyer_btn" stylesheets="@../util/css/stylehseet.css" text="Annuler" textFill="#4059a9">
+                     <font>
+                        <Font name="Impact" size="17.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
