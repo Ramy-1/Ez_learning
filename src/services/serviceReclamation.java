@@ -22,12 +22,13 @@ import util.DataSource;
  * @author Nabil
  */
 public class serviceReclamation implements IReclamation {
+ Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
     public void ajouterReclamation(Reclamation R) {
         String request = "INSERT INTO `reclamation`(`idrec`, `type`, `description`, `idetudiant`, `idcours`, `daterec`) VALUES ('" + R.getIdrec() + "','" + R.getType() + "','" + R.getDescription() + "','" + R.getIdetudiant() + "','" + R.getIdcours() + "','" + R.getDaterec() + "')";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             st.executeUpdate(request);
             System.out.println("Reclamation ajoutee avec succes");
         } catch (SQLException ex) {
@@ -42,7 +43,6 @@ public class serviceReclamation implements IReclamation {
 
         try {
 //              Statement st = new MyConnection().getCnx().createStatement();
-            Connection cnx = DataSource.getInstance().getCnx();
 
             Statement st = cnx.createStatement();
 
@@ -70,7 +70,7 @@ public class serviceReclamation implements IReclamation {
         Statement st;
 
         try {
-            st = new MyConnection().getCnx().createStatement();
+            st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request1);
             while (rs.next()) {
                 Reclamation R = new Reclamation();
@@ -94,7 +94,7 @@ public class serviceReclamation implements IReclamation {
         try {
             String request3 = "UPDATE `reclamation` SET `type`='" + R.getType() + "',`description`='" + R.getDescription() + "',`idetudiant`='" + R.getIdetudiant() + "',`idcours`='" + R.getIdcours() + "', `daterec`='" + R.getDaterec() + "' WHERE `idrec` = " + id;
 
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             st.executeUpdate(request3);
             System.out.println("reclamation modifie avec succes");
 
@@ -106,7 +106,7 @@ public class serviceReclamation implements IReclamation {
     public void supprimerReclamation(Reclamation R) {
         String request2 = "DELETE FROM `reclamation` WHERE `description`='" + R.getDescription() + "'";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             st.executeUpdate(request2);
 
             System.out.println("Reclamation supprimé avec succès");

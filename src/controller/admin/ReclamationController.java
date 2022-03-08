@@ -7,9 +7,16 @@ package controller.admin;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+<<<<<<< Updated upstream
+=======
+import javafx.scene.Node;
+import javafx.scene.Scene;
+>>>>>>> Stashed changes
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -57,7 +64,7 @@ public class ReclamationController implements Initializable {
         idetud.setText(R.getIdetudiant());
         idcours.setText(R.getIdcours());
         descrec.setText(R.getDescription());
-        
+    
     }    
 
     @FXML
@@ -66,6 +73,14 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private void EffacerClicked(ActionEvent event) {
+     sr.supprimerReclamation(R);
+      HomeController homeless = new HomeController();
+        try {
+            homeless.reload(event);
+        } catch (IOException ex) {
+            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
     }
     
 }

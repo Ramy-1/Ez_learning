@@ -244,6 +244,7 @@ public class HomeController implements Initializable {
 
     }
 
+<<<<<<< Updated upstream
     private void boxifyVBoxes() {
         // styles used for vboxes
         Background focusBackground = new Background(new BackgroundFill(Color.BLUEVIOLET, CornerRadii.EMPTY, Insets.EMPTY));
@@ -271,6 +272,8 @@ public class HomeController implements Initializable {
     
     private void ListUniversiteClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
+=======
+>>>>>>> Stashed changes
 
         List<Universite> listU = sUn.getAll();
         System.out.println(listU);
@@ -404,6 +407,10 @@ public class HomeController implements Initializable {
 
     @FXML
     private void SendEmailClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void Societeclick(ActionEvent event) {
     }
 
 }
