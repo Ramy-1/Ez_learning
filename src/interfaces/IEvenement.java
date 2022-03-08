@@ -7,6 +7,7 @@ package interfaces;
 
 import java.util.HashMap;
 import java.util.List;
+import javafx.collections.ObservableList;
 import model.Evenement;
 
 /**
@@ -26,7 +27,7 @@ public interface IEvenement {
         public int nombreTotalEvenement();
         
         //METIER 3 TOP 5 evenets by number participants
-        public void topFiveEvents() ;
+        public ObservableList<Evenement> topFiveEvents() ;
         
         
         

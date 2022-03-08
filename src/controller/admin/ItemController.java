@@ -28,6 +28,9 @@ import model.Role;
 import static model.Role.Recruteur;
 import model.Universite;
 import model.User;
+import services.ServiceEns;
+import services.ServiceEtudiant;
+import services.ServiceRecruteur;
 import services.ServiceUser;
 
 /**
@@ -38,6 +41,9 @@ import services.ServiceUser;
 public class ItemController implements Initializable {
 
     ServiceUser sU = new ServiceUser();
+    ServiceEtudiant sE = new ServiceEtudiant();
+    ServiceEns sEn = new ServiceEns();
+    ServiceRecruteur sR = new ServiceRecruteur();
 
     private Label Username;
 
@@ -94,55 +100,94 @@ public class ItemController implements Initializable {
         mail.setText(U.getEmail());
         cartbanq.setText(U.getCarte_banq());
 
-        if (U.getRole() == Role.etudiant) {
-            Etudiant e = (Etudiant) U;
-            section.setText(e.getSection());
-            score.setText(String.valueOf(e.getScore()));
-            File file = new File("src/dashboard/images/student.jpg");
-            Img.setImage(new Image(file.toURI().toString()));
+        File file;
+        switch (U.getRole()) {
+            case etudiant:
+                file = new File("src/controler/admin/images/student.jpg");
+                Img.setImage(new Image(file.toURI().toString()));
 
-        }
-        if (U.getRole() == Role.Recruteur) {
-            Recruteur r = (Recruteur) U;
-            File file = new File("src/dashboard/images/recruitment.png");
-            Img.setImage(new Image(file.toURI().toString()));
-            LabelSection.setText("Societe");
-            section.setText(r.getsociete());
-            LabelScore.setVisible(false);
-            score.setVisible(false);
+                Etudiant e = (Etudiant) sE.getById(U.getId());
 
-        }
-        if (U.getRole() == Role.enseignant) {
-            Enseignant e = (Enseignant) U;
-            File file = new File("src/dashboard/images/teacher.png");
-            Img.setImage(new Image(file.toURI().toString()));
+                LabelSection.setText("Section");
+                section.setText(e.getSection());
+
+                LabelScore.setText("Score");
+                score.setText(String.valueOf(e.getScore()));
+                LabelScore.setVisible(true);
+                score.setVisible(true);
+                break;
+                
+            case Recruteur:
+                file = new File("src/controler/admin/images/recruitment.png");
+                Img.setImage(new Image(file.toURI().toString()));
+
+                Recruteur r = (Recruteur) U;
+                r = (Recruteur) sR.getById(U.getId());
+
+                LabelSection.setText("Societe");
+                section.setText(r.getsociete());
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+                break;
+
+            case enseignant:
+                Enseignant en = (Enseignant) U;
+
+                file = new File("src/controler/admin/images/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+
+                LabelSection.setText("Section");
+                section.setText(en.getSection());
+
+                LabelScore.setText("Universite");
+                score.setText(en.getUniversite());
+                LabelScore.setVisible(true);
+                score.setVisible(true);
+                break;
+
+            case admin:
+
+                file = new File("src/controler/adminimages/admin.png");
+                Img.setImage(new Image(file.toURI().toString()));
+
+                LabelSection.setVisible(false);
+                section.setVisible(false);
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+                break;
+
+//            case universite:
+//Universite e = (Universite) U;
+//            File file = new File("src//controler/adminimages/teacher.png");
+//            Img.setImage(new Image(file.toURI().toString()));
 //            LabelSection.setText("Universite");
-            section.setText(e.getSection());
-            LabelScore.setText("Universite");
-            score.setText(e.getUniversite());
+//            prenom.setVisible(false);
+//            LabelScore.setText("Universite");
+//            labelNom.setText("Titre");
+//                break;
+             default:
+                 System.out.println("EROOOORRRREEEE");
+                 break;
+
         }
-        if (U.getRole() == Role.admin) {
-            File file = new File("src/dashboard/images/admin.png");
-            Img.setImage(new Image(file.toURI().toString()));
-        }
-        
-        if (U.getRole() == Role.universite) {
-            Universite e = (Universite) U;
-            File file = new File("src/dashboard/images/teacher.png");
-            Img.setImage(new Image(file.toURI().toString()));
-            LabelSection.setText("Universite");
-           prenom.setVisible(false);
-            LabelScore.setText("Universite");
-            labelNom.setText("Titre");
-            labelNom.setStyle("display:none;");
-        }
-        if (U.getRole() == Role.empty) {
-            LabelScore.setVisible(false);
-            LabelSection.setVisible(false);
-            labelPrenom.setVisible(false);
-            section.setText("");
-            score.setText("");
-        }
+
+//        if (U.getRole() == Role.universite) {
+//            Universite e = (Universite) U;
+//            File file = new File("src//controler/adminimages/teacher.png");
+//            Img.setImage(new Image(file.toURI().toString()));
+//            LabelSection.setText("Universite");
+//            prenom.setVisible(false);
+//            LabelScore.setText("Universite");
+//            labelNom.setText("Titre");
+////            labelNom.setStyle("display:none;");
+//        }
+//        if (U.getRole() == Role.empty) {
+//            LabelScore.setVisible(false);
+//            LabelSection.setVisible(false);
+//            labelPrenom.setVisible(false);
+//            section.setText("");
+//            score.setText("");
+//        }
 
     }
 
@@ -154,8 +199,8 @@ public class ItemController implements Initializable {
     private void DeleteClicked(ActionEvent event) throws IOException {
         sU.delete(U);
 
-        HomeController Close = new HomeController();
-        Close.reload(event);
+        ItemController Close = new ItemController();
+//        Close.reload(event);
 
     }
 
@@ -168,7 +213,7 @@ public class ItemController implements Initializable {
 //        home.updateUser(this.U);
         EditItemController cont = new EditItemController();
         cont.type = 2;
-        cont.u = this.U;
+        cont.U = this.U;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
         loader.setController(cont);
@@ -178,7 +223,7 @@ public class ItemController implements Initializable {
         stage.setTitle("My New Stage Title");
         stage.setScene(new Scene(loader.load()));
         stage.show();
-        HomeController Close = new HomeController();
+        ItemController Close = new ItemController();
 //        Close.reload(event);
 //        Parent root = FXMLLoader.load(getClass().getResource("EditItem.fxml"));
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -5,6 +5,7 @@
  */
 package controller.admin;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -12,11 +13,9 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-<<<<<<< Updated upstream
-=======
+
 import javafx.scene.Node;
 import javafx.scene.Scene;
->>>>>>> Stashed changes
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -64,11 +63,24 @@ public class ReclamationController implements Initializable {
         idetud.setText(R.getIdetudiant());
         idcours.setText(R.getIdcours());
         descrec.setText(R.getDescription());
-    
+        
     }    
 
     @FXML
-    private void RepondreClicked(ActionEvent event) {
+    private void RepondreClicked(ActionEvent event) throws IOException {
+        ReponseRecController cont = new ReponseRecController();
+        cont.id_reponse = R.getIdrec();
+        cont.rec = R;
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseRec.fxml"));
+        loader.setController(cont);
+//        mainAnchor = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("My New Stage Title");
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 
     @FXML
@@ -80,7 +92,7 @@ public class ReclamationController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
+
     }
     
 }

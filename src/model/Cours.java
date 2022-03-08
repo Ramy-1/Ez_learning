@@ -19,7 +19,7 @@ public class Cours {
     private Date datecreate;
     private String support;
     private int idcat;
-    private boolean etat;
+    private int etat;
 
     public Cours() {
     }
@@ -35,7 +35,7 @@ public class Cours {
         this.etat = etat;
     }
 
-      public Cours( String titre, String description, int duree, Date datecreate,boolean etat) {
+      public Cours( String titre, String description, int duree, Date datecreate,int etat) {
        
         this.titre = titre;
         this.description = description;
@@ -115,11 +115,11 @@ public class Cours {
         return "Cours{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", duree=" + duree + ", datecreate=" + datecreate + ", support=" + support + ", idcat=" + idcat + '}';
     }
 
-    public boolean isEtat() {
+    public int isEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(int etat) {
         this.etat = etat;
     }
     

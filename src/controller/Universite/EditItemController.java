@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller.Universite;
 
 import com.jfoenix.controls.JFXComboBox;
 import java.io.File;
