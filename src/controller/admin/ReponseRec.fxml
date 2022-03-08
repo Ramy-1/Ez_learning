@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.ReponseRecController">
+<AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="27.0" layoutY="30.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
          <children>
@@ -21,11 +21,7 @@
                </image>
             </ImageView>
             <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
-<<<<<<< Updated upstream
-            <Label fx:id="typerec" layoutX="271.0" layoutY="45.0" text="typerec" textFill="#3a1c9d">
-=======
-            <Label fx:id="typerec" layoutX="271.0" layoutY="19.0" text="typerec" textFill="#3a1c9d">
->>>>>>> Stashed changes
+            <Label fx:id="typerec" layoutX="362.0" layoutY="19.0" text="typerec" textFill="#3a1c9d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -71,16 +67,7 @@
                   <Button layoutX="468.0" layoutY="7.0" mnemonicParsing="false" onAction="#AnnulerClicked" prefHeight="39.0" prefWidth="102.0" text="Annuler" />
                </children>
             </Pane>
-<<<<<<< Updated upstream
-            <Label layoutX="127.0" layoutY="45.0" text="Reponse à une : " textFill="#3a1c9d">
-=======
-            <Label fx:id="idreponse" layoutX="123.0" layoutY="51.0" text="Ref: 20178" textFill="#b2b0b0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="122.0" layoutY="19.0" text="Reponse à une : " textFill="#3a1c9d">
->>>>>>> Stashed changes
+            <Label layoutX="122.0" layoutY="19.0" text="Reponse à une reclamation " textFill="#3a1c9d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

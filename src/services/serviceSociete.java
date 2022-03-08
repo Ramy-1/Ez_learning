@@ -6,12 +6,14 @@
 package services;
 
 import interfaces.ISociete;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.societe;
+import util.DataSource;
 import util.MyConnection;
 
 /**
@@ -20,11 +22,12 @@ import util.MyConnection;
  */
 public class serviceSociete implements ISociete {
 
+    Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouterSociete(societe S) {
      String request = "INSERT INTO `societe`(`idsoc`, `nom`, `email`, `adresse`, `imgsoc`, `mdpsoc`) VALUES ('"+S.getIdsoc()+"','"+S.getNom()+"','"+S.getEmail()+"','"+S.getAdresse()+"','"+S.getImgsoc()+"','"+S.getMdpsoc()+"')";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
              st.executeUpdate(request);
               System.out.println("Societe ajoutee avec succes");
         } catch (SQLException ex) {
@@ -38,7 +41,7 @@ public class serviceSociete implements ISociete {
     List<societe> ListS = new ArrayList<>();
     String request1 = "SELECT * FROM `societe`";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request1);
              while (rs.next()){
                societe S = new societe();
@@ -62,7 +65,7 @@ public class serviceSociete implements ISociete {
     public void supprimerSociete(societe S) {
 String request2="DELETE FROM `societe` WHERE `idsoc`='"+S.getIdsoc()+"'";
         try{
-              Statement st=new MyConnection().getCnx().createStatement();
+              Statement st=cnx.createStatement();
               st.executeUpdate(request2);
               
               System.out.println("Societe supprimé avec succès");
@@ -78,7 +81,7 @@ String request2="DELETE FROM `societe` WHERE `idsoc`='"+S.getIdsoc()+"'";
  try{      
       String request3="UPDATE `societe` SET `nom`='"+S.getNom()+"',`email`='"+S.getEmail()+"',`adresse`='"+S.getAdresse()+"',`imgsoc`='"+S.getImgsoc()+"',`mdpsoc`='"+S.getMdpsoc()+"' WHERE `idsoc` = "+id ; 
          
- Statement st=new MyConnection().getCnx().createStatement();
+ Statement st=cnx.createStatement();
        st.executeUpdate(request3);
         System.out.println("societe modifie avec succes");
    

@@ -31,7 +31,7 @@ public class FinalProject extends Application {
 //      Parent root = FXMLLoader.load(getClass().getResource("/main/Main.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
 
-        Parent root = FXMLLoader.load(getClass().getResource("/rania/InterfaceUnivEvenement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
 
         Scene scene = new Scene(root);
 //        scene.setFill(Color.TRANSPARENT);
