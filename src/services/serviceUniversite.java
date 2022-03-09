@@ -136,7 +136,7 @@ public class serviceUniversite implements IUniversite {
             Statement st = myConnection.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Universite e = new Universite(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                Universite e = new Universite(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5),
                         rs.getString(6), rs.getString(7));
                 list.add(e);

@@ -10,6 +10,7 @@ package model;
  * @author Nabil
  */
 public class societe {
+    private int ids;
     private String idsoc ;
     private String nom ; 
     private String email;
@@ -37,21 +38,13 @@ public class societe {
         this.imgsoc = imgsoc;
         this.mdpsoc = mdpsoc;
     }
+    
 
-    public societe(String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {
-        this.idsoc = idsoc;
-        this.nom = nom;
-        this.email = email;
-        this.adresse = adresse;
-        this.imgsoc = imgsoc;
-        this.mdpsoc = mdpsoc;
-    }
-
-    public String getIds() {
+    public int getIds() {
         return ids;
     }
 
-    public void setIds(String ids) {
+    public void setIds(int ids) {
         this.ids = ids;
     }
 

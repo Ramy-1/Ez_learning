@@ -54,8 +54,8 @@ public class ServiceEns implements IService {
         }
     }
 
-    @Override
-    public Object getById(int id) {
+//    @Override
+    public Enseignant getById(int id) {
         Enseignant u = new Enseignant();
         try {
             String req = "SELECT * FROM `Enseignant` where id = " + id;
