@@ -6,7 +6,6 @@
 package services;
 
 import interfaces.Ireponse;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +16,6 @@ import model.Reclamation;
 import model.reponse;
 import util.MyConnection;
 import services.serviceReclamation;
-import util.DataSource;
 
 
 /**
@@ -25,12 +23,12 @@ import util.DataSource;
  * @author Nabil
  */
 public class servicereponse implements Ireponse {
- Connection cnx = DataSource.getInstance().getCnx();
+
     @Override
     public void ajouterReponse(reponse rep) {
          String request = "INSERT INTO `reponserec`(`idreclamation`, `description`,`daterep`) VALUES ('"+rep.getIdreclamation()+"','"+rep.getDescription()+"','"+rep.getDaterep()+"')";
         try {
-            Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getCnx().createStatement();
              st.executeUpdate(request);
               System.out.println("REPONSE ajoutee avec succes");
         } catch (SQLException ex) {

@@ -39,8 +39,8 @@ public class Universite {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
+
 
     public Universite(String idUni, String nom, String email, String adresse, String imguni, String mdpuni) {
         this.idUni = idUni;
@@ -118,5 +118,7 @@ public class Universite {
     public String toString() {
         return "Universite{" + "idUni=" + idUni + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imguni=" + imguni + ", mdpuni=" + mdpuni + '}';
     }
-
+    
+    
+    
 }

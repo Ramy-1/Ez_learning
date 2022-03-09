@@ -54,7 +54,7 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "Categorie{" + "idcat=" + idcat + ", domaine=" + domaine + ", nomcat=" + nomcat + '}';
+        return   nomcat;
     }
     
     
