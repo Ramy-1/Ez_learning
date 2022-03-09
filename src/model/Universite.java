@@ -9,9 +9,12 @@ package model;
  *
  * @author Nabil
  */
-public class Universite extends User{
-   /* private int idUni ;
-    private String nom ; 
+public class Universite {
+
+    private int id;
+    private String idUni;
+    private String nom;
+
     private String email;
     private String adresse;
     private String imguni;
@@ -22,11 +25,31 @@ public class Universite extends User{
         super();
         this.role = Role.universite;
     }
-   public Recruteur(User u) {
-        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
-        // return this;
+
+
+    public Universite(User u) {
+//        this.idUni = u.getId();
+        this.id = u.id;
+        this.nom = u.nom;
+        this.email = u.email;
+//        this.adresse = adresse;
+//        this.imguni = imguni;
+        this.mdpuni = u.pwd;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+
+
     public Universite(int idUni, String nom, String email, String adresse, String imguni, String mdpuni) {
+
         this.idUni = idUni;
         this.nom = nom;
         this.email = email;
@@ -43,7 +66,13 @@ public class Universite extends User{
         this.mdpuni = mdpuni;
     }
 
-    
+    public Universite(String text, String text0, String text1) {
+        this.nom = text;
+        this.email = text0;
+        this.adresse = text1;
+
+    }
+
 
     public int getIdUni() {
         return idUni;
