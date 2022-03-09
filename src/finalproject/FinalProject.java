@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
-
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Test;
@@ -24,30 +23,35 @@ import services.serviceTest;
  * @author karim
  */
 public class FinalProject extends Application {
-       private double x, y;
+
+    private double x, y;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));        
+      Parent root = FXMLLoader.load(getClass().getResource("/main/Main.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
+
+//        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
+
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
+//        scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
-         primaryStage.initStyle(StageStyle.UNDECORATED);
-         primaryStage.initStyle(StageStyle.TRANSPARENT);
-         root.setOnMousePressed(events -> {
-                            x = events.getSceneX();
-                            y = events.getSceneY();
-                        });
-                        root.setOnMouseDragged(events -> {
+//         primaryStage.initStyle(StageStyle.UNDECORATED);
+//         primaryStage.initStyle(StageStyle.TRANSPARENT);
+        root.setOnMousePressed(events -> {
+            x = events.getSceneX();
+            y = events.getSceneY();
+        });
+        root.setOnMouseDragged(events -> {
 
-                       primaryStage.setX(events.getScreenX() - x);
+            primaryStage.setX(events.getScreenX() - x);
 
-                       primaryStage.setY(events.getScreenY() - y);
+            primaryStage.setY(events.getScreenY() - y);
 
-                        });
-      
+        });
+
         primaryStage.show();
-        
-        
+
     }
 
     /**
@@ -55,7 +59,7 @@ public class FinalProject extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-      
+
     }
-    
+
 }
