@@ -437,7 +437,12 @@ public class HomeController implements Initializable {
     @FXML
     private void AddOffreClicked(ActionEvent event) {
     }
-
+@FXML
+    private void LogOutClcked(ActionEvent event) {
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 }
 
 
