@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller.societe;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,8 +36,10 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import model.Demande;
 import model.Enseignant;
 import model.Etudiant;
+import model.Offre;
 import model.Recruteur;
 import model.Universite;
 import model.User;
@@ -48,7 +50,10 @@ import services.ServiceUser;
 
 import services.serviceReclamation;
 import model.Reclamation;
+import model.Role;
 import model.societe;
+import services.ServiceDemande;
+import services.ServiceOffre;
 import services.serviceSociete;
 import services.serviceUniversite;
 
@@ -64,9 +69,12 @@ public class HomeController implements Initializable {
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
 
-   serviceReclamation srr =new serviceReclamation();
-   serviceSociete ssoc = new serviceSociete();
+    serviceReclamation srr =new serviceReclamation();
+    serviceSociete ssoc = new serviceSociete();
     serviceUniversite sUn = new serviceUniversite();
+   
+    ServiceOffre sO = new ServiceOffre();
+    ServiceDemande sD = new ServiceDemande();
 
     @FXML
     private VBox pnl_scroll;
@@ -87,160 +95,17 @@ public class HomeController implements Initializable {
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
-        refreshNodes();
+//        refreshNodes();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        Scrollepane.gets
-        refreshNodes();
+//        refreshNodes();
     }
 
-    private void refreshNodes() {
-        pnl_scroll.getChildren().clear();
-
-        List<User> listU = sU.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (User each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    @FXML
-    private void listUserClicked(ActionEvent event) {
-        refreshNodes();
-    }
-
-    private void ListEtudiantClicked(ActionEvent event) {
-//        boxifyVBoxes();
-        pnl_scroll.getChildren().clear();
-
-        List<Etudiant> listU = sE.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Etudiant each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    private void ListEnseignantClicked(ActionEvent event) {
-        pnl_scroll.getChildren().clear();
-
-        List<Enseignant> listU = sEn.getAll();
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Enseignant each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    private void ListRecruteurClicked(ActionEvent event) {
-        pnl_scroll.getChildren().clear();
-
-        List<Recruteur> listU = sR.getAll();
-        System.out.println(listU);
-        Node[] nodes = new Node[listU.size()];
-        int i = 0;
-
-        for (Recruteur each : listU) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            ItemController cont = new ItemController();
-            try {
-                cont.U = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
-    }
-
-    @FXML
-    public void AddClicked(ActionEvent event) throws IOException {
-//        pnl_scroll.getChildren().clear();
-//        EditItemController cont = new EditItemController();
-//        cont.type = 1;
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
-//        pnl_scroll.getChildren().add(loader.load());
-
-        EditItemController cont = new EditItemController();
-        cont.type = 1;
-//        cont.u = this.U;
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
-        loader.setController(cont);
-//        mainAnchor = loader.load();
-
-        Stage stage = new Stage();
-        stage.setTitle("My New Stage Title");
-        stage.setScene(new Scene(loader.load()));
-        stage.show();
-
-//        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
-    }
-
-    public void reload(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-
-    }
+    
 
 
     private void boxifyVBoxes() {
@@ -357,19 +222,22 @@ public class HomeController implements Initializable {
     }
     
 
-    @FXML
-    private void RClicked(ActionEvent event) {
-   pnl_scroll.getChildren().clear();
+    
 
-        List<Reclamation> listR = srr.afficherReclamation();
-        Node[] nodes = new Node[listR.size()];
+    @FXML
+    private void OffreClicked(ActionEvent event) {
+        pnl_scroll.getChildren().clear();
+
+        List<Offre> listOffre = sO.afficherOffre();
+        Node[] nodes = new Node[listOffre.size()];
         int i = 0;
 
-        for (Reclamation each : listR) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Reclamation.fxml"));
-            ReclamationController cont = new ReclamationController();
+        for (Offre each : listOffre) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Offre.fxml"));
+            OffreController cont = new OffreController();
             try {
-                cont.R = each;
+                cont.O = each;
+                System.out.println(each);
                 loader.setController(cont);
 
                 nodes[i] = (Node) loader.load();
@@ -382,14 +250,85 @@ public class HomeController implements Initializable {
             }
             i++;
         }
-    
     }
-
 
     @FXML
-    private void UniversiteClicked(ActionEvent event) {
+    private void DemandeClicked(ActionEvent event) {
+        pnl_scroll.getChildren().clear();
+
+        List<Demande> listDemande = sD.afficherDemande();
+        Node[] nodes = new Node[listDemande.size()];
+        int i = 0;
+
+        for (Demande each : listDemande) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Demande.fxml"));
+            DemandeController cont = new DemandeController();
+            try {
+                cont.D = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
     }
 
+    @FXML
+    private void AddOffreClicked(ActionEvent event) throws IOException {
+        AddOffreController cont = new AddOffreController();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddOffre.fxml"));
+        loader.setController(cont);
+        //mainAnchor = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("Update Offre");
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
+    }
+
+    @FXML
+    private void listUserClicked(ActionEvent event) {
+        sU.getAll().stream().filter(x -> x.getRole()== Role.Recruteur).forEach(x-> System.out.println(x));
+        
+        pnl_scroll.getChildren().clear();
+//        List<User> listU = sU.getAll().stream().filter(x -> x.getRole() == Role.Recruteur).collect();
+
+        List<User> listU = sU.getAll();
+        Node[] nodes = new Node[listU.size()];
+        int i = 0;
+
+        for (User each : listU) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+            ItemController cont = new ItemController();
+            try {
+                if(each.getRole() == Role.Recruteur){
+                    
+                cont.U = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(controller.admin.HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+    }
+
+    @FXML
+    private void RClicked(ActionEvent event) {
+    }
 
     @FXML
     private void EvenementClicked(ActionEvent event) {
@@ -400,42 +339,29 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void Societeclick(ActionEvent event) {
-    pnl_scroll.getChildren().clear();
-
-        List<societe> listSoc = ssoc.afficherSociete();
-        Node[] nodes = new Node[listSoc.size()];
-        int i = 0;
-
-        for (societe each : listSoc) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("societe.fxml"));
-            SocieteController cont = new SocieteController();
-            try {
-                cont.Soc = each;
-                loader.setController(cont);
-
-                nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
-                pnl_scroll.getChildren().add(nodes[i]);
-
-            } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            i++;
-        }
+    private void AddClicked(ActionEvent event) {
     }
 
     @FXML
-    private void OffreClicked(ActionEvent event) {
-    }
+    private void AjoutRecruteurClicked(ActionEvent event) throws IOException {
+        
+//        EditItemController cont = new EditItemController();
+//        cont.type = 1;
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
+//        pnl_scroll.getChildren().add(loader.load());
 
-    @FXML
-    private void DemandeClicked(ActionEvent event) {
-    }
+        EditItemController cont = new EditItemController();
+        cont.type = 1;
+//        cont.u = this.U;
 
-    @FXML
-    private void AddOffreClicked(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
+        loader.setController(cont);
+//        mainAnchor = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("My New Stage Title");
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 
 }

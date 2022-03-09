@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Ihebowski
@@ -13,6 +15,8 @@ public class Demande {
     private int id;
     private String description;
     private String pathCv;
+    private Date dateSend;
+    private boolean isAccepted;
     
     //join
     private int idOffre;
@@ -21,19 +25,31 @@ public class Demande {
     public Demande() {
     }
 
-    public Demande(int id, String description, String pathCv, int idOffre, int idEtudiant) {
+    public Demande(int id, String description, String pathCv, Date dateSend, boolean isAccepted, int idOffre, int idEtudiant) {
         this.id = id;
         this.description = description;
         this.pathCv = pathCv;
+        this.dateSend = dateSend;
+        this.isAccepted = isAccepted;
         this.idOffre = idOffre;
         this.idEtudiant = idEtudiant;
     }
 
-    public Demande(String description, String pathCv, int idOffre, int idEtudiant) {
+    public Demande(String description, String pathCv, Date dateSend, boolean isAccepted, int idOffre, int idEtudiant) {
         this.description = description;
         this.pathCv = pathCv;
+        this.dateSend = dateSend;
+        this.isAccepted = isAccepted;
         this.idOffre = idOffre;
         this.idEtudiant = idEtudiant;
+    }
+
+    public Date getDateSend() {
+        return dateSend;
+    }
+
+    public void setDateSend(Date dateSend) {
+        this.dateSend = dateSend;
     }
 
     public int getId() {
@@ -60,6 +76,14 @@ public class Demande {
         this.pathCv = pathCv;
     }
 
+    public boolean getIsAccepted() {
+        return isAccepted;
+    }
+
+    public void setIsAccepted(boolean isAccepted) {
+        this.isAccepted = isAccepted;
+    }
+
     public int getIdOffre() {
         return idOffre;
     }
@@ -78,7 +102,8 @@ public class Demande {
 
     @Override
     public String toString() {
-        return "demande{" + "id=" + id + ", description=" + description + ", pathCv=" + pathCv + ", idOffre=" + idOffre + ", idEtudiant=" + idEtudiant + '}';
+        return "Demande{" + "id=" + id + ", description=" + description + ", pathCv=" + pathCv + ", dateSend=" + dateSend + ", isAccepted=" + isAccepted + ", idOffre=" + idOffre + ", idEtudiant=" + idEtudiant + '}';
     }
+
 
 }
