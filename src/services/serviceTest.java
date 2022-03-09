@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Recruteur;
 import model.Test;
 import util.MyConnection;
 
@@ -87,5 +88,22 @@ String request2="DELETE FROM `test` WHERE `id`='"+t.getId()+"'";
      System.err.println(ex.getMessage());
      }    
     
+    }
+    
+    public List getAll() {
+        List<Test> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `test`";
+            Statement st =new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Test e = new Test(rs.getInt(1), rs.getString(2), rs.getString(3) 
+                        );
+                list.add(e);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
     }
 }
