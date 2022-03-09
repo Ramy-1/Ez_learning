@@ -11,8 +11,8 @@ package model;
  */
 public class societe {
     private String ids;
-    private String idsoc ;
-    private String nom ; 
+    private String idsoc;
+    private String nom;
     private String email;
     private String adresse;
     private String imgsoc;
@@ -21,6 +21,17 @@ public class societe {
     public societe() {
     }
 
+    public societe(User u) {
+        this.idsoc = String.valueOf(u.getId());
+        this.nom = u.getNom();
+        this.email = u.getEmail();
+        this.adresse = "";
+        this.imgsoc = "";
+        this.mdpsoc = u.getPwd();
+    }
+
+    // public societe(String idsoc, String nom, String email, String adresse, String
+    // imgsoc, String mdpsoc) {
     public societe(String ids, String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {
         this.ids = ids;
         this.idsoc = idsoc;
@@ -98,7 +109,8 @@ public class societe {
 
     @Override
     public String toString() {
-        return "societe{" + "idsoc=" + idsoc + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imgsoc=" + imgsoc + ", mdpsoc=" + mdpsoc + '}';
+        return "societe{" + "idsoc=" + idsoc + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse
+                + ", imgsoc=" + imgsoc + ", mdpsoc=" + mdpsoc + '}';
     }
-              
- }
+
+}

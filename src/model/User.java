@@ -118,6 +118,16 @@ public class User {
         this.role = Role.universite;
     }
 
+    public User(societe s) {
+        this.id = Integer.valueOf(s.getIdsoc());
+        this.nom = s.getNom();
+        this.prenom = "";
+        this.phone = 0;
+        this.email = s.getEmail();
+        this.pwd = s.getMdpsoc();
+        this.carte_banq = "";
+        this.role = Role.societe;
+    }
 
     @Override
     public String toString() {
