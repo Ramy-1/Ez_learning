@@ -10,8 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane id="borderpane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1248.0" style="-fx-background-radius: 15;" styleClass="primary-color" stylesheets="@../style/DarkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="etudiant.DashboardController">
    <top>
@@ -37,79 +35,49 @@
       </HBox>
    </top>
    <left>
-      <VBox minHeight="382.0" minWidth="139.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="545.0" prefWidth="74.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-            <Label text="Admin">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <HBox prefHeight="43.0" prefWidth="200.0">
+            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;">
                <children>
-                  <ImageView fitHeight="31.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="14.0" layoutY="40.0" text="Admin" />
+               </children>
+            </Pane>
+            <Button fx:id="btnTest2" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Accuiel" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/11.png" />
+                        <Image url="@../resources/cat.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="5.0" top="20.0" />
-                     </HBox.margin>
                   </ImageView>
-                  <Button fx:id="btnAccuiel" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="51.0" prefWidth="71.0" style="-fx-cursor: hand;" text="Accuiel" textFill="WHITE">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox prefHeight="43.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               </graphic>
+            </Button>
+            <Button fx:id="btnTest" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Test" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/12.png" />
+                        <Image url="@../resources/time.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="5.0" top="20.0" />
-                     </HBox.margin>
                   </ImageView>
-                  <Button fx:id="btnMesCours" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="82.0" style="-fx-cursor: hand;" text="Mes Cours" textFill="WHITE">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox prefHeight="43.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               </graphic>
+            </Button>
+            <Button fx:id="btnQuestions" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" text="Goals" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/14.png" />
+                        <Image url="@../resources/flag.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
-                     </HBox.margin>
                   </ImageView>
-                  <Button fx:id="btnCours" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" text="Cours" textFill="WHITE" />
-               </children>
-            </HBox>
-            <HBox prefHeight="43.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               </graphic>
+            </Button>
+            <Button fx:id="btnAccuiel1" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" text="Mentors" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/13.png" />
+                        <Image url="@../resources/group.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
-                     </HBox.margin>
                   </ImageView>
-                  <Button fx:id="btnTest" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" text="Mes Test" textFill="WHITE" />
-               </children>
-            </HBox>
-            <HBox prefHeight="42.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btnOffre" mnemonicParsing="false" text="Offre" />
-               </children>
-            </HBox>
+               </graphic>
+            </Button>
          </children>
       </VBox>
    </left>
@@ -118,52 +86,6 @@
          <BorderPane.margin>
             <Insets left="15.0" right="15.0" />
          </BorderPane.margin>
-         <children>
-            <HBox layoutX="27.0" layoutY="165.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btnBack2" mnemonicParsing="false" onAction="#handleClicks">
-                     <graphic>
-                        <ImageView fitHeight="81.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../background/bg_3.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnBack1" mnemonicParsing="false" onAction="#handleClicks">
-                     <graphic>
-                        <ImageView fitHeight="81.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="round-border">
-                           <image>
-                              <Image url="@../background/bg_2.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleClicks">
-                     <graphic>
-                        <ImageView fitHeight="81.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../background/bg_1.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
-            <Rectangle fx:id="btnblue" arcHeight="5.0" arcWidth="5.0" fill="#3695ff" height="35.0" layoutX="35.0" layoutY="312.0" onMouseClicked="#bluebutton" stroke="TRANSPARENT" strokeType="INSIDE" width="39.0" />
-            <Rectangle fx:id="btnyellow" arcHeight="5.0" arcWidth="5.0" fill="#e3b947" height="35.0" layoutX="82.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" width="39.0" />
-            <Rectangle fx:id="btnpurple" arcHeight="5.0" arcWidth="5.0" fill="#8029e8" height="35.0" layoutX="133.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" width="39.0" />
-            <Rectangle fx:id="btngreen" arcHeight="5.0" arcWidth="5.0" fill="#32c87e" height="35.0" layoutX="182.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 10;" width="39.0" />
-            <Rectangle fx:id="btnred" arcHeight="5.0" arcWidth="5.0" fill="#fd5353" height="35.0" layoutX="233.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 10;" width="39.0" />
-            <Label layoutX="27.0" layoutY="102.0" text="Changer l'arriere plan de l'application">
-               <font>
-                  <Font size="29.0" />
-               </font>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-            </Label>
-         </children>
       </Pane>
    </center>
 </BorderPane>

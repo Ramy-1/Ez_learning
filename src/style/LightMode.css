@@ -7,10 +7,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : karim
 */
 .primary-color{
-    -fx-background-color: #fafafa;
+    -fx-background-color: #FFFFFF;
 }
 .secondary-color{
-    -fx-background-color: #e4e5f1;
+    -fx-background-color: #E7E7E7;
 }
 .round-border{
     -fx-background-radius: 10;
@@ -25,34 +25,4 @@ label{
 }
 #borderpane{
     border-radius: 15px;
-}
-
-.tf
-{   
-    -fx-background-color : #E7E7E7;
-    -fx-border-color:  #515658;
-    -fx-border-radius: 30;
-    -fx-background-radius: 30;
-}
-.tf:hover
-{
-    -fx-background-color : #141124;
-    -fx-border-color:  #FFFFff;
-    -fx-border-radius: 30;
-    -fx-background-radius: 30;
-}
-.tf:pressed
-{
-    -fx-background-color : #141124;
-    -fx-border-color:  #FFFFff;
-    -fx-border-radius: 30;
-    -fx-background-radius: 30;
-}
-
-
-.text-area .content {
-    -fx-background-color:  #E7E7E7 ;
-    -fx-border-color:  #515658;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
 }

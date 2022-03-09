@@ -6,12 +6,10 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="531.0" prefWidth="886.0" style="-fx-background-radius: 10;" stylesheets="@../style/DarkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TestAdminController">
+<AnchorPane prefHeight="531.0" prefWidth="886.0" style="-fx-background-radius: 10;" styleClass="secondary-color" stylesheets="@../style/DarkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TestAdminController">
    <children>
-      <Pane prefHeight="522.0" prefWidth="886.0" styleClass="secondary-color" stylesheets="@../style/DarkMode.css" />
       <Line endX="100.0" layoutX="496.0" layoutY="47.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
       <TextField fx:id="txtTitre" layoutX="603.0" layoutY="127.0" prefHeight="27.0" prefWidth="270.0" promptText="Titre" styleClass="tf" />
       <TextArea fx:id="txtDescription" layoutX="601.0" layoutY="174.0" prefHeight="200.0" prefWidth="282.0" styleClass="text-area" />

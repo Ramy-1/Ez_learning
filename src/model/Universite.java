@@ -127,5 +127,7 @@ public class Universite {
     public String toString() {
         return "Universite{" + "idUni=" + idUni + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imguni=" + imguni + ", mdpuni=" + mdpuni + '}';
     }
-
+    
+    
+    
 }
