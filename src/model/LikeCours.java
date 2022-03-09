@@ -30,40 +30,6 @@ public class LikeCours {
         this.idcours = idcours;
         this.likeEtat =likeEtat;
     }
-
-    public int getIdLike() {
-        return idLike;
-    }
-
-    public void setIdLike(int idLike) {
-        this.idLike = idLike;
-    }
-
-    public int getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
-    }
-
-    public int getIdcours() {
-        return idcours;
-    }
-
-    public void setIdcours(int idcours) {
-        this.idcours = idcours;
-    }
-
-    public int getLikeEtat() {
-        return likeEtat;
-    }
-
-    public void setLikeEtat(int likeEtat) {
-        this.likeEtat = likeEtat;
-    }
-    
-    
     
     
     

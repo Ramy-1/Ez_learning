@@ -10,6 +10,7 @@ package model;
  * @author Nabil
  */
 public class societe {
+    private String ids;
     private String idsoc;
     private String nom;
     private String email;
@@ -29,6 +30,18 @@ public class societe {
         this.mdpsoc = u.getPwd();
     }
 
+    // public societe(String idsoc, String nom, String email, String adresse, String
+    // imgsoc, String mdpsoc) {
+    public societe(String ids, String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {
+        this.ids = ids;
+        this.idsoc = idsoc;
+        this.nom = nom;
+        this.email = email;
+        this.adresse = adresse;
+        this.imgsoc = imgsoc;
+        this.mdpsoc = mdpsoc;
+    }
+
     public societe(String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {
         this.idsoc = idsoc;
         this.nom = nom;
@@ -38,12 +51,12 @@ public class societe {
         this.mdpsoc = mdpsoc;
     }
 
-    public societe(String nom, String email, String adresse, String imgsoc, String mdpsoc) {
-        this.nom = nom;
-        this.email = email;
-        this.adresse = adresse;
-        this.imgsoc = imgsoc;
-        this.mdpsoc = mdpsoc;
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 
     public String getIdsoc() {

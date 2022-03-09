@@ -9,7 +9,7 @@ package component;
  *
  * @author mrram
  */
-//import com.mysql.cj.Session;
+import com.mysql.cj.Session;
 import java.net.PasswordAuthentication;
 import java.util.*;
 /*import javax.mail.*;
