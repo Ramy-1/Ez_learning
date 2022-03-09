@@ -1,0 +1,29 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2 mars 2022, 23:18:42
+    Author     : karim
+*/
+.primary-color{
+    -fx-background-image: url('/background/bg_1.jpg');
+    -fx-background-size: cover;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 10 10 10 10;
+}
+.secondary-color{
+    -fx-background-color: #0a0512;
+    -fx-opacity: 0.5;
+}
+.round-border{
+    -fx-background-radius: 10;
+}
+.label{
+    color:white;
+}
+.button
+{
+-fx-background-color : transparent;
+-fx-text-fill : white;
+}

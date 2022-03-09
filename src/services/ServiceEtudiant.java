@@ -1,5 +1,6 @@
 package services;
 
+import interfaces.IService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +11,13 @@ import java.util.List;
 
 import model.Cour;
 import model.Etudiant;
-import model.Role;
 import model.User;
 import util.DataSource;
 
-public class ServiceEtudiant {
+public class ServiceEtudiant implements IService {
 
     Connection cnx = DataSource.getInstance().getCnx();
+
 
     public List<Cour> addCours(Etudiant e) {
         List<Cour> cours = new ArrayList<>();
@@ -34,9 +35,8 @@ public class ServiceEtudiant {
         return cours;
     }
 
-    public void add(Etudiant u) {
-        Etudiant e = u;
-        e.setRole(Role.etudiant);
+    public void add(User u) {
+        Etudiant e = (Etudiant) u;
         try {
             String req = "INSERT INTO `etudiant`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`,`role`,`section`,`niveau`,`score`) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -56,57 +56,16 @@ public class ServiceEtudiant {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        ServiceUser sU = new ServiceUser();
-        sU.add(u);
 
     }
 
-    public Etudiant getByMail(String mail) {
-        Etudiant u = new Etudiant();
-        try {
-            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
-
-            String req = "SELECT * FROM `etudiant` WHERE email = '" + mail + "'";
-            Statement st = cnx.createStatement();
-
-            // String req = "SELECT * FROM `user` WHERE email = ? ";
-            // PreparedStatement ps = cnx.prepareStatement(req);
-            // ps.setString(1, mail);
-            // System.out.println(req);
-            // System.out.println("*******");
-            ResultSet rs = st.executeQuery(req);
-
-            while (rs.next()) {
-                Etudiant e = new Etudiant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(9), rs.getInt(10), rs.getInt(11));
-                u = e;
-                System.out.println(u);
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return u;
+    @Override
+    public Object getById(int id) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
-    public Etudiant getById(int id) {
-        Etudiant u = new Etudiant();
-        try {
-            String req = "SELECT * FROM `Recruteur` where id = " + id;
-            // Statement st = cnx.createStatement();
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-
-            while (rs.next()) {
-                Etudiant e = new Etudiant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(9), rs.getInt(10), rs.getInt(11));
-                u = e;
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return u;
-    }
-
+    @Override
     public List getAll() {
         List<Etudiant> list = new ArrayList<>();
         try {
@@ -124,11 +83,12 @@ public class ServiceEtudiant {
         return list;
     }
 
-    public boolean update(Etudiant u) {
+    @Override
+    public boolean update(Object u) {
         try {
             String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, section = ?, niveau = ?, score = ? where   id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            Etudiant e = u;
+            Etudiant e = (Etudiant) u;
 
             ps.setString(1, e.getNom());
             ps.setString(2, e.getPrenom());
@@ -142,16 +102,16 @@ public class ServiceEtudiant {
             ps.setInt(10, e.getScore());
 
             ps.setInt(11, e.getId());
-            ServiceUser sU = new ServiceUser();
-            sU.update(e);
+
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    public boolean delete(Etudiant u) {
-        Etudiant e = u;
+    @Override
+    public boolean delete(Object u) {
+        Etudiant e = (Etudiant) u;
 
         String req = "delete from Etudiant where id = ?";
         try {
@@ -159,12 +119,16 @@ public class ServiceEtudiant {
             ps.setInt(1, e.getId());
             ps.executeUpdate();
             System.out.println("Etudiant supprimer");
-            ServiceUser sU = new ServiceUser();
-            sU.delete(e);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public void add(Object u) {
+        // TODO Auto-generated method stub
+
     }
 
 }

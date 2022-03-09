@@ -7,17 +7,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : karim
 */
 .primary-color{
-    -fx-background-color:  #131022;
+    -fx-background-color:  #171717;
     
 }
 .secondary-color{
     -fx-background-color: #0a0512;
+    -fx-opacity: 0.5;
 }
 .round-border{
     -fx-background-radius: 10;
 }
-label{
-    color:white;
+.label{
+   -fx-text-fill: #cccccc;
 }
 .button
 {
@@ -31,19 +32,21 @@ label{
 
 .button:hover
 {
--fx-background-color : #524A7B ;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : #10165F ;
+
 }
 .button:pressed
 {
 -fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
-}
 
+}
+input[text]{
+     -webkit-text-fill-color:#FFFFff;
+}
 
 .combo-box
 {
-    -fx-background-color : #141124;
+    -fx-background-color : #171717;
     -fx-border-color:  #515658;
     -fx-border-radius: 30;
 }
@@ -134,7 +137,7 @@ label{
      -fx-background-color:#02030A
 }
 .scroll-pane {
-    -fx-background-color: #02030A;
+    -fx-background-color: #171717;
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -195,4 +198,6 @@ label{
     -fx-border-color:  #515658;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
+    
+    -fx-background-color:  #cccccc ;
 }

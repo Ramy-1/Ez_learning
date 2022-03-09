@@ -61,11 +61,12 @@
                   <Button layoutX="480.0" layoutY="5.0" mnemonicParsing="false" onAction="#EffacerClicked" prefHeight="39.0" prefWidth="102.0" text="Effacer" />
                </children>
             </Pane>
-            <Label fx:id="idsoc" layoutX="153.0" layoutY="51.0" text="id societe" textFill="#b2b0b0">
+            <Label fx:id="idsoc" layoutX="201.0" layoutY="52.0" prefHeight="20.0" prefWidth="90.0" text="id societe" textFill="#b2b0b0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label layoutX="148.0" layoutY="52.0" prefHeight="17.0" prefWidth="76.0" text="DUNS :" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
