@@ -326,13 +326,6 @@ public class HomeController implements Initializable {
         }
     }
 
-    @FXML
-    private void RClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void EvenementClicked(ActionEvent event) {
-    }
 
     @FXML
     private void SendEmailClicked(ActionEvent event) {
@@ -362,6 +355,13 @@ public class HomeController implements Initializable {
         stage.setTitle("My New Stage Title");
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+
+    @FXML
+    private void LogOutClcked(ActionEvent event) {
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
 }
