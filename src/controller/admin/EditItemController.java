@@ -29,12 +29,15 @@ import model.Enseignant;
 import model.Etudiant;
 import model.Recruteur;
 import model.Role;
+import static model.Role.societe;
 import model.Universite;
 import model.User;
+import model.societe;
 import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import services.serviceSociete;
 import services.serviceUniversite;
 
 /**
@@ -154,7 +157,23 @@ public class EditItemController implements Initializable {
 
             case universite:
 //                Universite uni = Universite (U);
-                File file = new File("src//controller/adminimages/teacher.png");
+                file = new File("src/controller/adminimages/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+//                LabelSection.setText("Universite");
+                prenom.setVisible(false);
+                carteBancaire.setVisible(false);
+                LabelSection.setVisible(false);
+                section.setVisible(false);
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+                phone.setVisible(false);
+
+//                LabelScore.setText("Universite");
+//                labelNom.setText("Titre");
+                break;
+            case societe:
+//                Universite uni = Universite (U);
+                file = new File("src/controller/adminimages/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 //                LabelSection.setText("Universite");
                 prenom.setVisible(false);
@@ -194,14 +213,14 @@ public class EditItemController implements Initializable {
             email.setText(U.getEmail());
             carteBancaire.setText(U.getCarte_banq());
             psw.setText(U.getPwd());
-            U.setRole(roleEnum);
-            roleController(roleEnum);
+//            U.setRole(roleEnum);
+//            roleController(roleEnum);
             // section.setText(u.get);
             // score.setText(u.get);
         }
         // typeUser.setItems(types);
         typeBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-            // System.out.println(newValue);
+             System.out.println(newValue);
             roleEnum = roleEnum.value(newValue.toString());
             System.out.println("role = " + roleEnum.toString());
             roleController(roleEnum);
@@ -263,7 +282,13 @@ public class EditItemController implements Initializable {
                     serviceUniversite sUni = new serviceUniversite();
                     sUni.ajouterUniversite(un);
                     break;
-
+                case societe:
+                    societe s = new societe(x);
+                    System.out.println("s = " + s);
+                    sU.add(new User(s));
+                    serviceSociete sS = new serviceSociete();
+                    sS.ajouterSociete(s);
+                    break;
                 default:
                     break;
             }

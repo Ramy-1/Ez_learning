@@ -41,6 +41,7 @@ public enum Role {
                 break;
             case "societe":
                 r = societe;
+                break;
 
             default:
                 r = empty;
