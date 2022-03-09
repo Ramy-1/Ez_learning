@@ -39,6 +39,7 @@ public class User {
 
     public User(int id) {
         this.id = id;
+        // this.role
     }
 
     public void resetPassword() {
@@ -65,8 +66,20 @@ public class User {
     public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
 
         User u = sU.getByMail(mail);
-        // System.out.println(crypPassword(password).length());
+        System.out.println(crypPassword(password));
         return crypPassword(password).equals(u.getPwd());
+    }
+
+    public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
+            String role) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.phone = phone;
+        this.email = email;
+        this.pwd = pwd;
+        this.carte_banq = carte_banq;
+        this.role = Role.value(role);
     }
 
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
@@ -77,30 +90,21 @@ public class User {
         this.email = email;
         this.pwd = pwd;
         this.carte_banq = carte_banq;
-        this.role = Role.empty;
     }
 
-    public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
+    public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq, String role) {
         this.nom = nom;
         this.prenom = prenom;
         this.phone = phone;
         this.email = email;
         this.pwd = pwd;
         this.carte_banq = carte_banq;
-        this.role = Role.empty;
+        this.role = Role.valueOf(role);
     }
 
-    public User(String nom, int phone, String email, String pwd, String carte_banq, Role role) {
+    public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
         this.nom = nom;
-        this.phone = phone;
-        this.email = email;
-        this.pwd = pwd;
-        this.carte_banq = carte_banq;
-        this.role = role;
-    }
-
-    public User(String nom, int phone, String email, String pwd, String carte_banq) {
-        this.nom = nom;
+        this.prenom = prenom;
         this.phone = phone;
         this.email = email;
         this.pwd = pwd;
