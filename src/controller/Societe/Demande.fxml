@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainAnchor" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="27.0" layoutY="30.0" prefHeight="338.0" prefWidth="896.0" style="-fx-background-color: #fff;">
+         <children>
+            <Separator layoutX="33.0" layoutY="94.0" prefHeight="2.0" prefWidth="828.0" />
+            <Label fx:id="titreoffre" layoutX="77.0" layoutY="21.0" text="Offre" textFill="#3a1c9d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="105.0" layoutY="189.0" text="Niveau de l'etudiant:" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="105.0" layoutY="120.0" text="Nom de l'etudiant:" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="etudiantname" layoutX="121.0" layoutY="148.0" text="Aabes Dhabii" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="374.0" layoutY="26.0" text="Date d'envoi de demande" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="datedemande" alignment="CENTER" layoutX="410.0" layoutY="46.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: #aeacac;" text="01/01/2022" textAlignment="CENTER" textFill="#fffefe">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Pane layoutY="269.0" prefHeight="70.0" prefWidth="896.0" style="-fx-background-color: #F0F0F0;">
+               <children>
+                  <Button layoutX="326.0" layoutY="15.0" mnemonicParsing="false" onAction="#RefuseClicked" prefHeight="39.0" prefWidth="102.0" text="Refuser" />
+                  <Button layoutX="466.0" layoutY="15.0" mnemonicParsing="false" onAction="#AcceptClicked" prefHeight="39.0" prefWidth="102.0" text="Accepter" />
+               </children>
+            </Pane>
+            <Label fx:id="typeoffre" layoutX="79.0" layoutY="51.0" text="type" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="358.0" layoutY="122.0" text="Description:" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nivetudiant" layoutX="121.0" layoutY="217.0" text="3 eme" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="descdemande" alignment="TOP_LEFT" layoutX="358.0" layoutY="157.0" prefHeight="85.0" prefWidth="457.0" text="Blablabla" />
+            <Label fx:id="isaccepted" alignment="CENTER_RIGHT" layoutX="641.0" layoutY="21.0" prefHeight="27.0" prefWidth="193.0" text="Accepted" textAlignment="RIGHT" textFill="#3a1c9d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="640.0" layoutY="53.0" prefHeight="20.0" prefWidth="193.0" text="Label" textAlignment="RIGHT" textFill="#b2b0b0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

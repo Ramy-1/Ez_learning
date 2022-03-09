@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller.societe;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class ItemController implements Initializable {
     private Label Username;
 
     String test;
-    public User U;
+    User U;
     @FXML
     private Label prenom;
     @FXML
