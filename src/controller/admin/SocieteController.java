@@ -75,7 +75,9 @@ serviceSociete ssoc = new serviceSociete();
    updatelist();
     }
 private void updatelist (){
-     File file;
+        File path = new File("C:\\Users\\Nabil\\Documents\\Ez_learning\\src\\controller\\images\\"+Soc.getImgsoc());
+        Image image = new Image(path.toURI().toString());
+        Img.setImage(image);
         nomsoc.setText(Soc.getNom());
         idsoc.setText(Soc.getIdsoc());
         emailsoc.setText(Soc.getEmail());

@@ -20,7 +20,7 @@ public enum Role {
     societe,
     empty;
 
-    public Role value(String x) {
+    public static Role value(String x) {
 
         Role r;
         switch (x.toLowerCase()) {

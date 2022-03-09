@@ -79,7 +79,7 @@ public class User {
         this.email = email;
         this.pwd = pwd;
         this.carte_banq = carte_banq;
-        this.role = Role.valueOf(role);
+        this.role = Role.value(role);
     }
 
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
