@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Cour;
 import model.Enseignant;
+import model.Role;
+import model.User;
 import util.DataSource;
 
-public class ServiceEns implements IService {
+public class ServiceEns {
     Connection cnx = DataSource.getInstance().getCnx();
 
     public List<Cour> addCours(Enseignant e) {
@@ -30,9 +32,37 @@ public class ServiceEns implements IService {
         return cours;
     }
 
-    @Override
-    public void add(Object u) {
-        Enseignant e = (Enseignant) u;
+    
+    public Enseignant getByMail(String mail) {
+        Enseignant u = new Enseignant();
+        try {
+            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
+
+            String req = "SELECT * FROM `Enseignant` WHERE email = '" + mail + "'";
+            Statement st = cnx.createStatement();
+
+            // String req = "SELECT * FROM `user` WHERE email = ? ";
+            // PreparedStatement ps = cnx.prepareStatement(req);
+            // ps.setString(1, mail);
+            // System.out.println(req);
+            // System.out.println("*******");
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Enseignant us = new Enseignant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                u = us;
+                // System.out.println(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return u;
+    } 
+    public void add(Enseignant u) {
+        Enseignant e = u;
+        e.setRole(Role.enseignant);
         try {
             String req = "INSERT INTO `Enseignant`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq` ,`role` ,`universite`,`section`) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -55,8 +85,8 @@ public class ServiceEns implements IService {
         sU.add(e);
     }
 
-    @Override
-    public Object getById(int id) {
+    
+    public Enseignant getById(int id) {
         Enseignant u = new Enseignant();
         try {
             String req = "SELECT * FROM `Enseignant` where id = " + id;
@@ -75,8 +105,6 @@ public class ServiceEns implements IService {
         }
         return u;
     }
-
-    @Override
     public List getAll() {
         List<Enseignant> list = new ArrayList<>();
         try {
@@ -94,8 +122,6 @@ public class ServiceEns implements IService {
         }
         return list;
     }
-
-    @Override
     public boolean update(Object u) {
         try {
             String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? , section = ? where id = ?";
@@ -121,8 +147,6 @@ public class ServiceEns implements IService {
             return false;
         }
     }
-
-    @Override
     public boolean delete(Object u) {
         Enseignant e = (Enseignant) u;
 

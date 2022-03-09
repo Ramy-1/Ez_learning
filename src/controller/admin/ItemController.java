@@ -93,6 +93,9 @@ public class ItemController implements Initializable {
 //        Username.setText("ahmeddd");
 //        nom.setText(U.getNom());
 
+//        role.setText(U.getRole().toString());
+//        roleController(U.getRole());
+//        System.out.println(U);
         nom.setText(U.getNom());
         prenom.setText(U.getPrenom());
         phone.setText(String.valueOf(U.getPhone()));
@@ -100,13 +103,15 @@ public class ItemController implements Initializable {
         mail.setText(U.getEmail());
         cartbanq.setText(U.getCarte_banq());
 
-        File file;
+        System.out.println("id = " + U.getId() + " Role= " + U.getRole());
         switch (U.getRole()) {
             case etudiant:
                 file = new File("src/controler/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
-                Etudiant e = (Etudiant) sE.getById(U.getId());
+                Etudiant e = new Etudiant(U);
+//                e = sE.getById(U.getId());
+                e = sE.getByMail(U.getEmail());
 
                 LabelSection.setText("Section");
                 section.setText(e.getSection());
@@ -115,26 +120,36 @@ public class ItemController implements Initializable {
                 score.setText(String.valueOf(e.getScore()));
                 LabelScore.setVisible(true);
                 score.setVisible(true);
+                System.out.println("etudiant = " + e);
+
                 break;
-                
+
             case Recruteur:
                 file = new File("src/controler/admin/images/recruitment.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
-                Recruteur r = (Recruteur) U;
-                r = (Recruteur) sR.getById(U.getId());
+                Recruteur rec = new Recruteur(U);
+                rec = sR.getByMail(U.getEmail());
+                System.out.println("rec= " + rec);
 
                 LabelSection.setText("Societe");
-                section.setText(r.getsociete());
+                section.setText(rec.getsociete());
+
                 LabelScore.setVisible(false);
                 score.setVisible(false);
                 break;
 
             case enseignant:
-                Enseignant en = (Enseignant) U;
+                Enseignant en = new Enseignant(U);
 
+                en = sEn.getByMail(U.getEmail());
                 file = new File("src/controler/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
+
+                LabelSection.setText("Section");
+                section.setText(en.getSection());
+
+                System.out.println("ensg= " + en);
 
                 LabelSection.setText("Section");
                 section.setText(en.getSection());
@@ -150,50 +165,31 @@ public class ItemController implements Initializable {
                 file = new File("src/controler/adminimages/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
+                U.setRole(Role.admin);
                 LabelSection.setVisible(false);
                 section.setVisible(false);
                 LabelScore.setVisible(false);
                 score.setVisible(false);
                 break;
 
-//            case universite:
-//Universite e = (Universite) U;
-//            File file = new File("src//controler/adminimages/teacher.png");
-//            Img.setImage(new Image(file.toURI().toString()));
-//            LabelSection.setText("Universite");
-//            prenom.setVisible(false);
-//            LabelScore.setText("Universite");
-//            labelNom.setText("Titre");
-//                break;
-             default:
-                 System.out.println("EROOOORRRREEEE");
-                 break;
+            // case universite:
+            // Universite e = (Universite) U;
+            // File file = new File("src//controler/adminimages/teacher.png");
+            // Img.setImage(new Image(file.toURI().toString()));
+            // LabelSection.setText("Universite");
+            // prenom.setVisible(false);
+            // LabelScore.setText("Universite");
+            // labelNom.setText("Titre");
+            // break;
+            default:
+                System.out.println("empty");
+                break;
 
         }
 
-//        if (U.getRole() == Role.universite) {
-//            Universite e = (Universite) U;
-//            File file = new File("src//controler/adminimages/teacher.png");
-//            Img.setImage(new Image(file.toURI().toString()));
-//            LabelSection.setText("Universite");
-//            prenom.setVisible(false);
-//            LabelScore.setText("Universite");
-//            labelNom.setText("Titre");
-////            labelNom.setStyle("display:none;");
-//        }
-//        if (U.getRole() == Role.empty) {
-//            LabelScore.setVisible(false);
-//            LabelSection.setVisible(false);
-//            labelPrenom.setVisible(false);
-//            section.setText("");
-//            score.setText("");
-//        }
-
     }
 
-    void initData(String u) {
-        Username.setText(u);
-    }
+    File file;
 
     @FXML
     private void DeleteClicked(ActionEvent event) throws IOException {

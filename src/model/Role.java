@@ -17,6 +17,7 @@ public enum Role {
     Recruteur,
     admin,
     universite,
+    societe,
     empty;
 
     public Role value(String x) {
@@ -38,12 +39,14 @@ public enum Role {
             case "universite":
                 r = universite;
                 break;
+            case "societe":
+                r = societe;
 
             default:
                 r = empty;
                 break;
         }
-        System.out.println("**role = "+r);
+        System.out.println("**role = " + r);
         return r;
     }
 }

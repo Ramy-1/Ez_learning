@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Recruteur;
+import model.Role;
 import model.User;
 import util.DataSource;
 
-public class ServiceRecruteur implements IService {
+public class ServiceRecruteur {
     Connection cnx = DataSource.getInstance().getCnx();
 
-    @Override
-    public void add(Object u) {
-        Recruteur e = (Recruteur) u;
+    public void add(Recruteur u) {
+        Recruteur e = u;
+        e.setRole(Role.Recruteur);
         try {
             String req = "INSERT INTO `Recruteur`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`,`role` ,`societe`) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -40,8 +41,7 @@ public class ServiceRecruteur implements IService {
 
     }
 
-    @Override
-    public Object getById(int id) {
+    public Recruteur getById(int id) {
         Recruteur u = new Recruteur();
         try {
             String req = "SELECT * FROM `Recruteur` where id = " + id;
@@ -61,7 +61,34 @@ public class ServiceRecruteur implements IService {
         return u;
     }
 
-    @Override
+    public Recruteur getByMail(String mail) {
+        Recruteur u = new Recruteur();
+        try {
+            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
+
+            String req = "SELECT * FROM `Recruteur` WHERE email = '" + mail + "'";
+            Statement st = cnx.createStatement();
+
+            // String req = "SELECT * FROM `user` WHERE email = ? ";
+            // PreparedStatement ps = cnx.prepareStatement(req);
+            // ps.setString(1, mail);
+            // System.out.println(req);
+            // System.out.println("*******");
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Recruteur e = new Recruteur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(9));
+                u = e;
+                System.out.println(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return u;
+    }
+
     public List getAll() {
         List<Recruteur> list = new ArrayList<>();
         try {
@@ -80,12 +107,11 @@ public class ServiceRecruteur implements IService {
         return list;
     }
 
-    @Override
-    public boolean update(Object u) {
+    public boolean update(Recruteur u) {
         try {
             String req = "update `etudiant` set nom = ?, prenom = ?, phone = ?, email = ?, pwd = ?, carte_banq = ?, universite = ? where   id = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            Recruteur e = (Recruteur) u;
+            Recruteur e = u;
 
             ps.setString(1, e.getNom());
             ps.setString(2, e.getPrenom());
@@ -104,7 +130,6 @@ public class ServiceRecruteur implements IService {
         }
     }
 
-    @Override
     public boolean delete(Object u) {
         Recruteur e = (Recruteur) u;
 

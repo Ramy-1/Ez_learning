@@ -90,20 +90,16 @@ public class EditItemController implements Initializable {
     @FXML
     private Label LabelScore;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin", "universite");
-        typeBox.getItems().addAll(types);
-        
-        
-        U.setRole(roleEnum);
-        File file;
-        switch (U.getRole()) {
+    File file;
+
+    void roleController(Role r) {
+        switch (r) {
             case etudiant:
                 file = new File("src/controler/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
-                Etudiant e = (Etudiant) sE.getById(U.getId());
+                Etudiant e = new Etudiant(U);
+                e = new Etudiant(sE.getById(U.getId()));
 
                 LabelSection.setText("Section");
                 section.setText(e.getSection());
@@ -113,23 +109,25 @@ public class EditItemController implements Initializable {
                 LabelScore.setVisible(true);
                 score.setVisible(true);
                 break;
-                
+
             case Recruteur:
                 file = new File("src/controler/admin/images/recruitment.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
-                Recruteur r = (Recruteur) U;
-                r = (Recruteur) sR.getById(U.getId());
+                Recruteur rec = new Recruteur(U);
+                rec = sR.getById(U.getId());
 
                 LabelSection.setText("Societe");
-                section.setText(r.getsociete());
+                section.setText(rec.getsociete());
+
                 LabelScore.setVisible(false);
                 score.setVisible(false);
                 break;
 
             case enseignant:
-                Enseignant en = (Enseignant) U;
+                Enseignant en = new Enseignant(U);
 
+                en = sEn.getById(U.getId());
                 file = new File("src/controler/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
@@ -147,27 +145,38 @@ public class EditItemController implements Initializable {
                 file = new File("src/controler/adminimages/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
+                U.setRole(Role.admin);
                 LabelSection.setVisible(false);
                 section.setVisible(false);
                 LabelScore.setVisible(false);
                 score.setVisible(false);
                 break;
 
-//            case universite:
-//Universite e = (Universite) U;
-//            File file = new File("src//controler/adminimages/teacher.png");
-//            Img.setImage(new Image(file.toURI().toString()));
-//            LabelSection.setText("Universite");
-//            prenom.setVisible(false);
-//            LabelScore.setText("Universite");
-//            labelNom.setText("Titre");
-//                break;
-             default:
-                 System.out.println("EROOOORRRREEEE");
-                 break;
+            // case universite:
+            // Universite e = (Universite) U;
+            // File file = new File("src//controler/adminimages/teacher.png");
+            // Img.setImage(new Image(file.toURI().toString()));
+            // LabelSection.setText("Universite");
+            // prenom.setVisible(false);
+            // LabelScore.setText("Universite");
+            // labelNom.setText("Titre");
+            // break;
+            default:
+                System.out.println("empty");
+                break;
 
         }
-        
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin",
+                "universite");
+        typeBox.getItems().addAll(types);
+
+        U.setRole(roleEnum);
+        roleController(roleEnum);
+
         if (type == 1) {
             role.setText("Add");
         }
@@ -178,6 +187,8 @@ public class EditItemController implements Initializable {
             email.setText(U.getEmail());
             carteBancaire.setText(U.getCarte_banq());
             psw.setText(U.getPwd());
+            U.setRole(roleEnum);
+            roleController(roleEnum);
             // section.setText(u.get);
             // score.setText(u.get);
         }
@@ -185,75 +196,8 @@ public class EditItemController implements Initializable {
         typeBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             // System.out.println(newValue);
             roleEnum = roleEnum.value(newValue.toString());
-            // System.out.println("role = " + role.toString());
-            if (roleEnum == Role.etudiant) {
-                labelsection.setText("Section");
-                labelscore.setText("Score");
-
-                labelscore.setVisible(true);
-                score.setVisible(true);
-
-                // labelscore.setText("Score");
-                // labelscore.setText("Score");
-                // Etudiant e = (Etudiant) u;
-                // section.setText(e.getSection());
-                // score.setText(String.valueOf(e.getScore()));
-                // File file = new File("src/dashboard/images/student.jpg");
-                // Img.setImage(new Image(file.toURI().toString()));
-            }
-            if (roleEnum == Role.Recruteur) {
-//                Recruteur r = new Recruteur (U);
-                File filee = new File("src/dashboard/images/recruitment.png");
-                Img.setImage(new Image(filee.toURI().toString()));
-                labelsection.setText("Societe");
-
-                labelscore.setVisible(false);
-                score.setVisible(false);
-
-            }
-            if (roleEnum == Role.enseignant) {
-//                Enseignant e = (Enseignant) U;
-                File filee = new File("src/dashboard/images/teacher.png");
-                Img.setImage(new Image(filee.toURI().toString()));
-
-                labelsection.setText("Section");
-                labelscore.setText("Universite");
-
-                labelscore.setVisible(true);
-                score.setVisible(true);
-
-                // score.setText(e.getUniversite());
-            }
-            if ((roleEnum) == Role.universite) {
-                // Universite uni = (Universite) U;
-                System.out.println("hello");
-                File filee = new File("src/dashboard/images/teacher.png");
-                Img.setImage(new Image(filee.toURI().toString()));
-                //LabelSection.setText("Universite");
-                prenom.setVisible(false);
-                //  LabelScore.setText("Universite");
-                labelNom.setText("Titre");
-                labelNom.setStyle("display:none;");
-            }
-            if (roleEnum == Role.admin) {
-                File filee = new File("src/dashboard/images/admin.png");
-                Img.setImage(new Image(filee.toURI().toString()));
-                
-                labelscore.setText("Universite");
-                labelscore.setVisible(true);
-
-                labelsection.setVisible(false);
-                section.setVisible(false);
-            }
-            if (roleEnum == Role.empty) {
-
-                labelscore.setVisible(false);
-                labelsection.setVisible(false);
-
-                section.setText("");
-                score.setText("");
-            }
-
+            System.out.println("role = " + roleEnum.toString());
+            roleController(roleEnum);
         });
 
         // ***
@@ -271,10 +215,10 @@ public class EditItemController implements Initializable {
         x.setPwd(psw.getText());
         // System.out.println(x);
         if (type == 1) {
-//            sU.add(x);
+            // sU.add(x);
             switch (roleEnum) {
                 case etudiant:
-//                    User obj = new Etudiant();
+                    // User obj = new Etudiant();
                     Etudiant e = new Etudiant(x);
                     e.setSection(section.getText());
                     e.setScore(Integer.parseInt(score.getText()));
@@ -285,9 +229,14 @@ public class EditItemController implements Initializable {
                     sE.add(e);
                     break;
                 case enseignant:
+                    System.out.println("score = " + score.getText() + "/"
+                            + "section = " + section.getText());
+//                    Enseignant en = new Enseignant(x,score.getText(),section.getText());
                     Enseignant en = new Enseignant(x);
+                    en.setNom(x.getNom());
                     en.setSection(section.getText());
-//                    en.setUniversite(u.getText());
+                    en.setUniversite(score.getText());
+                    System.out.println("ens = " + en);
                     sEn.add(en);
                     break;
                 case Recruteur:
@@ -296,6 +245,7 @@ public class EditItemController implements Initializable {
                     sR.add(r);
                     break;
                 case admin:
+                    x.setRole(Role.admin);
                     sU.add(x);
                     break;
 

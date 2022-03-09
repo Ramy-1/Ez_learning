@@ -24,44 +24,44 @@ public class ServiceUser implements IService<User> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-    public List<User> SortBy(String Column) {
-        List<User> list = new ArrayList<>();
-        try {
-            String req = "SELECT * FROM `user` order by " + Column;
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-            while (rs.next()) {
-                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7));
-                list.add(u);
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return list;
-    }
+    // public List<User> SortBy(String Column) {
+    //     List<User> list = new ArrayList<>();
+    //     try {
+    //         String req = "SELECT * FROM `user` order by " + Column;
+    //         Statement st = cnx.createStatement();
+    //         ResultSet rs = st.executeQuery(req);
+    //         while (rs.next()) {
+    //             User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+    //                     rs.getString(6), rs.getString(7));
+    //             list.add(u);
+    //         }
+    //     } catch (SQLException ex) {
+    //         System.err.println(ex.getMessage());
+    //     }
+    //     return list;
+    // }
 
-    public List<User> Search(String Column, String value) {
-        List<User> list = new ArrayList<>();
-        try {
-            String req = "SELECT * FROM `user` WHERE " + Column + " = " + value;
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-            while (rs.next()) {
-                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7));
-                list.add(u);
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return list;
-    }
+    // public List<User> Search(String Column, String value) {
+    //     List<User> list = new ArrayList<>();
+    //     try {
+    //         String req = "SELECT * FROM `user` WHERE " + Column + " = " + value;
+    //         Statement st = cnx.createStatement();
+    //         ResultSet rs = st.executeQuery(req);
+    //         while (rs.next()) {
+    //             User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+    //                     rs.getString(6), rs.getString(7));
+    //             list.add(u);
+    //         }
+    //     } catch (SQLException ex) {
+    //         System.err.println(ex.getMessage());
+    //     }
+    //     return list;
+    // }
 
     @Override
     public void add(User u) {
         try {
-            String req = "INSERT INTO `user`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`) VALUES (?,?,?,?,?,?)";
+            String req = "INSERT INTO `user`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`, `role`) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, u.getNom());
             ps.setString(2, u.getPrenom());
@@ -74,6 +74,7 @@ public class ServiceUser implements IService<User> {
                 e.printStackTrace();
             }
             ps.setString(6, u.getCarte_banq());
+            ps.setString(7, u.getRole().toString());
 
             ps.executeUpdate();
             System.out.println("User Ajoutée");
@@ -94,7 +95,7 @@ public class ServiceUser implements IService<User> {
 
             while (rs.next()) {
                 User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7));
+                        rs.getString(6), rs.getString(7),rs.getString(8));
                 u = us;
             }
         } catch (SQLException ex) {
@@ -103,7 +104,6 @@ public class ServiceUser implements IService<User> {
         return u;
         // return null;
     }
-
     public User getByMail(String mail) {
         User u = new User();
         try {
@@ -115,13 +115,41 @@ public class ServiceUser implements IService<User> {
             // String req = "SELECT * FROM `user` WHERE email = ? ";
             // PreparedStatement ps = cnx.prepareStatement(req);
             // ps.setString(1, mail);
-//            System.out.println(req);
+            // System.out.println(req);
             // System.out.println("*******");
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
                 User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7));
+                        rs.getString(6), rs.getString(7),rs.getString(8));
+                u = us;
+                System.out.println(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return u;
+        // return null;
+    }
+    
+    public User getByMail(String from ,String mail) {
+        User u = new User();
+        try {
+            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
+
+            String req = "SELECT * FROM `" +from+"` WHERE email = '" + mail + "'";
+            Statement st = cnx.createStatement();
+
+            // String req = "SELECT * FROM `user` WHERE email = ? ";
+            // PreparedStatement ps = cnx.prepareStatement(req);
+            // ps.setString(1, mail);
+            // System.out.println(req);
+            // System.out.println("*******");
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7),rs.getString(8));
                 u = us;
                 System.out.println(u);
             }
@@ -132,6 +160,7 @@ public class ServiceUser implements IService<User> {
         // return null;
     }
 
+
     @Override
     public List<User> getAll() {
         List<User> list = new ArrayList<>();
@@ -141,7 +170,7 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7));
+                        rs.getString(6), rs.getString(7),rs.getString(8));
                 list.add(u);
             }
         } catch (SQLException ex) {

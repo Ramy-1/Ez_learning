@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Enseignant extends User {
-    private String universite;
-    private String section;
+    private String universite ;
+    private String section ;
     // private int niveau[];
     private List<Cour> cours = new ArrayList<Cour>();
 
@@ -45,7 +45,21 @@ public class Enseignant extends User {
 
     public Enseignant(User u) {
         this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
+        this.role = Role.enseignant;
         // return this;
+    }
+
+    public Enseignant(User u, String universite, String section) {
+        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
+        this.universite = universite;
+        this.section = section;
+        this.role = Role.enseignant;
+        // return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Enseignant{" + super.toString() + "universite=" + universite + ", section=" + section + ", cours=" + cours + '}';
     }
 
     public List<Cour> getCours() {
