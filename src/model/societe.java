@@ -10,8 +10,8 @@ package model;
  * @author Nabil
  */
 public class societe {
-    private String idsoc;
-    private String nom;
+    private String idsoc ;
+    private String nom ; 
     private String email;
     private String adresse;
     private String imgsoc;
@@ -38,12 +38,21 @@ public class societe {
         this.mdpsoc = mdpsoc;
     }
 
-    public societe(String nom, String email, String adresse, String imgsoc, String mdpsoc) {
+    public societe(String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {
+        this.idsoc = idsoc;
         this.nom = nom;
         this.email = email;
         this.adresse = adresse;
         this.imgsoc = imgsoc;
         this.mdpsoc = mdpsoc;
+    }
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 
     public String getIdsoc() {
@@ -96,8 +105,7 @@ public class societe {
 
     @Override
     public String toString() {
-        return "societe{" + "idsoc=" + idsoc + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse
-                + ", imgsoc=" + imgsoc + ", mdpsoc=" + mdpsoc + '}';
+        return "societe{" + "idsoc=" + idsoc + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imgsoc=" + imgsoc + ", mdpsoc=" + mdpsoc + '}';
     }
-
-}
+              
+ }

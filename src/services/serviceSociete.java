@@ -45,7 +45,7 @@ public class serviceSociete implements ISociete {
             ResultSet rs = st.executeQuery(request1);
              while (rs.next()){
                societe S = new societe();
-                S.setIdsoc(rs.getString(1));
+                S.setIdsoc(rs.getString("idsoc"));
                 S.setNom(rs.getString("nom"));
                 S.setEmail(rs.getString("email"));
                 S.setAdresse(rs.getString("adresse"));
@@ -79,7 +79,7 @@ String request2="DELETE FROM `societe` WHERE `idsoc`='"+S.getIdsoc()+"'";
     @Override
     public void modifierSociete(societe S,String id) {
  try{      
-      String request3="UPDATE `societe` SET `nom`='"+S.getNom()+"',`email`='"+S.getEmail()+"',`adresse`='"+S.getAdresse()+"',`imgsoc`='"+S.getImgsoc()+"',`mdpsoc`='"+S.getMdpsoc()+"' WHERE `idsoc` = "+id ; 
+      String request3="UPDATE `societe` SET `idsoc`='"+S.getIdsoc()+"',`nom`='"+S.getNom()+"',`email`='"+S.getEmail()+"',`adresse`='"+S.getAdresse()+"',`imgsoc`='"+S.getImgsoc()+"',`mdpsoc`='"+S.getMdpsoc()+"' WHERE `idsoc` = "+id ; 
          
  Statement st=cnx.createStatement();
        st.executeUpdate(request3);

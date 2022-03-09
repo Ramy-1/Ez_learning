@@ -2,7 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,12 +22,12 @@
                </image>
             </ImageView>
             <Separator layoutX="41.0" layoutY="94.0" prefHeight="0.0" prefWidth="763.0" />
-            <Label fx:id="nomsoc" layoutX="148.0" layoutY="18.0" text="Nom Societe" textFill="#3a1c9d">
+            <Label fx:id="nom_societe" layoutX="148.0" layoutY="18.0" text="Nom Societe" textFill="#3a1c9d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="58.0" layoutY="113.0" prefHeight="20.0" prefWidth="76.0" text="email :" textFill="#aeacac">
+            <Label layoutX="58.0" layoutY="113.0" prefHeight="20.0" prefWidth="76.0" text="Email :" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
@@ -40,33 +42,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="emailsoc" layoutX="58.0" layoutY="150.0" prefHeight="19.0" prefWidth="153.0" text="Brad Pitt" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="mdpsoc" layoutX="299.0" layoutY="150.0" prefHeight="20.0" prefWidth="90.0" text="SGBD" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="adressesoc" layoutX="580.0" layoutY="140.0" prefHeight="39.0" prefWidth="301.0" text="phone" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
             <Pane layoutX="3.0" layoutY="216.0" prefHeight="48.0" prefWidth="846.0" style="-fx-background-color: #F0F0F0;">
                <children>
-                  <Button layoutX="337.0" layoutY="5.0" mnemonicParsing="false" onAction="#ModifierClicked" prefHeight="39.0" prefWidth="102.0" text="Modifier" />
-                  <Button layoutX="480.0" layoutY="5.0" mnemonicParsing="false" onAction="#EffacerClicked" prefHeight="39.0" prefWidth="102.0" text="Effacer" />
+                  <Button fx:id="bouton_changer" layoutX="260.0" layoutY="5.0" mnemonicParsing="false" onAction="#ChangerClicked" prefHeight="39.0" prefWidth="149.0" text="Changer les donnees" />
+                  <Button fx:id="bouton_annuler" layoutX="455.0" layoutY="5.0" mnemonicParsing="false" onAction="#AnnulerClicked" prefHeight="39.0" prefWidth="149.0" text="Annuler la saisie" />
                </children>
             </Pane>
-            <Label fx:id="idsoc" layoutX="201.0" layoutY="52.0" prefHeight="20.0" prefWidth="90.0" text="id societe" textFill="#b2b0b0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <Label layoutX="148.0" layoutY="52.0" prefHeight="17.0" prefWidth="76.0" text="DUNS :" />
+            <TextField fx:id="id_societe" layoutX="202.0" layoutY="48.0" prefHeight="25.0" prefWidth="182.0" />
+            <TextField fx:id="email_societe" layoutX="53.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
+            <TextField fx:id="adresse_societe" layoutX="580.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
+            <PasswordField fx:id="mdp_societe" layoutX="299.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
