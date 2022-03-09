@@ -68,7 +68,7 @@
             <TextField fx:id="phone" layoutX="49.0" layoutY="206.0" />
             <TextField fx:id="prenom" layoutX="279.0" layoutY="138.0" />
             <TextField fx:id="email" layoutX="279.0" layoutY="206.0" />
-            <TextField fx:id="carteBancaire" layoutX="576.0" layoutY="138.0" />
+            <TextField fx:id="carteBancaire" layoutX="576.0" layoutY="138.0" prefHeight="25.0" prefWidth="170.0" />
             <TextField fx:id="section" layoutX="614.0" layoutY="39.0" prefHeight="25.0" prefWidth="48.0" />
             <TextField fx:id="score" layoutX="725.0" layoutY="39.0" prefHeight="25.0" prefWidth="45.0" />
             <Label layoutX="576.0" layoutY="181.0" text="Mot de passe" textFill="#aeacac">
@@ -76,7 +76,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="psw" layoutX="576.0" layoutY="206.0" />
+            <TextField fx:id="psw" layoutX="576.0" layoutY="206.0" prefHeight="25.0" prefWidth="170.0" />
             <JFXComboBox fx:id="type2" layoutX="278.0" layoutY="27.0" promptText="Type" />
             <ComboBox fx:id="typeBox" layoutX="279.0" layoutY="27.0" prefHeight="25.0" prefWidth="83.0" promptText="Type" />
             <Label fx:id="LabelScore" layoutX="725.0" layoutY="13.0" text="Score" textFill="#3a1c9d">
@@ -89,6 +89,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button fx:id="btnupload" defaultButton="true" layoutX="725.0" layoutY="138.0" mnemonicParsing="false" onAction="#uploadfile" prefHeight="25.0" prefWidth="20.0" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

@@ -18,12 +18,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import static javafx.scene.input.KeyCode.U;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Enseignant;
 import model.Etudiant;
@@ -98,8 +100,11 @@ public class EditItemController implements Initializable {
     private Label LabelBanq;
     @FXML
     private Label LablePhone;
+    @FXML
+    private Button btnupload;
 
     void roleController(Role r) {
+        btnupload.setVisible(false);
         switch (r) {
             case etudiant:
                 file = new File("src/controller/admin/images/student.jpg");
@@ -190,6 +195,7 @@ public class EditItemController implements Initializable {
                 LablePhone.setText("idsoc");
                 LabelBanq.setText("img");
                 labelPrenom.setText("addresse");
+                btnupload.setVisible(true);
 
 //                LabelScore.setText("Universite");
 //                labelNom.setText("Titre");
@@ -315,6 +321,14 @@ public class EditItemController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void uploadfile(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("choisissez le logo de la societe");
+        File file = fc.showOpenDialog(null);
+        carteBancaire.setText(file.getName());
     }
 
 }
