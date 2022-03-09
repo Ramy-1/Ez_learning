@@ -6,6 +6,8 @@
 package model;
 
 import java.sql.Date;
+import services.ServiceEns;
+import services.serviceCours;
 
 /**
  *
@@ -19,11 +21,19 @@ public class Cours {
     private Date datecreate;
     private String support;
     private int idcat;
-    private int etat;
+    private boolean etat;
+    private Enseignant formateurid;
 
     public Cours() {
     }
 
+    public Cours(String titre, String description, int duree, Date datecreate) {
+        this.titre = titre;
+        this.description = description;
+        this.duree = duree;
+        this.datecreate = datecreate;
+    }
+    
     public Cours(int id, String titre, String description, int duree, Date datecreate, String support, int idcat) {
         this.id = id;
         this.titre = titre;
@@ -35,7 +45,7 @@ public class Cours {
         this.etat = etat;
     }
 
-      public Cours( String titre, String description, int duree, Date datecreate,int etat) {
+      public Cours( String titre, String description, int duree, Date datecreate,boolean etat) {
        
         this.titre = titre;
         this.description = description;
@@ -52,6 +62,31 @@ public class Cours {
         this.support = support;
         this.idcat = idcat;
         this.etat = etat;
+    }
+
+    public Cours(int id, String titre, String description, int duree, Date datecreate, String support, int idcat, Enseignant formateurid) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.duree = duree;
+        this.datecreate = datecreate;
+        this.support = support;
+        this.idcat = idcat;
+        this.formateurid = formateurid;
+    }
+
+   
+
+    public void setFormateurid(Enseignant formateurid) {
+        this.formateurid = formateurid;
+    }
+    
+     public Enseignant getFormateurid() {
+                    ServiceEns se=new ServiceEns();
+                    serviceCours sC = new serviceCours();
+                    Enseignant e = (Enseignant)se.getById(formateurid.getId());
+       
+        return formateurid;
     }
 
     public int getId() {
@@ -110,17 +145,22 @@ public class Cours {
         this.idcat = idcat;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Cours{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", duree=" + duree + ", datecreate=" + datecreate + ", support=" + support + ", idcat=" + idcat + '}';
-    }
+    }*/
 
-    public int isEtat() {
+    public boolean isEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
+    }
+    
+    @Override
+    public String toString() {
+        return  titre + formateurid ;
     }
     
     

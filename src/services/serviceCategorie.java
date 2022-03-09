@@ -17,7 +17,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Categorie;
 import model.Cours;
-import rania.MyConnection;
+import model.Recruteur;
+import util.MyConnection;
 
 
 /**
@@ -26,10 +27,9 @@ import rania.MyConnection;
  */
 public class serviceCategorie implements ICategorie {
     
-    public Connection myConnection = MyConnection.getInstance();
+    public Connection myConnection = MyConnection.getInstance2();
    public     ObservableList<Categorie>obList = FXCollections.observableArrayList();
 
-    @Override
     public void ajouterCategorie(Categorie Cat) {
    String sql = "INSERT INTO categorie (domaine,nomcat)VALUES(?,?) ";
         
@@ -44,7 +44,6 @@ public class serviceCategorie implements ICategorie {
             System.err.println(ex.getMessage());
         }     }
 
-    @Override
     public ObservableList<Categorie> afficherCategorie() {
         List<Categorie> ListCat = new ArrayList<>();
         String request1 = "SELECT * FROM `categorie`";
@@ -66,7 +65,6 @@ public class serviceCategorie implements ICategorie {
         return obList;     //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void supprimerCategorie(int id) {
 String request2="DELETE FROM `categorie` WHERE `idcat`='"+id+"'";
         try{
@@ -79,7 +77,6 @@ String request2="DELETE FROM `categorie` WHERE `idcat`='"+id+"'";
         catch(SQLException ex){  
             System.err.println(ex.getMessage());
         }     }
-@Override
     public void modifierCategorie(Categorie cat,int id) {
      try{      
       
@@ -96,6 +93,22 @@ String request2="DELETE FROM `categorie` WHERE `idcat`='"+id+"'";
          
      System.err.println(ex.getMessage());
      } 
+    }
+    
+    public List getAll() {
+        List<Categorie> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `categorie`";
+            Statement st = myConnection.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Categorie e = new Categorie(rs.getInt(1), rs.getString(2), rs.getString(3));
+                list.add(e);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
     }
     
 }
