@@ -135,7 +135,7 @@ public class SignInController implements Initializable {
                         stage2.show();
                         break;
                     case societe:
-                        root = FXMLLoader.load(getClass().getResource("/controller/Societe/Home.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("/controller/societe/Home.fxml"));
                         scene = new Scene(root);
                         // scene.setFill(Color.TRANSPARENT);
                         stage2.setScene(scene);
