@@ -10,8 +10,10 @@ package model;
  * @author Nabil
  */
 public class Universite {
-      private String idUni ;
-    private String nom ; 
+
+    private int id;
+    private String idUni;
+    private String nom;
     private String email;
     private String adresse;
     private String imguni;
@@ -19,6 +21,26 @@ public class Universite {
 
     public Universite() {
     }
+
+    public Universite(User u) {
+//        this.idUni = u.getId();
+        this.id = u.id;
+        this.nom = u.nom;
+        this.email = u.email;
+//        this.adresse = adresse;
+//        this.imguni = imguni;
+        this.mdpuni = u.pwd;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public Universite(String idUni, String nom, String email, String adresse, String imguni, String mdpuni) {
         this.idUni = idUni;
@@ -38,10 +60,10 @@ public class Universite {
     }
 
     public Universite(String text, String text0, String text1) {
-                this.nom = text;
+        this.nom = text;
         this.email = text0;
         this.adresse = text1;
-    
+
     }
 
     public String getIdUni() {
@@ -96,7 +118,5 @@ public class Universite {
     public String toString() {
         return "Universite{" + "idUni=" + idUni + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imguni=" + imguni + ", mdpuni=" + mdpuni + '}';
     }
-    
-    
-    
+
 }

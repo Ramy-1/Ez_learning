@@ -111,6 +111,17 @@ public class User {
         this.carte_banq = carte_banq;
     }
 
+    public User(Universite uni) {
+        this.id = uni.getId();
+        this.nom = uni.getNom();
+        this.prenom = "";
+        this.phone = 0;
+        this.email = uni.getEmail();
+        this.pwd = uni.getMdpuni();
+        this.carte_banq = "";
+        this.role = Role.universite;
+    }
+
     @Override
     public String toString() {
         return "{"

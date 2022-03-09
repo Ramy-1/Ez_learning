@@ -106,7 +106,7 @@ public class ItemController implements Initializable {
         System.out.println("id = " + U.getId() + " Role= " + U.getRole());
         switch (U.getRole()) {
             case etudiant:
-                file = new File("src/controler/admin/images/student.jpg");
+                file = new File("src/controller/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Etudiant e = new Etudiant(U);
@@ -125,7 +125,7 @@ public class ItemController implements Initializable {
                 break;
 
             case Recruteur:
-                file = new File("src/controler/admin/images/recruitment.png");
+                file = new File("src/controller/admin/images/recruitment.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Recruteur rec = new Recruteur(U);
@@ -143,7 +143,7 @@ public class ItemController implements Initializable {
                 Enseignant en = new Enseignant(U);
 
                 en = sEn.getByMail(U.getEmail());
-                file = new File("src/controler/admin/images/teacher.png");
+                file = new File("src/controller/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 LabelSection.setText("Section");
@@ -162,7 +162,7 @@ public class ItemController implements Initializable {
 
             case admin:
 
-                file = new File("src/controler/adminimages/admin.png");
+                file = new File("src/controller/admin/images/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 U.setRole(Role.admin);
@@ -172,15 +172,15 @@ public class ItemController implements Initializable {
                 score.setVisible(false);
                 break;
 
-            // case universite:
-            // Universite e = (Universite) U;
-            // File file = new File("src//controler/adminimages/teacher.png");
-            // Img.setImage(new Image(file.toURI().toString()));
-            // LabelSection.setText("Universite");
-            // prenom.setVisible(false);
-            // LabelScore.setText("Universite");
-            // labelNom.setText("Titre");
-            // break;
+            case universite:
+                Universite un = new Universite(U);
+                File file = new File("src/controller/adminimages/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+                LabelSection.setText("Universite");
+                prenom.setVisible(false);
+                LabelScore.setText("Universite");
+                labelNom.setText("Titre");
+                break;
             default:
                 System.out.println("empty");
                 break;

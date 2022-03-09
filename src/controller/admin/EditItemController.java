@@ -95,7 +95,7 @@ public class EditItemController implements Initializable {
     void roleController(Role r) {
         switch (r) {
             case etudiant:
-                file = new File("src/controler/admin/images/student.jpg");
+                file = new File("src/controller/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Etudiant e = new Etudiant(U);
@@ -111,7 +111,7 @@ public class EditItemController implements Initializable {
                 break;
 
             case Recruteur:
-                file = new File("src/controler/admin/images/recruitment.png");
+                file = new File("src/controller/admin/images/recruitment.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Recruteur rec = new Recruteur(U);
@@ -128,7 +128,7 @@ public class EditItemController implements Initializable {
                 Enseignant en = new Enseignant(U);
 
                 en = sEn.getById(U.getId());
-                file = new File("src/controler/admin/images/teacher.png");
+                file = new File("src/controller/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 LabelSection.setText("Section");
@@ -142,7 +142,7 @@ public class EditItemController implements Initializable {
 
             case admin:
 
-                file = new File("src/controler/adminimages/admin.png");
+                file = new File("src/controller/admin/images/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 U.setRole(Role.admin);
@@ -152,15 +152,22 @@ public class EditItemController implements Initializable {
                 score.setVisible(false);
                 break;
 
-            // case universite:
-            // Universite e = (Universite) U;
-            // File file = new File("src//controler/adminimages/teacher.png");
-            // Img.setImage(new Image(file.toURI().toString()));
-            // LabelSection.setText("Universite");
-            // prenom.setVisible(false);
-            // LabelScore.setText("Universite");
-            // labelNom.setText("Titre");
-            // break;
+            case universite:
+//                Universite uni = Universite (U);
+                File file = new File("src//controller/adminimages/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+//                LabelSection.setText("Universite");
+                prenom.setVisible(false);
+                carteBancaire.setVisible(false);
+                LabelSection.setVisible(false);
+                section.setVisible(false);
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+                phone.setVisible(false);
+
+//                LabelScore.setText("Universite");
+//                labelNom.setText("Titre");
+                break;
             default:
                 System.out.println("empty");
                 break;
@@ -171,7 +178,7 @@ public class EditItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin",
-                "universite");
+                "universite", "societe");
         typeBox.getItems().addAll(types);
 
         U.setRole(roleEnum);
@@ -207,6 +214,7 @@ public class EditItemController implements Initializable {
     @FXML
     private void confirmClicked(ActionEvent event) throws IOException {
         User x = new User();
+        phone.setText("0");
         x.setNom(nom.getText());
         x.setPrenom(prenom.getText());
         x.setPhone(Integer.parseInt(phone.getText()));
@@ -247,6 +255,13 @@ public class EditItemController implements Initializable {
                 case admin:
                     x.setRole(Role.admin);
                     sU.add(x);
+                    break;
+                case universite:
+                    Universite un = new Universite(x);
+                    System.out.println("uni = " + un);
+                    sU.add(new User(un));
+                    serviceUniversite sUni = new serviceUniversite();
+                    sUni.ajouterUniversite(un);
                     break;
 
                 default:
