@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="51.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="633.0" spacing="80.0" style="-fx-background-color: #02030A; -fx-background-radius: 5; -fx-background-insets: 0;">
+         <children>
+            <Label fx:id="labelTitreItem" text="KeepToo" textFill="#b7c3d7">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="labelDescriptionItem" prefHeight="17.0" prefWidth="328.0" text="JFK" textFill="#b7c3d7">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#ItemClicked" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@style.css" text="Start">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />
+         </effect>
+      </HBox>
+   </children>
+</AnchorPane>
