@@ -8,6 +8,7 @@ import component.FxmlLoader;
 import component.FxmlLoaderCours;
 import component.FxmlLoaderForm;
 import component.FxmlLoaderStudent;
+import component.FxmlLoaderReclamations;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +42,6 @@ public class DashboardController implements Initializable {
     public Button btnAccuiel;
     @FXML
     public Button btnTest;
-    @FXML
     public Button btnQuestions;
     private double x, y;
     @FXML
@@ -72,6 +72,10 @@ public class DashboardController implements Initializable {
     private Rectangle btnyellow;
     
       private int bk=0;
+    @FXML
+    private Circle close;
+    @FXML
+    private Button btnReclamation;
 
     /**
      * Initializes the controller class.
@@ -81,10 +85,12 @@ public class DashboardController implements Initializable {
         // TODO
     }
     
+    @FXML
     public void closeWindow(){
           System.exit(0);
     }
     
+    @FXML
     public void ReWindow(){
         re.setOnMouseClicked(events -> {
           Node n = (Node)events.getSource(); 
@@ -127,6 +133,7 @@ public class DashboardController implements Initializable {
       }
          });
     }
+    @FXML
     public void MiWindow(){
          mi.setOnMouseClicked(events -> {
              Node n = (Node)events.getSource(); 
@@ -139,6 +146,7 @@ public class DashboardController implements Initializable {
          });
     }
     
+    @FXML
     public void changeMode(ActionEvent event){
         isLightMode =! isLightMode;
         if(isLightMode){
@@ -351,8 +359,18 @@ public class DashboardController implements Initializable {
       }
     }
     
+    @FXML
     public void bluebutton(){
         parent.setStyle(".button:hover{-fx-background-color : #3695ff !important;}.button:pressed{-fx-background-color : #3695ff ;}-fx-background-radius:15 px;");
+    }
+
+    @FXML
+    private void Reclamation(ActionEvent event) {
+    FxmlLoaderReclamations object =new FxmlLoaderReclamations();
+              Pane view = object.getPage("Reclamations");
+              System.out.println(view);
+              parent.setCenter(view);
+    
     }
     
 }

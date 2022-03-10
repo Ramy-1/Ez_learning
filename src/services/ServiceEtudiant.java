@@ -169,5 +169,31 @@ public class ServiceEtudiant implements IService {
         // TODO Auto-generated method stub
 
     }
+public Etudiant getByMail(String mail) {
+        Etudiant u = new Etudiant();
+        try {
+            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
+
+            String req = "SELECT * FROM `etudiant` WHERE email = '" + mail + "'";
+            Statement st = cnx.createStatement();
+
+            // String req = "SELECT * FROM `user` WHERE email = ? ";
+            // PreparedStatement ps = cnx.prepareStatement(req);
+            // ps.setString(1, mail);
+            // System.out.println(req);
+            // System.out.println("*******");
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Etudiant e = new Etudiant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(9), rs.getInt(10), rs.getInt(11));
+                u = e;
+                System.out.println(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return u;
+    }
 
 }
