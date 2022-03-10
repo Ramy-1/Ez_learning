@@ -15,6 +15,8 @@ import util.MyConnection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.DataSource;
 
 /**
@@ -22,7 +24,9 @@ import util.DataSource;
  * @author Nabil
  */
 public class serviceReclamation implements IReclamation {
- Connection cnx = DataSource.getInstance().getCnx();
+
+    Connection cnx = DataSource.getInstance().getCnx();
+// serviceReclamation sr = new serviceReclamation();
 
     @Override
     public void ajouterReclamation(Reclamation R) {
@@ -114,6 +118,11 @@ public class serviceReclamation implements IReclamation {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+    }
+
+    public int calculreclamations() {
+        int c = afficherReclamation().size();
+        return c;
     }
 
 }

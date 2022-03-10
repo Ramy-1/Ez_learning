@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,8 +37,6 @@ public class ReclamationController implements Initializable {
     @FXML
     private AnchorPane mainAnchor;
     @FXML
-    private ImageView Img;
-    @FXML
     private Label typerec;
     @FXML
     private Label idetud;
@@ -49,6 +48,8 @@ public class ReclamationController implements Initializable {
     private Label id;
     @FXML
     private Label descrec;
+    @FXML
+    private ImageView Img;
 
     /**
      * Initializes the controller class.
@@ -88,5 +89,6 @@ public class ReclamationController implements Initializable {
      sr.supprimerReclamation(R);
      
     }
+
     
 }

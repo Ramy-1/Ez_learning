@@ -21,6 +21,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
@@ -51,7 +52,14 @@ import model.Reclamation;
 import model.societe;
 import services.serviceSociete;
 import services.serviceUniversite;
-
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  *
@@ -84,7 +92,10 @@ public class HomeController implements Initializable {
     private double lastX,lastY,lastWidth,lastHeight;
     @FXML
     private Circle close1;
-
+    @FXML
+    private Button btnstat;
+   
+    
     @FXML
     private void handleButtonAction(MouseEvent event) {
         refreshNodes();
@@ -95,11 +106,23 @@ public class HomeController implements Initializable {
         // TODO
 //        Scrollepane.gets
         refreshNodes();
+               
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("musique");
+            stage.setScene(new Scene(loader.load()));
+            
+            stage.show();
+          
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void refreshNodes() {
         pnl_scroll.getChildren().clear();
-
+      btnstat.setVisible(false);
         List<User> listU = sU.getAll();
         Node[] nodes = new Node[listU.size()];
         int i = 0;
@@ -360,7 +383,7 @@ public class HomeController implements Initializable {
     @FXML
     private void RClicked(ActionEvent event) {
    pnl_scroll.getChildren().clear();
-
+  btnstat.setVisible(true);
         List<Reclamation> listR = srr.afficherReclamation();
         Node[] nodes = new Node[listR.size()];
         int i = 0;
@@ -393,6 +416,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void EvenementClicked(ActionEvent event) {
+       
     }
 
     @FXML
@@ -423,6 +447,21 @@ public class HomeController implements Initializable {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
+        }
+    }
+
+    @FXML
+    private void stat_clicked(ActionEvent event) {
+     
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Statistique.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Statistique des reclamations");
+            stage.setScene(new Scene(loader.load()));
+            
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

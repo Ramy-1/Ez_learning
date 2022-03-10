@@ -44,7 +44,7 @@ public class servicereponse implements Ireponse {
  List<reponse> ListRep = new ArrayList<>();
     String request1 = "SELECT * FROM `reponserec`";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request1);
              while (rs.next()){
                reponse rep = new reponse();
@@ -109,5 +109,9 @@ public class servicereponse implements Ireponse {
      System.err.println(ex.getMessage());
      }     }
     
+    public int calculreponserec(){
+    int c = afficherReponse().size();
+    return c ;
+    }
     
 }
