@@ -59,7 +59,7 @@ public class UpsocieteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          File path = new File("C:\\Users\\Nabil\\Documents\\Ez_learning\\src\\controller\\images\\"+soc.getImgsoc());
+          File path = new File("C:\\Users\\mrram\\Desktop\\Ez_learning\\src\\controller\\images\\"+soc.getImgsoc());
         Image image = new Image(path.toURI().toString());
         Img.setImage(image);
        nom_societe.setText(soc.getNom());
