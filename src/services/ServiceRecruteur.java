@@ -68,12 +68,6 @@ public class ServiceRecruteur {
 
             String req = "SELECT * FROM `Recruteur` WHERE email = '" + mail + "'";
             Statement st = cnx.createStatement();
-
-            // String req = "SELECT * FROM `user` WHERE email = ? ";
-            // PreparedStatement ps = cnx.prepareStatement(req);
-            // ps.setString(1, mail);
-            // System.out.println(req);
-            // System.out.println("*******");
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
