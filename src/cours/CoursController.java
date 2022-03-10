@@ -4,7 +4,8 @@
  */
 package cours;
 
-import controller.HomeController;
+
+import controller.admin.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,13 +17,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import model.Categorie;
 import model.Cours;
@@ -39,16 +44,23 @@ public class CoursController implements Initializable {
     public Connection myConnection = MyConnection.getInstance2();
     serviceCours sC =new serviceCours();
     serviceCategorie sCt =new serviceCategorie();
-    @FXML
     private ScrollPane scroll;
-    @FXML
     private VBox pnl_scroll;
     
-     @FXML
-    private Button btnFilter;
-      @FXML
     private ComboBox comboFilter;
-
+    HomeController homeController = new HomeController();
+    @FXML
+    private Button boutonEnvoyer;
+    @FXML
+    private TextField TEtudiant;
+    @FXML
+    private TextField TCours;
+    @FXML
+    private ComboBox<?> typeCombo;
+    @FXML
+    private TextArea TFDesc;
+    @FXML
+    private Label delai;
     /**
      * Initializes the controller class.
      */
@@ -116,6 +128,10 @@ int i = 0;
             i++;
         }
       
+    }
+
+    @FXML
+    private void EnvoyerReclamation(ActionEvent event) {
     }
    
     

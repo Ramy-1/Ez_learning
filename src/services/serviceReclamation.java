@@ -8,12 +8,14 @@ package services;
 import java.util.List;
 import model.Reclamation;
 import interfaces.IReclamation;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import util.MyConnection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import util.DataSource;
 
 
 /**
@@ -21,11 +23,12 @@ import java.util.ArrayList;
  * @author Nabil
  */
 public class serviceReclamation implements IReclamation {
+    Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouterReclamation(Reclamation R){
         String request ="INSERT INTO `reclamation`(`idrec`, `type`, `description`, `idetudiant`, `idcours`, `daterec`) VALUES ('"+R.getIdrec()+"','"+R.getType()+"','"+R.getDescription()+"','"+R.getIdetudiant()+"','"+R.getIdcours()+"','"+R.getDaterec()+"')" ;
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             st.executeUpdate(request);
             System.out.println("Reclamation ajoutee avec succes");
         } catch (SQLException ex) {
@@ -39,7 +42,7 @@ public class serviceReclamation implements IReclamation {
         Statement st;
         
         try {
-            st = new MyConnection().getCnx().createStatement();
+            st = cnx.createStatement();
               ResultSet rs = st.executeQuery(request1);
               while (rs.next()){
                 Reclamation R = new Reclamation();
@@ -63,7 +66,7 @@ public class serviceReclamation implements IReclamation {
         Statement st;
         
         try {
-            st = new MyConnection().getCnx().createStatement();
+            st = cnx.createStatement();
               ResultSet rs = st.executeQuery(request1);
               while (rs.next()){
                 Reclamation R = new Reclamation();
@@ -87,7 +90,7 @@ public class serviceReclamation implements IReclamation {
      try{      
       String request3="UPDATE `reclamation` SET `type`='"+R.getType()+"',`description`='"+R.getDescription()+"',`idetudiant`='"+R.getIdetudiant()+"',`idcours`='"+R.getIdcours()+"', `daterec`='"+R.getDaterec()+"' WHERE `idrec` = "+id ; 
          
- Statement st=new MyConnection().getCnx().createStatement();
+ Statement st=cnx.createStatement();
        st.executeUpdate(request3);
         System.out.println("reclamation modifie avec succes");
    

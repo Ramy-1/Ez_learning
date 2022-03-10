@@ -102,7 +102,7 @@ public class EditItemController implements Initializable {
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Etudiant e = new Etudiant(U);
-                e = new Etudiant(sE.getById(U.getId()));
+                e = new Etudiant((User) sE.getById(U.getId()));
 
                 LabelSection.setText("Section");
                 section.setText(e.getSection());
@@ -118,7 +118,7 @@ public class EditItemController implements Initializable {
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Recruteur rec = new Recruteur(U);
-                rec = sR.getById(U.getId());
+                rec = (Recruteur) sR.getById(U.getId());
 
                 LabelSection.setText("Societe");
                 section.setText(rec.getsociete());
@@ -130,7 +130,7 @@ public class EditItemController implements Initializable {
             case enseignant:
                 Enseignant en = new Enseignant(U);
 
-                en = sEn.getById(U.getId());
+                en = (Enseignant) sEn.getById(U.getId());
                 file = new File("src/controller/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="716.0" styleClass="primary-color" stylesheets="@../style/DarkMode.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReclamationsController">
+   <children>
+      <HBox layoutX="15.0" layoutY="19.0" prefHeight="100.0" prefWidth="359.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="23.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" />
+      <AnchorPane id="AnchorPane" layoutX="43.0" layoutY="92.0" prefHeight="413.0" prefWidth="649.0">
+         <children>
+            <Button fx:id="boutonEnvoyer" layoutX="426.0" layoutY="363.0" mnemonicParsing="false" onAction="#EnvoyerReclamation" prefHeight="26.0" prefWidth="99.0" text="Envoyer" />
+            <Label layoutX="98.0" layoutY="109.0" prefHeight="18.0" prefWidth="90.0" text="Type  :" />
+            <Label layoutX="98.0" layoutY="254.0" prefHeight="18.0" prefWidth="82.0" text="Id etudiant :" />
+            <Label layoutX="98.0" layoutY="158.0" prefHeight="18.0" prefWidth="122.0" text="Description :" />
+            <TextField fx:id="TEtudiant" layoutX="232.0" layoutY="250.0" prefHeight="26.0" prefWidth="390.0" text="votre id " />
+            <TextField fx:id="TCours" layoutX="232.0" layoutY="301.0" prefHeight="26.0" prefWidth="390.0" text="facultatif si c'est une reclamation technique" />
+            <Label layoutX="90.0" layoutY="305.0" prefHeight="18.0" prefWidth="122.0" text="Id/Nom Cours :" />
+            <Label layoutX="117.0" layoutY="6.0" prefHeight="74.0" prefWidth="416.0" text="RECLAMATION" textAlignment="CENTER">
+               <font>
+                  <Font name="Calibri Bold" size="64.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@../style/LightMode.css" />
+                  <URL value="@../style/DarkMode.css" />
+               </stylesheets>
+            </Label>
+            <ComboBox fx:id="typeCombo" layoutX="231.0" layoutY="106.0" prefHeight="26.0" prefWidth="390.0" />
+            <TextArea fx:id="TFDesc" layoutX="232.0" layoutY="158.0" prefHeight="74.0" prefWidth="390.0" />
+            <Label layoutX="90.0" layoutY="363.0" prefHeight="26.0" prefWidth="174.0" text="Délai de reponse estimée :" textFill="#b90000" />
+            <Label fx:id="delai" layoutX="250.0" layoutY="367.0" text="0" textFill="#52ba63" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="boutonEnvoyer" layoutX="436.0" layoutY="373.0" mnemonicParsing="false" onAction="#EnvoyerReclamation" prefHeight="26.0" prefWidth="99.0" text="Envoyer" />
+      <Label layoutX="108.0" layoutY="119.0" prefHeight="18.0" prefWidth="90.0" text="Type  :" />
+      <Label layoutX="108.0" layoutY="264.0" prefHeight="18.0" prefWidth="82.0" text="Id etudiant :" />
+      <Label layoutX="108.0" layoutY="168.0" prefHeight="18.0" prefWidth="122.0" text="Description :" />
+      <TextField fx:id="TEtudiant" layoutX="242.0" layoutY="260.0" prefHeight="26.0" prefWidth="390.0" text="votre id " />
+      <TextField fx:id="TCours" layoutX="242.0" layoutY="311.0" prefHeight="26.0" prefWidth="390.0" text="facultatif si c'est une reclamation technique" />
+      <Label layoutX="100.0" layoutY="315.0" prefHeight="18.0" prefWidth="122.0" text="Id/Nom Cours :" />
+      <Label layoutX="127.0" layoutY="16.0" prefHeight="74.0" prefWidth="416.0" text="RECLAMATION" textAlignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="64.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../style/LightMode.css" />
+            <URL value="@../style/DarkMode.css" />
+         </stylesheets>
+      </Label>
+      <ComboBox fx:id="typeCombo" layoutX="241.0" layoutY="116.0" prefHeight="26.0" prefWidth="390.0" />
+      <TextArea fx:id="TFDesc" layoutX="242.0" layoutY="168.0" prefHeight="74.0" prefWidth="390.0" />
+      <Label layoutX="100.0" layoutY="373.0" prefHeight="26.0" prefWidth="174.0" text="Délai de reponse estimée :" textFill="#b90000" />
+      <Label fx:id="delai" layoutX="260.0" layoutY="377.0" text="0" textFill="#52ba63" />
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="609.0" prefWidth="716.0" styleClass="primary-color" stylesheets="@../style/DarkMode.css">
+         <children>
+            <HBox layoutX="5.0" layoutY="9.0" prefHeight="100.0" prefWidth="359.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="5.0" layoutY="13.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <AnchorPane id="AnchorPane" layoutX="33.0" layoutY="82.0" prefHeight="413.0" prefWidth="649.0">
+               <children>
+                  <Button fx:id="boutonEnvoyer" layoutX="426.0" layoutY="363.0" mnemonicParsing="false" onAction="#EnvoyerReclamation" prefHeight="26.0" prefWidth="99.0" text="Envoyer" />
+                  <Label layoutX="98.0" layoutY="109.0" prefHeight="18.0" prefWidth="90.0" text="Type  :" />
+                  <Label layoutX="98.0" layoutY="254.0" prefHeight="18.0" prefWidth="82.0" text="Id etudiant :" />
+                  <Label layoutX="98.0" layoutY="158.0" prefHeight="18.0" prefWidth="122.0" text="Description :" />
+                  <TextField fx:id="TEtudiant" layoutX="232.0" layoutY="250.0" prefHeight="26.0" prefWidth="390.0" text="votre id " />
+                  <TextField fx:id="TCours" layoutX="232.0" layoutY="301.0" prefHeight="26.0" prefWidth="390.0" text="facultatif si c'est une reclamation technique" />
+                  <Label layoutX="90.0" layoutY="305.0" prefHeight="18.0" prefWidth="122.0" text="Id/Nom Cours :" />
+                  <Label layoutX="117.0" layoutY="6.0" prefHeight="74.0" prefWidth="416.0" text="RECLAMATION" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri Bold" size="64.0" />
+                     </font>
+                     <stylesheets>
+                        <URL value="@../style/LightMode.css" />
+                        <URL value="@../style/DarkMode.css" />
+                     </stylesheets>
+                  </Label>
+                  <ComboBox fx:id="typeCombo" layoutX="231.0" layoutY="106.0" prefHeight="26.0" prefWidth="390.0" />
+                  <TextArea fx:id="TFDesc" layoutX="232.0" layoutY="158.0" prefHeight="74.0" prefWidth="390.0" />
+                  <Label layoutX="90.0" layoutY="363.0" prefHeight="26.0" prefWidth="174.0" text="Délai de reponse estimée :" textFill="#b90000" />
+                  <Label fx:id="delai" layoutX="250.0" layoutY="367.0" text="0" textFill="#52ba63" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="boutonEnvoyer" layoutX="459.0" layoutY="445.0" mnemonicParsing="false" onAction="#EnvoyerReclamation" prefHeight="26.0" prefWidth="99.0" stylesheets="@../style/fullpackstyling.css" text="Envoyer" textFill="WHITE" />
+            <Label layoutX="131.0" layoutY="191.0" prefHeight="18.0" prefWidth="90.0" text="Type  :" />
+            <Label layoutX="131.0" layoutY="336.0" prefHeight="18.0" prefWidth="82.0" text="Id etudiant :" />
+            <Label layoutX="131.0" layoutY="240.0" prefHeight="18.0" prefWidth="122.0" text="Description :" />
+            <TextField fx:id="TEtudiant" layoutX="265.0" layoutY="332.0" prefHeight="26.0" prefWidth="390.0" stylesheets="@../style/LightMode.css" text="votre id " />
+            <TextField fx:id="TCours" layoutX="265.0" layoutY="383.0" prefHeight="26.0" prefWidth="390.0" text="facultatif si c'est une reclamation technique" />
+            <Label layoutX="123.0" layoutY="387.0" prefHeight="18.0" prefWidth="122.0" text="Id/Nom Cours :" />
+            <ComboBox fx:id="typeCombo" layoutX="264.0" layoutY="188.0" prefHeight="26.0" prefWidth="390.0" />
+            <TextArea fx:id="TFDesc" layoutX="265.0" layoutY="240.0" prefHeight="74.0" prefWidth="390.0" stylesheets="@../style/LightMode.css" />
+            <Label layoutX="123.0" layoutY="445.0" prefHeight="26.0" prefWidth="174.0" text="Délai de reponse estimée :" textFill="#b90000" />
+            <Label fx:id="delai" layoutX="283.0" layoutY="449.0" text="0" textFill="#52ba63" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
