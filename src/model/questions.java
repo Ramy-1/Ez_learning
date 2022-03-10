@@ -11,12 +11,12 @@ package model;
 public class questions {
     private int id;
     private String contenu;
-    private Test testid;
+    private int testid;
     private Reponses reponses;
     private int responsecorrect;
     private float note;
 
-    public questions(int id, String contenu, Test testid, Reponses reponses, int responsecorrect, float note) {
+    public questions(int id, String contenu, int testid, Reponses reponses, int responsecorrect, float note) {
         this.id = id;
         this.contenu = contenu;
         this.testid = testid;
@@ -25,16 +25,24 @@ public class questions {
         this.note = note;
     }
 
-    public questions(String contenu, Test testid, Reponses reponses) {
+    public questions(String contenu, int testid, Reponses reponses) {
         this.contenu = contenu;
         this.testid = testid;
         this.reponses = reponses;
     }
 
-    
+    public questions(int id, String contenu, int testid) {
+        this.id = id;
+        this.contenu = contenu;
+        this.testid = testid;
+    }
 
+    public questions(int id, String contenu) {
+        this.id = id;
+        this.contenu = contenu;
+    }
     
-
+    
     public questions(){
     }
     public int getId() {
@@ -49,7 +57,7 @@ public class questions {
         this.contenu = contenu;
     }
 
-    public void setTestid(Test testid) {
+    public void setTestid(int testid) {
         this.testid = testid;
     }
 
@@ -69,7 +77,7 @@ public class questions {
         return contenu;
     }
 
-    public Test getTestid() {
+    public int getTestid() {
         return testid;
     }
 
@@ -91,11 +99,13 @@ public class questions {
     public float getNote() {
         return note;
     }
-    
+
     @Override
     public String toString() {
-        return  contenu ;
+        return  contenu  ;
     }
+    
+  
 
     
     

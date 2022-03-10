@@ -13,6 +13,7 @@ public class Test {
     private String titre;
     private String description;
     private int[] questions;
+    private int coursid;
     
     public Test(){
     }
@@ -42,6 +43,14 @@ public class Test {
         this.id = id;
         this.titre = titre;
         this.description = description;
+    }
+
+    public int getCoursid() {
+        return coursid;
+    }
+
+    public void setCoursid(int coursid) {
+        this.coursid = coursid;
     }
 
     

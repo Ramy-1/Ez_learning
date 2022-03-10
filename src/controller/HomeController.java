@@ -23,6 +23,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
@@ -74,7 +75,8 @@ public class HomeController implements Initializable {
     private Label lbl_completed;
     @FXML
     private ScrollPane Scrollepane;
-    
+    @FXML
+    private Button btnaddtest;
     @FXML
     private Circle mi;
     @FXML
@@ -94,6 +96,7 @@ public class HomeController implements Initializable {
     }
 
     private void refreshNodes() {
+         btnaddtest.setVisible(false);
         pnl_scroll.getChildren().clear();
 
         List<User> listU = sU.getAll();
@@ -126,6 +129,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void ListEtudiantClicked(ActionEvent event) {
+         btnaddtest.setVisible(false);
 //        boxifyVBoxes();
         pnl_scroll.getChildren().clear();
 
@@ -154,6 +158,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void ListEnseignantClicked(ActionEvent event) {
+         btnaddtest.setVisible(false);
         pnl_scroll.getChildren().clear();
 
         List<Enseignant> listU = sEn.getAll();
@@ -181,6 +186,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void ListRecruteurClicked(ActionEvent event) {
+         btnaddtest.setVisible(false);
         pnl_scroll.getChildren().clear();
 
         List<Recruteur> listU = sR.getAll();
@@ -264,6 +270,7 @@ public class HomeController implements Initializable {
     
     @FXML
     private void ListUniversiteClicked(ActionEvent event) {
+         btnaddtest.setVisible(false);
         pnl_scroll.getChildren().clear();
 
         List<Universite> listU = sUn.getAll();
@@ -277,10 +284,7 @@ public class HomeController implements Initializable {
             try {
                 cont.U = each;
                 loader.setController(cont);
-
                 nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
@@ -352,7 +356,7 @@ public class HomeController implements Initializable {
     @FXML
     private void ListTestClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
-
+        btnaddtest.setVisible(true);
         List<Test> listT = sT.getAll();
         System.out.println(listT);
         Node[] nodes = new Node[listT.size()];
@@ -362,12 +366,9 @@ public class HomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ItemTest.fxml"));
             ItemTestController cont = new ItemTestController();
             try {
-              
+              cont.t=each;
                 loader.setController(cont);
-
                 nodes[i] = (Node) loader.load();
-
-                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
@@ -375,6 +376,24 @@ public class HomeController implements Initializable {
             }
             i++;
         }
+    }
+    
+        @FXML
+    public void AddTestClicked(ActionEvent event) throws IOException {
+        EditTestItemController cont = new EditTestItemController();
+
+        cont.type=1;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditTestItem.fxml"));
+        loader.setController(cont);
+//        mainAnchor = loader.load();
+        cont.type=1;
+        Stage stage = new Stage();
+        stage.setTitle("My New Stage Title");
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
+
+//        pnl_scroll.getChildren().add(FXMLLoader.load(getClass().getResource("EditItem.fxml")));
     }
     
 

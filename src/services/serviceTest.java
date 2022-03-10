@@ -4,6 +4,7 @@
  */
 package services;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,12 +19,16 @@ import util.MyConnection;
  * @author karim
  */
 public class serviceTest {
-    public void ajouterTest(Test t) {
-     String request = "INSERT INTO `test`(`titre`, `description`) VALUES ('"+t.getTitre()+"','"+t.getDescription()+"')";
+    public void add(Object u) {
+        Test t = (Test)u;
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
-             st.executeUpdate(request);
-              System.out.println("Test ajoutee avec succes");
+            String req = "INSERT INTO `test`(`titre`, `description`) VALUES (?,?)";
+            PreparedStatement ps = new MyConnection().getConnection().prepareStatement(req);
+            ps.setString(1, t.getTitre());
+            ps.setString(2, t.getDescription());
+          
+            ps.executeUpdate();
+            System.out.println("Test Ajoutée");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -61,33 +66,37 @@ public class serviceTest {
     }
    
 
-    public void supprimerTest(Test t) {
-String request2="DELETE FROM `test` WHERE `id`='"+t.getId()+"'";
-        try{
-              Statement st=new MyConnection().getCnx().createStatement();
-              st.executeUpdate(request2);
-              
-              System.out.println("Test supprimé avec succès");
-           
-        }
-        catch(SQLException ex){  
-            System.err.println(ex.getMessage());
-        }     }
-
-    
-    public void modifierTest(Test t,int id) {
- try{      
-      String request3="UPDATE `test` SET `nom`='"+t.getTitre()+"',`email`='"+t.getDescription()+"' WHERE `id` = "+id ; 
-         
-        Statement st=new MyConnection().getCnx().createStatement();
-       st.executeUpdate(request3);
-        System.out.println("test modifie avec succes");
    
-     }
-     catch(SQLException ex){
-     System.err.println(ex.getMessage());
-     }    
-    
+    public boolean update(Object u) {
+        try {
+            String req = "update `test` SET `titre`=?,`description`=? where id = ?";
+            PreparedStatement ps = new MyConnection().getConnection().prepareStatement(req);
+            Test t = (Test) u;
+            System.out.println(t.getTitre());
+            ps.setString(1, t.getTitre());
+            ps.setString(2, t.getDescription());
+            ps.setInt(3, t.getId());
+            ps.executeUpdate();
+            
+            System.out.println("Test modifier");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean delete(Object u) {
+        Test e = (Test) u;
+        String req = "delete from test where id = ?";
+        try {
+            PreparedStatement ps = new MyConnection().getConnection().prepareStatement(req);
+            ps.setInt(1, e.getId());
+            ps.executeUpdate();
+            System.out.println("Test supprimer");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
     }
     
     public List getAll() {
@@ -97,13 +106,47 @@ String request2="DELETE FROM `test` WHERE `id`='"+t.getId()+"'";
             Statement st =new MyConnection().getConnection().createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Test e = new Test(rs.getInt(1), rs.getString(2), rs.getString(3) 
-                        );
+                Test e = new Test(rs.getInt(1), rs.getString(2), rs.getString(3));
                 list.add(e);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return list;
+    }
+    public Test getById(int id) {
+        Test t = new Test();
+        try {
+            String req = "SELECT * FROM `test` where id = " + id;
+            // Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Test us = new Test(rs.getInt(1), rs.getString(2), rs.getString(3));
+                t = us;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return t;
+    }
+    
+    public Test getCoursById(int id) {
+        Test t = new Test();
+        try {
+            String req = "SELECT * FROM `test` where coursid = " + id;
+            // Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Test us = new Test(rs.getInt(1), rs.getString(2), rs.getString(3));
+                t = us;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return t;
     }
 }

@@ -62,15 +62,6 @@ serviceTest st = new serviceTest();
     }
 
 
-@FXML
-    private void Modifiertest(ActionEvent event) {    
-        String titre = txtTitre.getText();
-        String decription = txtDescription.getText();
-        Test S = new Test( titre, decription);
-        Test testm = new Test();
-        testm =  (Test) list.getSelectionModel().getSelectedItem();
-        st.modifierTest(S, testm.getId());
-       updatelist();
-    }    
+   
     
 }

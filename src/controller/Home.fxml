@@ -265,6 +265,11 @@
                </padding>
             </Label>
             <JFXButton onAction="#AddClicked" text="Add" />
+            <JFXButton fx:id="btnaddtest" onAction="#AddTestClicked" text="Ajouter un Test" visible="false">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="1263.0" style="-fx-background-radius: 15 15 0 0;">

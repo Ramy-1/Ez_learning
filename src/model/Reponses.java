@@ -12,11 +12,11 @@ public class Reponses {
     
     private int id;
     private String contenu;
-    private questions question;
+    private int question;
     private boolean correct;
     private float note;
 
-    public Reponses(int id, String contenu, questions question, boolean correct, float note) {
+    public Reponses(int id, String contenu, int question, boolean correct, float note) {
         this.id = id;
         this.contenu = contenu;
         this.question = question;
@@ -24,7 +24,7 @@ public class Reponses {
         this.note = note;
     }
 
-    public Reponses(String contenu, questions question, boolean correct, float note) {
+    public Reponses(String contenu, int question, boolean correct, float note) {
         this.contenu = contenu;
         this.question = question;
         this.correct = correct;
@@ -45,7 +45,7 @@ public class Reponses {
         return contenu;
     }
 
-    public questions getQuestion() {
+    public int getQuestion() {
         return question;
     }
 
@@ -66,7 +66,7 @@ public class Reponses {
         this.contenu = contenu;
     }
 
-    public void setQuestion(questions question) {
+    public void setQuestion(int question) {
         this.question = question;
     }
 

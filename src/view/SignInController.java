@@ -138,6 +138,7 @@ public class SignInController implements Initializable {
                         stage2.show();
                         }
                     else if(role.toString().equals("student")){
+                        
                         Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
                         
                         Scene scene = new Scene(root);                   

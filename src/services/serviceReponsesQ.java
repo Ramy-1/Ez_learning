@@ -4,13 +4,17 @@
  */
 package services;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Recruteur;
 import model.Reponses;
 import model.questions;
+import util.DataSource;
 import util.MyConnection;
 
 /**
@@ -18,68 +22,114 @@ import util.MyConnection;
  * @author karim
  */
 public class serviceReponsesQ {
-    public void ajouterReponses(Reponses r) {
-     String request = "INSERT INTO `reponses`(`contenu`, `question`, `correct`, `note`) VALUES ('"+r.getContenu()+"','"+r.getQuestion()+"','"+r.isCorrect()+"','"+r.getNote()+"')";
+    Connection cnx = DataSource.getInstance().getCnx();
+
+    public void add(Object u) {
+        Reponses r = (Reponses) u;
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
-             st.executeUpdate(request);
-              System.out.println("Reponse ajoutee avec succes");
+            String req = "INSERT INTO `Reponses`(`contenu`, `question`, `correct`, `note`) VALUES (?,?,?,?)";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, r.getContenu());
+            ps.setInt(2, r.getQuestion());
+            ps.setBoolean(3, r.isCorrect());
+            ps.setFloat(4, r.getNote());
+          
+            ps.executeUpdate();
+            System.out.println("Reponse Ajoutée");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
 
     }
-/**/
-    public List<Reponses> afficherReponses() {
-    List<Reponses> ListS = new ArrayList<>();
-    String request1 = "SELECT * FROM `reponses`";
+
+    public Object getById(int id) {
+        Reponses r = new Reponses();
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
-            ResultSet rs = st.executeQuery(request1);
-             while (rs.next()){
-               Reponses r = new Reponses();
-               
-                r.setContenu(rs.getString("contenu"));
-                r.setQuestion((questions) rs.getObject("question"));
-                r.setCorrect(rs.getBoolean("correct"));
-                r.setNote(rs.getFloat("note"));
-              
-               ListS.add(r);
-             }
+            String req = "SELECT * FROM `Reponses` where id = " + id;
+            // Statement st = cnx.createStatement();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Reponses us = new Reponses(rs.getInt(1),rs.getString(2),  rs.getInt(3), rs.getBoolean(4), rs.getFloat(5) );
+                r = us;
+            }
         } catch (SQLException ex) {
-     System.err.println(ex.getMessage());
-        }
-    
-        return ListS;
-    }
-   
-
-    public void supprimerReponses(Reponses r) {
-String request2="DELETE FROM `reponses` WHERE `id`='"+r.getId()+"'";
-        try{
-              Statement st=new MyConnection().getCnx().createStatement();
-              st.executeUpdate(request2);
-              
-              System.out.println("Reponses supprimé avec succès");
-           
-        }
-        catch(SQLException ex){  
             System.err.println(ex.getMessage());
-        }     }
-
-    
-    public void modifierReponses(Reponses r,int id) {
- try{      
-      String request3="UPDATE `questions` SET `contenu`='"+r.getContenu()+"',`question`='"+r.isCorrect()+"',`note`='"+r.getNote()+"',`correct`='"+r.getQuestion()+"' WHERE `id` = "+id ; 
-         
- Statement st=new MyConnection().getCnx().createStatement();
-       st.executeUpdate(request3);
-        System.out.println("reponse modifie avec succes");
-   
-     }
-     catch(SQLException ex){
-     System.err.println(ex.getMessage());
-     }    
-    
+        }
+        return r;
     }
+
+    public List getAll() {
+        List<Reponses> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `Reponses`";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Reponses r= new Reponses(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getBoolean(4), rs.getFloat(5) );
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    public boolean update(Object u) {
+        try {
+            String req = "update reponses set contenu = ?, question = ?, correct = ?, note = ? where   id = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            Reponses r = (Reponses) u;
+
+            ps.setString(1, r.getContenu());
+            ps.setInt(2, r.getQuestion());
+            ps.setBoolean(3, r.isCorrect());
+            ps.setFloat(4, r.getNote());
+
+            ps.setInt(5, r.getId());
+            ps.execute();
+            System.out.println("Reponse modifier");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean delete(Object u) {
+        Reponses e = (Reponses) u;
+
+        String req = "delete from Reponses where id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, e.getId());
+            ps.executeUpdate();
+            System.out.println("Reponse supprimer");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+    
+    public List getReponseByQuestion(int id) {
+        
+        List<Reponses> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `reponses` where question ="+ id;
+            // Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Reponses r = new Reponses(rs.getInt(1), rs.getString(2), rs.getInt(3),rs.getBoolean(4),rs.getInt(5));
+                list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        System.out.println(list);
+        return list;
+    }
+    
+    
 }

@@ -21,7 +21,8 @@
             <Button layoutX="549.0" layoutY="221.0" mnemonicParsing="false" onAction="#ItemClicked" style="-fx-border-color: #2A73FF; -fx-background-color: transparent; -fx-border-radius: 20;" text="Button" />
             <Label layoutX="549.0" layoutY="29.0" text="Duration" />
             <Label layoutX="417.0" layoutY="29.0" text="Added" />
-            <Label layoutX="468.0" layoutY="29.0" text="Label" />
+            <Label fx:id="createdfield" layoutX="468.0" layoutY="29.0" text="Label" />
+            <Label fx:id="durationfield" layoutX="603.0" layoutY="29.0" text="Label" />
          </children>
       </Pane>
    </children>

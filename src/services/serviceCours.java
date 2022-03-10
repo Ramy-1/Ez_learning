@@ -421,7 +421,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
     public Object getById(int id) {
         Enseignant u = new Enseignant();
         try {
-            String req = "SELECT * FROM `Enseignant` where id = " + id;
+            String req = "SELECT * FROM `cours` where id = " + id;
             // Statement st = cnx.createStatement();
             Statement st = myConnection.createStatement();
             ResultSet rs = st.executeQuery(req);
@@ -456,6 +456,7 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         }
         return list;
     }
+     
 }
 
 

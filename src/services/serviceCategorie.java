@@ -110,5 +110,22 @@ String request2="DELETE FROM `categorie` WHERE `idcat`='"+id+"'";
         }
         return list;
     }
-    
+    public List getDomaine(String s) {
+        List<Categorie> list = new ArrayList<>();
+  
+        try {
+            String req = "SELECT * FROM `categorie` where domaine='"+s+"'";
+            // Statement st = cnx.createStatement();
+            Statement st = myConnection.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Categorie e = new Categorie(rs.getInt(1), rs.getString(2), rs.getString(3));
+                list.add(e);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
 }

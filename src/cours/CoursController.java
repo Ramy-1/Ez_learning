@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,6 +39,7 @@ import util.MyConnection;
 public class CoursController implements Initializable {
     public Connection myConnection = MyConnection.getInstance2();
     serviceCours sC =new serviceCours();
+ 
     serviceCategorie sCt =new serviceCategorie();
     @FXML
     private ScrollPane scroll;
@@ -48,6 +50,14 @@ public class CoursController implements Initializable {
     private Button btnFilter;
       @FXML
     private ComboBox comboFilter;
+      @FXML
+    private Button btnIt;
+      @FXML
+    private Button btnMarketing;
+      @FXML
+    private Button btnDev;
+      @FXML
+    private Button btnDesign;
 
     /**
      * Initializes the controller class.
@@ -55,7 +65,7 @@ public class CoursController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        setData();
+       // setData();
         pnl_scroll.setSpacing(5);
          List<Cours> listU = sC.getAll();
         // TODO
@@ -97,6 +107,48 @@ int i = 0;
            i++;
         }
 
+    }
+    public void handClicks(ActionEvent events){
+         if (events.getSource() == btnIt) {
+               List<Categorie> listC = sCt.getDomaine("IT");
+       
+                comboFilter.getItems().clear();
+                Node[] nodes = new Node[listC.size()];
+            for (Categorie each : listC) {
+                comboFilter.getItems().add(listC.get(i));
+                i++;
+            }
+         }
+         if (events.getSource() == btnDev) {
+             List<Categorie> listC = sCt.getDomaine("Dev");
+       
+                comboFilter.getItems().clear();
+                Node[] nodes = new Node[listC.size()];
+            for (Categorie each : listC) {
+                comboFilter.getItems().add(listC.get(i));
+                i++;
+            }
+         }
+         if (events.getSource() == btnMarketing) {
+             List<Categorie> listC = sCt.getDomaine("Marketing");
+       
+                comboFilter.getItems().clear();
+                Node[] nodes = new Node[listC.size()];
+            for (Categorie each : listC) {
+                comboFilter.getItems().add(listC.get(i));
+                i++;
+            }
+         }
+         if (events.getSource() == btnDesign) {
+             List<Categorie> listC = sCt.getDomaine("Design");
+       
+                comboFilter.getItems().clear();
+                Node[] nodes = new Node[listC.size()];
+            for (Categorie each : listC) {
+                comboFilter.getItems().add(listC.get(i));
+                i++;
+            }
+         }
     }
     public void getCoursByCategorie() {
         Categorie categorie = (Categorie) comboFilter.getSelectionModel().getSelectedItem();

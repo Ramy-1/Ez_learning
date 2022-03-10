@@ -244,9 +244,7 @@ public class EditItemController implements Initializable {
             x.setId(u.getId());
             sU.update(x);
         }
-        // HomeController Close = new HomeController();
-        // Close.reload(event);
-        // //LOGOUT ***
+
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

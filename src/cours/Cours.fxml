@@ -12,7 +12,7 @@
    <children>
       <ScrollPane fx:id="scroll" layoutX="5.0" layoutY="190.0" prefHeight="420.0" prefWidth="707.0" styleClass="primary-color">
          <content>
-            <VBox fx:id="pnl_scroll" prefHeight="384.0" prefWidth="709.0" styleClass="primary-color" />
+            <VBox fx:id="pnl_scroll" prefHeight="374.0" prefWidth="709.0" styleClass="primary-color" />
          </content>
          <padding>
             <Insets top="30.0" />
@@ -24,7 +24,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnIt" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="IT&amp;Software" textFill="#e7e5e5">
+                  <Button fx:id="btnIt" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handClicks" prefHeight="42.0" prefWidth="122.0" text="IT&amp;Software" textFill="#e7e5e5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -33,7 +33,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnDesign" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="Deign" textFill="#e7e5e5">
+                  <Button fx:id="btnDesign" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handClicks" prefHeight="42.0" prefWidth="122.0" text="Deign" textFill="#e7e5e5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -42,7 +42,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnMarketing" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="Marketing" textFill="#e7e5e5">
+                  <Button fx:id="btnMarketing" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handClicks" prefHeight="42.0" prefWidth="122.0" text="Marketing" textFill="#e7e5e5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -51,7 +51,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="btnOverview3" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="Developement" textFill="#e7e5e5">
+                  <Button fx:id="btnDev" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handClicks" prefHeight="42.0" prefWidth="122.0" text="Developement" textFill="#e7e5e5">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
