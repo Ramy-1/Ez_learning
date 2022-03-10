@@ -87,7 +87,7 @@ public class SendMailController implements Initializable {
         String Suj = subject.getText();
         String Body = body.getText();
         String mail = this.mail.getText();
-        sU.getAll().stream().forEach(x -> new SendEmail(x, Suj, Body));
+//        sU.getAll().stream().forEach(x -> new SendEmail(x, Suj, Body));
     }
 
 }

@@ -4,6 +4,8 @@
  */
 package view;
 
+import co.yogesh.Captcha;
+
 import helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +63,8 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+             
+         
     }
 
     private boolean isValidated() {
@@ -87,6 +91,8 @@ public class SignInController implements Initializable {
         }
         return false;
     }
+    
+    
 
     public void SignIn(ActionEvent event) throws IOException, NoSuchAlgorithmException {
         if (this.isValidated()) {
