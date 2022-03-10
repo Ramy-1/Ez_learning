@@ -69,6 +69,10 @@ public class Evenement {
         this.nbrParticipant = nbrParticipant;
     }
 
+    public Evenement(String text, String text0, Date valueOf, String text1, String text2, int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     public int getIdEvent() {

@@ -22,7 +22,7 @@ public class societe {
     }
 
     public societe(User u) {
-        this.idsoc = String.valueOf(u.getId());
+        this.idsoc = String.valueOf(u.getPhone());
         this.nom = u.getNom();
         this.email = u.getEmail();
         this.adresse = "";
@@ -39,7 +39,7 @@ public class societe {
         this.mdpsoc = mdpsoc;
     }
 
-   
+
     public int getIds() {
         return ids;
     }

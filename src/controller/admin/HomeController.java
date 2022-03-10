@@ -5,6 +5,7 @@
  */
 package controller.admin;
 
+import TTS.TextToSpeech;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -52,7 +53,6 @@ import model.societe;
 import services.serviceSociete;
 import services.serviceUniversite;
 
-
 /**
  *
  * @author oXCToo
@@ -64,8 +64,8 @@ public class HomeController implements Initializable {
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
 
-   serviceReclamation srr =new serviceReclamation();
-   serviceSociete ssoc = new serviceSociete();
+    serviceReclamation srr = new serviceReclamation();
+    serviceSociete ssoc = new serviceSociete();
     serviceUniversite sUn = new serviceUniversite();
 
     @FXML
@@ -76,12 +76,12 @@ public class HomeController implements Initializable {
     private Label lbl_completed;
     @FXML
     private ScrollPane Scrollepane;
-    
+
     @FXML
     private Circle mi;
     @FXML
     private Circle re;
-    private double lastX,lastY,lastWidth,lastHeight;
+    private double lastX, lastY, lastWidth, lastHeight;
     @FXML
     private Circle close1;
 
@@ -242,7 +242,6 @@ public class HomeController implements Initializable {
 
     }
 
-
     private void boxifyVBoxes() {
         // styles used for vboxes
         Background focusBackground = new Background(new BackgroundFill(Color.BLUEVIOLET, CornerRadii.EMPTY, Insets.EMPTY));
@@ -267,7 +266,7 @@ public class HomeController implements Initializable {
 
         }
     }
-    
+
     private void ListUniversiteClicked(ActionEvent event) {
 //        pnl_scroll.getChildren().clear();
 //
@@ -294,72 +293,70 @@ public class HomeController implements Initializable {
 //            i++;
 //        }
     }
-    
-    @FXML
-    public void closeWindow(){
-          System.exit(0);
-    }
-    
-    @FXML
-    public void ReWindow(){
-        re.setOnMouseClicked(events -> {
-          Node n = (Node)events.getSource(); 
- 
-      Window w = n.getScene().getWindow(); 
- 
-      double currentX = w.getX(); 
-      double currentY = w.getY(); 
-      double currentWidth = w.getWidth(); 
-      double currentHeight = w.getHeight(); 
 
-      Screen screen = Screen.getPrimary(); 
-      Rectangle2D bounds = screen.getVisualBounds(); 
- 
-       if( currentX != bounds.getMinX() && 
-         currentY != bounds.getMinY() && 
-         currentWidth != bounds.getWidth() && 
-         currentHeight != bounds.getHeight() ) { 
- 
-         w.setX(bounds.getMinX()); 
-         w.setY(bounds.getMinY()); 
-         w.setWidth(bounds.getWidth()); 
-         w.setHeight(bounds.getHeight()); 
- 
-         lastX = currentX;  // save old dimensions 
-         lastY = currentY; 
-         lastWidth = currentWidth; 
-         lastHeight = currentHeight; 
-        
- 
-       } else { 
- 
-         // de-maximize the window (not same as minimize) 
- 
-         w.setX(lastX); 
-         w.setY(lastY); 
-         w.setWidth(lastWidth); 
-         w.setHeight(lastHeight); 
-          
-      }
-         });
-    }
     @FXML
-    public void MiWindow(){
-         mi.setOnMouseClicked(events -> {
-             Node n = (Node)events.getSource(); 
- 
-      Window w = n.getScene().getWindow(); 
-      
-          Stage stage = (Stage) w;
+    public void closeWindow() {
+        System.exit(0);
+    }
+
+    @FXML
+    public void ReWindow() {
+        re.setOnMouseClicked(events -> {
+            Node n = (Node) events.getSource();
+
+            Window w = n.getScene().getWindow();
+
+            double currentX = w.getX();
+            double currentY = w.getY();
+            double currentWidth = w.getWidth();
+            double currentHeight = w.getHeight();
+
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            if (currentX != bounds.getMinX()
+                    && currentY != bounds.getMinY()
+                    && currentWidth != bounds.getWidth()
+                    && currentHeight != bounds.getHeight()) {
+
+                w.setX(bounds.getMinX());
+                w.setY(bounds.getMinY());
+                w.setWidth(bounds.getWidth());
+                w.setHeight(bounds.getHeight());
+
+                lastX = currentX;  // save old dimensions 
+                lastY = currentY;
+                lastWidth = currentWidth;
+                lastHeight = currentHeight;
+
+            } else {
+
+                // de-maximize the window (not same as minimize) 
+                w.setX(lastX);
+                w.setY(lastY);
+                w.setWidth(lastWidth);
+                w.setHeight(lastHeight);
+
+            }
+        });
+    }
+
+    @FXML
+    public void MiWindow() {
+        mi.setOnMouseClicked(events -> {
+            Node n = (Node) events.getSource();
+
+            Window w = n.getScene().getWindow();
+
+            Stage stage = (Stage) w;
 
             stage.setIconified(true);
-         });
+        });
     }
-    
 
     @FXML
     private void RClicked(ActionEvent event) {
-   pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         List<Reclamation> listR = srr.afficherReclamation();
         Node[] nodes = new Node[listR.size()];
@@ -382,26 +379,29 @@ public class HomeController implements Initializable {
             }
             i++;
         }
-    
-    }
 
+    }
 
     @FXML
     private void UniversiteClicked(ActionEvent event) {
     }
-
 
     @FXML
     private void EvenementClicked(ActionEvent event) {
     }
 
     @FXML
-    private void SendEmailClicked(ActionEvent event) {
+    private void SendEmailClicked(ActionEvent event) throws IOException {
+        pnl_scroll.getChildren().clear();
+
+        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/component/sendMail.fxml")));
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     @FXML
     private void Societeclick(ActionEvent event) {
-    pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         List<societe> listSoc = ssoc.afficherSociete();
         Node[] nodes = new Node[listSoc.size()];
@@ -426,6 +426,21 @@ public class HomeController implements Initializable {
         }
     }
 
+
+    @FXML
+    private void LogOutClcked(ActionEvent event) {
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void EditProfile(ActionEvent event) {
+    }
+
+    @FXML
+    private void Blindmode(ActionEvent event) {
+        TextToSpeech tts = new TextToSpeech();
+        tts.speak("Blind mode");
+    }
 }
-
-

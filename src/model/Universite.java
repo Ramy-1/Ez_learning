@@ -40,7 +40,16 @@ public class Universite {
         this.id = id;
     }
 
+    public Universite(int ids, String idUni, String nom, String email, String adresse, String imguni, String mdpuni) {
+        this.idUni = idUni;
+        this.id = ids;
 
+        this.nom = nom;
+        this.email = email;
+        this.adresse = adresse;
+        this.imguni = imguni;
+        this.mdpuni = mdpuni;
+    }
 
     public Universite(String idUni, String nom, String email, String adresse, String imguni, String mdpuni) {
         this.idUni = idUni;
@@ -118,7 +127,5 @@ public class Universite {
     public String toString() {
         return "Universite{" + "idUni=" + idUni + ", nom=" + nom + ", email=" + email + ", adresse=" + adresse + ", imguni=" + imguni + ", mdpuni=" + mdpuni + '}';
     }
-    
-    
-    
+
 }

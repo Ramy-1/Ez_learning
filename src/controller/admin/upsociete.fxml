@@ -53,6 +53,9 @@
             <TextField fx:id="email_societe" layoutX="53.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
             <TextField fx:id="adresse_societe" layoutX="580.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
             <PasswordField fx:id="mdp_societe" layoutX="299.0" layoutY="139.0" prefHeight="25.0" prefWidth="182.0" />
+            <TextField fx:id="pathimg" layoutX="580.0" layoutY="48.0" prefHeight="25.0" prefWidth="182.0" />
+            <Button layoutX="735.0" layoutY="48.0" mnemonicParsing="false" onAction="#uploadlogo" prefHeight="25.0" prefWidth="27.0" />
+            <Label layoutX="531.0" layoutY="52.0" prefHeight="17.0" prefWidth="56.0" text="LOGO:" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

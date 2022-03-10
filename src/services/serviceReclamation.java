@@ -104,7 +104,7 @@ public class serviceReclamation implements IReclamation {
     public void supprimerReclamation(Reclamation R) {
      String request2="DELETE FROM `reclamation` WHERE `description`='"+R.getDescription()+"'";
         try{
-              Statement st=new MyConnection().getCnx().createStatement();
+              Statement st=cnx.createStatement();
               st.executeUpdate(request2);
               
               System.out.println("Reclamation supprimé avec succès");

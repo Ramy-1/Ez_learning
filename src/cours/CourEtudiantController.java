@@ -4,7 +4,7 @@
  */
 package cours;
 
-import controller.admin.HomeController;
+//import controller.HomeController;
 import cours.ItemController;
 import java.io.IOException;
 import java.net.URL;
@@ -67,7 +67,7 @@ public class CourEtudiantController implements Initializable {
    Button btnIt;
    
    
-    HomeController HomeController = new HomeController();
+    
     /**
      * Initializes the controller class.
      */

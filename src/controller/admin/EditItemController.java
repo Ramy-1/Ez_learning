@@ -18,12 +18,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import static javafx.scene.input.KeyCode.U;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Enseignant;
 import model.Etudiant;
@@ -94,8 +96,15 @@ public class EditItemController implements Initializable {
     private Label LabelScore;
 
     File file;
+    @FXML
+    private Label LabelBanq;
+    @FXML
+    private Label LablePhone;
+    @FXML
+    private Button btnupload;
 
     void roleController(Role r) {
+        btnupload.setVisible(false);
         switch (r) {
             case etudiant:
                 file = new File("src/controller/admin/images/student.jpg");
@@ -176,13 +185,17 @@ public class EditItemController implements Initializable {
                 file = new File("src/controller/adminimages/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 //                LabelSection.setText("Universite");
-                prenom.setVisible(false);
-                carteBancaire.setVisible(false);
+//                prenom.setVisible(false);
+//                carteBancaire.setVisible(false);
                 LabelSection.setVisible(false);
                 section.setVisible(false);
                 LabelScore.setVisible(false);
                 score.setVisible(false);
-                phone.setVisible(false);
+//                phone.setVisible(false);
+                LablePhone.setText("idsoc");
+                LabelBanq.setText("img");
+                labelPrenom.setText("addresse");
+                btnupload.setVisible(true);
 
 //                LabelScore.setText("Universite");
 //                labelNom.setText("Titre");
@@ -220,7 +233,7 @@ public class EditItemController implements Initializable {
         }
         // typeUser.setItems(types);
         typeBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-             System.out.println(newValue);
+            System.out.println(newValue);
             roleEnum = roleEnum.value(newValue.toString());
             System.out.println("role = " + roleEnum.toString());
             roleController(roleEnum);
@@ -233,7 +246,6 @@ public class EditItemController implements Initializable {
     @FXML
     private void confirmClicked(ActionEvent event) throws IOException {
         User x = new User();
-        phone.setText("0");
         x.setNom(nom.getText());
         x.setPrenom(prenom.getText());
         x.setPhone(Integer.parseInt(phone.getText()));
@@ -276,6 +288,7 @@ public class EditItemController implements Initializable {
                     sU.add(x);
                     break;
                 case universite:
+                    phone.setText("0");
                     Universite un = new Universite(x);
                     System.out.println("uni = " + un);
                     sU.add(new User(un));
@@ -284,8 +297,13 @@ public class EditItemController implements Initializable {
                     break;
                 case societe:
                     societe s = new societe(x);
-                    System.out.println("s = " + s);
+                    System.out.println("s = " + s + "/  "
+                            + "x = " + x);
                     sU.add(new User(s));
+                    s.setIdsoc(phone.getText());
+                    s.setAdresse(prenom.getText());
+                    s.setImgsoc(carteBancaire.getText());
+                    System.out.println("s = " + s);
                     serviceSociete sS = new serviceSociete();
                     sS.ajouterSociete(s);
                     break;
@@ -303,6 +321,14 @@ public class EditItemController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void uploadfile(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("choisissez le logo de la societe");
+        File file = fc.showOpenDialog(null);
+        carteBancaire.setText(file.getName());
     }
 
 }

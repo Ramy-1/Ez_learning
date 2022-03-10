@@ -4,8 +4,7 @@
  */
 package cours;
 
-
-import controller.admin.HomeController;
+import controller.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -46,7 +45,7 @@ public class CoursController implements Initializable {
     serviceCategorie sCt =new serviceCategorie();
     private ScrollPane scroll;
     private VBox pnl_scroll;
-    
+
     private ComboBox comboFilter;
     HomeController homeController = new HomeController();
     @FXML
@@ -93,7 +92,7 @@ public class CoursController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -123,7 +122,7 @@ int i = 0;
                 nodes[i] = (Node) loader.load();
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -133,7 +132,7 @@ int i = 0;
     @FXML
     private void EnvoyerReclamation(ActionEvent event) {
     }
-   
+
     
     
     

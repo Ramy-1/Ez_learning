@@ -4,8 +4,7 @@
  */
 package cours;
 
-
-import controller.admin.HomeController;
+//import controller.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +30,7 @@ public class ItemCoursController implements Initializable {
     Label labelTitreItem;
     @FXML 
     Label labelDescriptionItem;
-    HomeController homeController = new HomeController();
+    
     Cours c;
     /**
      * Initializes the controller class.

@@ -48,7 +48,7 @@ public class ItemController implements Initializable {
     private Label Username;
 
     String test;
-    User U;
+    public User U;
     @FXML
     private Label prenom;
     @FXML
