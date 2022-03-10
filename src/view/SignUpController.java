@@ -4,6 +4,8 @@
  */
 package view;
 
+import co.yogesh.Captcha;
+
 import helper.AlertHelper;
 import static java.awt.SystemColor.window;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +23,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javax.swing.JLabel;
 import model.Etudiant;
 import model.Role;
 import model.User;
@@ -55,6 +61,14 @@ public class SignUpController implements Initializable {
     private PasswordField txtmdp1;
 
     Window window;
+    @FXML
+    private JLabel captchalabel;
+    @FXML
+    private TextField captchaInput;
+    @FXML
+    private TextField txtnom1;
+    @FXML
+    private ImageView captchagenerate;
 
     /**
      * Initializes the controller class.
@@ -62,8 +76,13 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        Captcha cap = new Captcha();
+//// label = new JLabel();
+//        cap.setImageCaptcha(captchalabel);
+//        captchagenerate.setImage(SwingFXUtils.toFXImage(NewFXMain.iconToImage(captchalabel.getIcon()), null));
     }
 
+    @FXML
     public void Signup(ActionEvent event) throws IOException {
 
         if (this.isValidated()) {
