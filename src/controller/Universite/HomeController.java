@@ -5,10 +5,12 @@
  */
 package controller.Universite;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -92,11 +94,17 @@ public class HomeController implements Initializable {
     private void closeWindow(MouseEvent event) {
     }
     
-    @FXML
     private void LogOutClcked(ActionEvent event) {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void SendmailClicked(ActionEvent event) throws IOException {
+        pnl_scroll.getChildren().clear();
+
+        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/component/sendMail.fxml")));
     }
     
 }
