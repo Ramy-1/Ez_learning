@@ -5,6 +5,7 @@
  */
 package controller.admin;
 
+import TTS.TextToSpeech;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -425,22 +426,21 @@ public class HomeController implements Initializable {
         }
     }
 
-    @FXML
-    private void OffreClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void DemandeClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void AddOffreClicked(ActionEvent event) {
-    }
 
     @FXML
     private void LogOutClcked(ActionEvent event) {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void EditProfile(ActionEvent event) {
+    }
+
+    @FXML
+    private void Blindmode(ActionEvent event) {
+        TextToSpeech tts = new TextToSpeech();
+        tts.speak("Blind mode");
     }
 }
