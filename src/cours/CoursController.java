@@ -4,7 +4,7 @@
  */
 package cours;
 
-import controller.HomeController;
+//import controller.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -81,7 +81,7 @@ public class CoursController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
 
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -111,7 +111,7 @@ int i = 0;
                 nodes[i] = (Node) loader.load();
                 pnl_scroll.getChildren().add(nodes[i]);
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }

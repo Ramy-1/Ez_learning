@@ -133,14 +133,14 @@ public class ItemController implements Initializable {
         }
         
         if (U.getRole() == Role.universite) {
-            Universite e = (Universite) U;
-            File file = new File("src/dashboard/images/teacher.png");
-            Img.setImage(new Image(file.toURI().toString()));
-            LabelSection.setText("Universite");
-           prenom.setVisible(false);
-            LabelScore.setText("Universite");
-            labelNom.setText("Titre");
-            labelNom.setStyle("display:none;");
+            Universite un = new Universite(U);
+                File file = new File("src/controller/adminimages/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+                LabelSection.setText("Universite");
+                prenom.setVisible(false);
+                LabelScore.setText("Universite");
+                labelNom.setText("Titre");
+                
         }
         if (U.getRole() == Role.empty) {
             LabelScore.setVisible(false);
@@ -160,8 +160,6 @@ public class ItemController implements Initializable {
     private void DeleteClicked(ActionEvent event) throws IOException {
         sU.delete(U);
 
-        HomeController Close = new HomeController();
-        Close.reload(event);
 
     }
 
@@ -184,7 +182,7 @@ public class ItemController implements Initializable {
         stage.setTitle("My New Stage Title");
         stage.setScene(new Scene(loader.load()));
         stage.show();
-        HomeController Close = new HomeController();
+       
 //        Close.reload(event);
 //        Parent root = FXMLLoader.load(getClass().getResource("EditItem.fxml"));
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
