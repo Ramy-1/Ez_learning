@@ -202,6 +202,29 @@ public class ServiceUser implements IService<User> {
         }
         return false;
     }
+    
+    public boolean updatePAssword(String mail , String password) {
+//        System.out.println(u);
+        String req = "update user set pwd = ? where email = ? ";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+//            ps.setInt(7, u.getId());
+//            ps.setString(1, /u.getNom());
+//            ps.setString(2, u.getPrenom());
+//            ps.setInt(3, u.getPhone());
+            ps.setString(1, password);
+            ps.setString(2, mail);
+//            ps.setString(6, u.getCarte_banq());
+
+            ps.executeUpdate();
+            System.out.println("User modifier" );
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
 
     @Override
     public boolean delete(User u) {

@@ -166,31 +166,5 @@ public class ServiceEns {
         }
         return false;
     }
-  public Enseignant getByMail(String mail) {
-        Enseignant u = new Enseignant();
-        try {
-            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
-
-            String req = "SELECT * FROM `Enseignant` WHERE email = '" + mail + "'";
-            Statement st = cnx.createStatement();
-
-            // String req = "SELECT * FROM `user` WHERE email = ? ";
-            // PreparedStatement ps = cnx.prepareStatement(req);
-            // ps.setString(1, mail);
-            // System.out.println(req);
-            // System.out.println("*******");
-            ResultSet rs = st.executeQuery(req);
-
-            while (rs.next()) {
-                Enseignant us = new Enseignant(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
-                u = us;
-                // System.out.println(u);
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return u;
-    }
+ 
 }

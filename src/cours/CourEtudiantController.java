@@ -104,7 +104,7 @@ public class CourEtudiantController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
               //  scroll.getContent()
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }
@@ -164,7 +164,7 @@ public class CourEtudiantController implements Initializable {
                 pnl_scroll.getChildren().add(nodes[i]);
               //  scroll.getContent()
             } catch (IOException ex) {
-                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
             i++;
         }

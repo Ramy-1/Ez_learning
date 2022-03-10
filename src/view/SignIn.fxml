@@ -45,6 +45,14 @@
             <Insets left="12.0" top="10.0" />
          </VBox.margin>
       </Button>
+      <Button fx:id="loginButton1" mnemonicParsing="false" onAction="#forgetClicked" prefHeight="38.0" prefWidth="197.0" styleClass="blue-btn" text="Mot de pass oublier ?" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Button>
    </children>
    <stylesheets>
       

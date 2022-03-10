@@ -43,24 +43,26 @@ public class User {
     }
 
     public void resetPassword() {
+//        User u = new User();
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[20];
         random.nextBytes(bytes);
         String token = bytes.toString();
 
-        SendEmail mail = new SendEmail(this, "Password reset", "this is your token \n" + token);
-        System.out.println("Donner le token");
-        Scanner in = new Scanner(System.in);
-        String sent = in.nextLine();
-        if (sent.equals(token)) {
-            System.out.println("Verifier");
-            System.out.println("Donner le nouveaux mot de pass");
-            String mdp = in.nextLine();
-            this.pwd = mdp;
-            sU.update(this);
-        } else {
-            System.out.println("Non Verifier");
-        }
+//        SendEmail mail = new SendEmail(this, "Password reset", "this is your token \n" + token);
+//        System.out.println("Donner le token");
+//        Scanner in = new Scanner(System.in);
+//        String sent = in.nextLine();
+//        if (sent.equals(token)) {
+//            System.out.println("Verifier");
+//            System.out.println("Donner le nouveaux mot de pass");
+//            String mdp = in.nextLine();
+            this.setPwd(token);
+            System.out.println("USER = "+this);
+            sU.updatePAssword(this.email,token);
+//        } else {
+//            System.out.println("Non Verifier");
+//        }
     }
 
     public boolean Login(String mail, String password) throws NoSuchAlgorithmException {

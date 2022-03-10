@@ -4,7 +4,7 @@
  */
 package cours;
 
-import controller.HomeController;
+//import controller.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -47,7 +47,7 @@ public class CoursController implements Initializable {
     private VBox pnl_scroll;
 
     private ComboBox comboFilter;
-    HomeController homeController = new HomeController();
+//    HomeController homeController = new HomeController();
     @FXML
     private Button boutonEnvoyer;
     @FXML

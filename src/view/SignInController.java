@@ -5,6 +5,7 @@
 package view;
 
 import co.yogesh.Captcha;
+import component.SendEmail;
 
 import helper.AlertHelper;
 import java.io.IOException;
@@ -56,6 +57,8 @@ public class SignInController implements Initializable {
     Window window;
 
     private double x, y;
+    @FXML
+    private Button loginButton1;
 
     /**
      * Initializes the controller class.
@@ -91,6 +94,7 @@ public class SignInController implements Initializable {
         return false;
     }
 
+    @FXML
     public void SignIn(ActionEvent event) throws IOException, NoSuchAlgorithmException {
         if (this.isValidated()) {
             PreparedStatement ps;
@@ -286,5 +290,12 @@ public class SignInController implements Initializable {
             // System.out.println(ex);
             // }
         }
+    }
+
+    @FXML
+    private void forgetClicked(ActionEvent event) {
+        User u = new User();
+        u.setEmail(username.getText());
+        u.resetPassword();
     }
 }
