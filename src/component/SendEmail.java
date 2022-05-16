@@ -9,7 +9,7 @@ package component;
  *
  * @author mrram
  */
-import com.mysql.cj.Session;
+//import com.mysql.cj.Session;
 import java.net.PasswordAuthentication;
 import java.util.*;
 import javax.mail.*;
@@ -34,9 +34,9 @@ public class SendEmail {
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
                 });
 
         try {

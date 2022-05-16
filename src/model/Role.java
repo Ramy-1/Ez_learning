@@ -22,24 +22,25 @@ public enum Role {
 
     public static Role value(String x) {
 
+    
         Role r;
         switch (x.toLowerCase()) {
-            case "enseignant":
+            case "role_enseignant":
                 r = enseignant;
                 break;
-            case "etudiant":
+            case "role_etudiant":
                 r = etudiant;
                 break;
             case "recruteur":
                 r = Recruteur;
                 break;
-            case "admin":
+            case "role_admin":
                 r = admin;
                 break;
-            case "universite":
+            case "role_universite":
                 r = universite;
                 break;
-            case "societe":
+            case "role_societe":
                 r = societe;
                 break;
 
