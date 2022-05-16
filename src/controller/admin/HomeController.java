@@ -46,6 +46,8 @@ import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
 
+import services.servicereponse;
+import model.reponse;
 import services.serviceReclamation;
 import model.Reclamation;
 import model.societe;
@@ -63,6 +65,8 @@ public class HomeController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
+    
+       servicereponse sepr =new servicereponse();
 
    serviceReclamation srr =new serviceReclamation();
    serviceSociete ssoc = new serviceSociete();
@@ -388,6 +392,30 @@ public class HomeController implements Initializable {
 
     @FXML
     private void UniversiteClicked(ActionEvent event) {
+     pnl_scroll.getChildren().clear();
+
+        List<reponse> listRep = sepr.afficherReponse();
+        Node[] nodes = new Node[listRep.size()];
+        int i = 0;
+
+        for (reponse each : listRep) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseRec.fxml"));
+            ReclamationController cont = new ReclamationController();
+            try {
+                cont.R = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+    
     }
 
 
