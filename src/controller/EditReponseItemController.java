@@ -5,6 +5,7 @@
 package controller;
 
 import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -59,7 +60,8 @@ public class EditReponseItemController implements Initializable {
         
         
        comboQuestion.getSelectionModel().select(Q);
-        if(type==1){}
+        if(type==1){
+        }
         if(type==2){
             contenu.setText(R.getContenu());
             note.setText(String.valueOf(R.getNote()));
@@ -85,7 +87,7 @@ public class EditReponseItemController implements Initializable {
         else{
             tc.setCorrect(false);
         }
-        tc.setNote(parseFloat(note.getText()));
+        tc.setNote(parseInt(note.getText()));
         
         
         if(type==1){

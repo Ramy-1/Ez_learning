@@ -51,7 +51,8 @@ public class DashboardController implements Initializable {
     public BorderPane parent;
     public Button btnMesCours;
     public Button btnCours;
-   public Button btnOffre;
+    public Button btnOffre;
+    public Button btnReclamation;
     
     @FXML
     public Button btnBack;
@@ -219,8 +220,8 @@ public class DashboardController implements Initializable {
 
         }
         if (actionEvent.getSource() == btnTest) {
-              FxmlLoaderForm object =new FxmlLoaderForm();
-              Pane view = object.getPage("TestAdmin");
+              FxmlLoaderCours object =new FxmlLoaderCours();
+              Pane view = object.getPage("TestAll");
               System.out.println(view);
               parent.setCenter(view);
         }
@@ -236,6 +237,14 @@ public class DashboardController implements Initializable {
             
             FxmlLoaderCours object =new FxmlLoaderCours();
               Node view = object.getPage("Cours");              
+              System.out.println(view);
+              parent.setCenter(view);
+        }
+        if (actionEvent.getSource() == btnReclamation) {
+              FxmlLoaderCours object =new FxmlLoaderCours();
+              Node view = object.getPage("courEtudiant"); 
+              view.setLayoutX(20);
+              view.setLayoutY(50);
               System.out.println(view);
               parent.setCenter(view);
         }

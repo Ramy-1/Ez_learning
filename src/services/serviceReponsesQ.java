@@ -51,7 +51,7 @@ public class serviceReponsesQ {
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                Reponses us = new Reponses(rs.getInt(1),rs.getString(2),  rs.getInt(3), rs.getBoolean(4), rs.getFloat(5) );
+                Reponses us = new Reponses(rs.getInt(1),rs.getString(2),  rs.getInt(3), rs.getBoolean(4), rs.getInt(5) );
                 r = us;
             }
         } catch (SQLException ex) {
@@ -67,7 +67,7 @@ public class serviceReponsesQ {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Reponses r= new Reponses(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getBoolean(4), rs.getFloat(5) );
+                Reponses r= new Reponses(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getBoolean(4), rs.getInt(5) );
                 list.add(r);
             }
         } catch (SQLException ex) {
@@ -115,13 +115,13 @@ public class serviceReponsesQ {
         
         List<Reponses> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `reponses` where question ="+ id;
+            String req = "SELECT * FROM `reponses` where question_id="+ id;
             // Statement st = cnx.createStatement();
             Statement st = new MyConnection().getConnection().createStatement();
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                Reponses r = new Reponses(rs.getInt(1), rs.getString(2), rs.getInt(3),rs.getBoolean(4),rs.getInt(5));
+                Reponses r = new Reponses(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getBoolean(4),rs.getInt(5));
                 list.add(r);
             }
         } catch (SQLException ex) {
@@ -131,5 +131,32 @@ public class serviceReponsesQ {
         return list;
     }
     
+    
+     public Reponses getReponseByQuestionAndContent(int id,String contenu) {
+        
+        List<Reponses> list = new ArrayList<>();
+        Reponses r =new Reponses();
+        try {
+            String req = "SELECT * FROM `reponses` where question_id="+id+" AND contenu="+"'"+contenu+"'";
+            //System.out.println(req);
+            // Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                r.setId(rs.getInt(1));
+                r.setQuestion(rs.getInt(2));
+                r.setContenu(rs.getString(3));
+                r.setCorrect(rs.getBoolean(4));
+                r.setNote(rs.getInt(5));
+             //   Reponses r = new Reponses(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getBoolean(4),rs.getInt(5));
+               // list.add(r);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        System.out.println(list);
+        return r;
+    }
     
 }

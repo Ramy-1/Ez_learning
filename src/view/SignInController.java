@@ -66,20 +66,20 @@ public class SignInController implements Initializable {
 
         window = loginButton.getScene().getWindow();
         if (username.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Username text field cannot be blank.");
+         //   AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+             //       "Username text field cannot be blank.");
             username.requestFocus();
         } else if (username.getText().length() < 5 || username.getText().length() > 25) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Username text field cannot be less than 5 and greator than 25 characters.");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+            //        "Username text field cannot be less than 5 and greator than 25 characters.");
             username.requestFocus();
         } else if (password.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Password text field cannot be blank.");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+             //       "Password text field cannot be blank.");
             password.requestFocus();
         } else if (password.getText().length() < 5 || password.getText().length() > 25) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Password text field cannot be less than 5 and greator than 25 characters.");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+           //         "Password text field cannot be less than 5 and greator than 25 characters.");
             password.requestFocus();
         } else {
             return true;
@@ -92,7 +92,7 @@ public class SignInController implements Initializable {
             PreparedStatement ps;
             ResultSet rs;
 
-            String query = "select * from user WHERE email = ? and pwd = ?";
+            String query = "select * from user WHERE email = ? and password = ?";
             try {
                 PreparedStatement pst= new MyConnection().getConnection().prepareStatement(query);
                 pst.setString(1, username.getText());
@@ -109,7 +109,7 @@ public class SignInController implements Initializable {
                     Object role = rs.getObject(colind);
                     System.out.println(role);
                     Stage stage2 = new Stage();
-                    if(role.toString().equals("admin")){
+                    if(role.toString().equals("['ROLE_ADMIN']")){
                         Parent root = FXMLLoader.load(getClass().getResource("/controller/Home.fxml"));
                         /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/components/dashboard.fxml"));
                            BorderPane borderpane = (BorderPane) loader.load();
@@ -137,7 +137,7 @@ public class SignInController implements Initializable {
                         });
                         stage2.show();
                         }
-                    else if(role.toString().equals("student")){
+                    else if(role.toString().equals("['ROLE_ETUDIANT']")){
                         
                         Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
                         
@@ -161,8 +161,8 @@ public class SignInController implements Initializable {
                     }
                       // Parent root = FXMLLoader.load(getClass().getResource("/view/MainPanelView.fxml"));
                 } else {
-                    AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                            "Verifier votre email et mot de passe.");
+              //      AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                //            "Verifier votre email et mot de passe.");
                     username.requestFocus();
                 }
             } catch (SQLException ex) {

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author karim
  */
 public class MyConnection {
-    private String url ="jdbc:mysql://localhost:3306/ez";
+    private String url ="jdbc:mysql://localhost:3306/ezit";
     private String login = "root";
     private String password = "";
     Connection connection;

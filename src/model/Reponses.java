@@ -11,12 +11,20 @@ package model;
 public class Reponses {
     
     private int id;
-    private String contenu;
     private int question;
+    private String contenu;
     private boolean correct;
-    private float note;
+    private int note;
 
-    public Reponses(int id, String contenu, int question, boolean correct, float note) {
+    public Reponses(int id, int question, String contenu, boolean correct, int note) {
+        this.id = id;
+        this.question = question;
+        this.contenu = contenu;
+        this.correct = correct;
+        this.note = note;
+    }
+
+    public Reponses(int id, String contenu, int question, boolean correct, int note) {
         this.id = id;
         this.contenu = contenu;
         this.question = question;
@@ -24,7 +32,7 @@ public class Reponses {
         this.note = note;
     }
 
-    public Reponses(String contenu, int question, boolean correct, float note) {
+    public Reponses(String contenu, int question, boolean correct, int note) {
         this.contenu = contenu;
         this.question = question;
         this.correct = correct;
@@ -53,7 +61,7 @@ public class Reponses {
         return correct;
     }
 
-    public float getNote() {
+    public int getNote() {
         return note;
     }
     
@@ -74,7 +82,7 @@ public class Reponses {
         this.correct = correct;
     }
 
-    public void setNote(float note) {
+    public void setNote(int note) {
         this.note = note;
     }
     

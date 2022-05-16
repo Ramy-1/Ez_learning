@@ -18,7 +18,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import model.Cours;
+import model.ResultatReponse;
 import model.Test;
+import services.serviceResultatReponse;
 import services.serviceTest;
 
 /**
@@ -33,6 +35,7 @@ public class TestAllController implements Initializable {
     @FXML
     private VBox pnl_scroll;
     serviceTest st =new serviceTest();
+    serviceResultatReponse srr =new serviceResultatReponse();
     /**
      * Initializes the controller class.
      */
@@ -40,14 +43,19 @@ public class TestAllController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          pnl_scroll.setSpacing(5);
-                 List<Test> listU = st.getAll();
+         
+                 List<Test> listU = st.getAllStudent();
                  
         Node[] nodes = new Node[listU.size()];
         int i = 0;
+        int success=0;
         for (Test each : listU) {
+            ResultatReponse r= srr.getFinalByUserAndTest(1, each.getId());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cours/ItemTest.fxml"));
             ItemTestController cont = new ItemTestController();
             try {
+                success=each.getSuccess_score();
+               // if (r.getFinale()< success){ cont.hide=1;}
                 cont.t=each;
                 loader.setController(cont);
                 nodes[i] = (Node) loader.load();

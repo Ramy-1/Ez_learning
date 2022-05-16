@@ -27,12 +27,14 @@ public class FinalProject extends Application {
        private double x, y;
     @Override
     public void start(Stage primaryStage) throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("/quiz/QuizAll.fxml"));        
-        Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
+      //Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"/*"/controller/Home.fxml"*/));        
+              Parent root = FXMLLoader.load(getClass().getResource(/*"/main/Main.fxml"*/"/controller/Home.fxml"));        
+
+      Scene scene = new Scene(root);
+        //scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
-         primaryStage.initStyle(StageStyle.UNDECORATED);
-         primaryStage.initStyle(StageStyle.TRANSPARENT);
+        // primaryStage.initStyle(StageStyle.UNDECORATED);
+        // primaryStage.initStyle(StageStyle.TRANSPARENT);
          root.setOnMousePressed(events -> {
                             x = events.getSceneX();
                             y = events.getSceneY();

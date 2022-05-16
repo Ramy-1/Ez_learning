@@ -114,6 +114,24 @@ public class serviceTest {
         }
         return list;
     }
+    
+    public List getAllStudent() {
+        List<Test> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `test`";
+            Statement st =new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Test e = new Test(rs.getInt(1),rs.getInt(2),rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                 rs.getString(7),rs.getString(8),rs.getString(9), rs.getString(10), rs.getInt(11));
+                list.add(e);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+    
     public Test getById(int id) {
         Test t = new Test();
         try {

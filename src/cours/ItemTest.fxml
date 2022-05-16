@@ -21,7 +21,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#ItemClicked" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@style.css" text="Start">
+            <Button fx:id="btntest" mnemonicParsing="false" onAction="#ItemClicked" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@style.css" text="Start">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

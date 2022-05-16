@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="quiz.QuizAllController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane fx:id="Scrollepane" layoutX="10.0" layoutY="40.0" prefHeight="568.0" prefWidth="1071.0" style="-fx-background-color: #fff;">
          <content>
             <VBox fx:id="pnl_scroll" prefHeight="588.0" prefWidth="1061.0" spacing="20.0" style="-fx-background-color: #fff;" />
          </content>
       </ScrollPane>
+      <ButtonBar layoutX="14.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#submittest" text="Button" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

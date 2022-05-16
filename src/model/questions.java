@@ -10,33 +10,39 @@ package model;
  */
 public class questions {
     private int id;
+     private int testid;
     private String contenu;
-    private int testid;
-    private Reponses reponses;
-    private int responsecorrect;
-    private float note;
+    private String description;
+    private String support;
+    private String supportUpdatedAt;
+    private String type;
 
-    public questions(int id, String contenu, int testid, Reponses reponses, int responsecorrect, float note) {
+    public questions(int id, int testid, String contenu, String description, String support, String supportUpdatedAt, String type) {
         this.id = id;
-        this.contenu = contenu;
         this.testid = testid;
-        this.reponses = reponses;
-        this.responsecorrect = responsecorrect;
-        this.note = note;
+        this.contenu = contenu;
+        this.description = description;
+        this.support = support;
+        this.supportUpdatedAt = supportUpdatedAt;
+        this.type = type;
     }
 
-    public questions(String contenu, int testid, Reponses reponses) {
-        this.contenu = contenu;
-        this.testid = testid;
-        this.reponses = reponses;
-    }
-
-    public questions(int id, String contenu, int testid) {
+    public questions(int id, int testid, String contenu, String support, String supportUpdatedAt, String type) {
         this.id = id;
-        this.contenu = contenu;
         this.testid = testid;
+        this.contenu = contenu;
+        this.support = support;
+        this.supportUpdatedAt = supportUpdatedAt;
+        this.type = type;
     }
 
+    public questions(int id, int testid, String contenu) {
+        this.id = id;
+        this.testid = testid;
+        this.contenu = contenu;
+    }
+
+    
     public questions(int id, String contenu) {
         this.id = id;
         this.contenu = contenu;
@@ -61,18 +67,6 @@ public class questions {
         this.testid = testid;
     }
 
-    
-   
-
-    public void setResponsecorrect(int responsecorrect) {
-        this.responsecorrect = responsecorrect;
-    }
-
-    public void setNote(float note) {
-        this.note = note;
-    }
-    
-
     public String getContenu() {
         return contenu;
     }
@@ -81,25 +75,41 @@ public class questions {
         return testid;
     }
 
+    public String getSupport() {
+        return support;
+    }
+
+    public void setSupport(String support) {
+        this.support = support;
+    }
+
+    public String getSupportUpdatedAt() {
+        return supportUpdatedAt;
+    }
+
+    public void setSupportUpdatedAt(String supportUpdatedAt) {
+        this.supportUpdatedAt = supportUpdatedAt;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     
 
-    public void setReponses(Reponses reponses) {
-        this.reponses = reponses;
-    }
-
-    public Reponses getReponses() {
-        return reponses;
-    }
-
    
-    public int getResponsecorrect() {
-        return responsecorrect;
-    }
-
-    public float getNote() {
-        return note;
-    }
-
     @Override
     public String toString() {
         return  contenu  ;

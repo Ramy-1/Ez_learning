@@ -11,20 +11,71 @@ package model;
 public class ResultatReponse {
     private int id;
     private int reponseid;
-    private float notereponse;
-    private int question;
+    private int questionid;
+    private int userid;
+    private int testid;
+    private boolean iscorrect;
+    private int note;
+    private int finale;
 
     public ResultatReponse(int id, int reponseid, float notereponse, int question) {
         this.id = id;
         this.reponseid = reponseid;
-        this.notereponse = notereponse;
-        this.question=question;
+       
     }
 
+    public ResultatReponse(int userid, int testid, int finale) {
+        this.userid = userid;
+        this.testid = testid;
+        this.finale = finale;
+    }
+
+    public ResultatReponse(int reponseid, int questionid, int userid, int testid, boolean iscorrect, int note) {
+        this.reponseid = reponseid;
+        this.questionid = questionid;
+        this.userid = userid;
+        this.testid = testid;
+        this.iscorrect = iscorrect;
+        this.note = note;
+    }
+
+    public ResultatReponse(int reponseid, int questionid, int userid, int testid, boolean iscorrect, int note, int finale) {
+        this.reponseid = reponseid;
+        this.questionid = questionid;
+        this.userid = userid;
+        this.testid = testid;
+        this.iscorrect = iscorrect;
+        this.note = note;
+        this.finale = finale;
+    }
+
+    public ResultatReponse(int id, int reponseid, int questionid, int userid, int testid, boolean iscorrect, int note, int finale) {
+        this.id = id;
+        this.reponseid = reponseid;
+        this.questionid = questionid;
+        this.userid = userid;
+        this.testid = testid;
+        this.iscorrect = iscorrect;
+        this.note = note;
+        this.finale = finale;
+    }
+    
+    
+
+    public ResultatReponse(int id, int reponseid, int questionid, int userid, int testid, boolean iscorrect, int finale) {
+        this.id = id;
+        this.reponseid = reponseid;
+        this.questionid = questionid;
+        this.userid = userid;
+        this.testid = testid;
+        this.iscorrect = iscorrect;
+        this.finale = finale;
+    }
+
+    
     public ResultatReponse(int reponseid, float notereponse, int question) {
         this.reponseid = reponseid;
-        this.notereponse = notereponse;
-        this.question=question;
+
     }
     
 
@@ -39,13 +90,7 @@ public class ResultatReponse {
         return reponseid;
     }
 
-    public float getNotereponse() {
-        return notereponse;
-    }
-
-    public int getQuestion() {
-        return question;
-    }
+  
     
     public void setId(int id) {
         this.id = id;
@@ -55,13 +100,55 @@ public class ResultatReponse {
         this.reponseid = reponseid;
     }
 
-    public void setNotereponse(float notereponse) {
-        this.notereponse = notereponse;
+    public int getQuestionid() {
+        return questionid;
     }
 
-    public void setQuestion(int question) {
-        this.question = question;
+    public void setQuestionid(int questionid) {
+        this.questionid = questionid;
     }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public int getTestid() {
+        return testid;
+    }
+
+    public void setTestid(int testid) {
+        this.testid = testid;
+    }
+
+    public boolean isIscorrect() {
+        return iscorrect;
+    }
+
+    public void setIscorrect(boolean iscorrect) {
+        this.iscorrect = iscorrect;
+    }
+
+    public int getFinale() {
+        return finale;
+    }
+
+    public void setFinale(int finale) {
+        this.finale = finale;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
+   
     
     
     

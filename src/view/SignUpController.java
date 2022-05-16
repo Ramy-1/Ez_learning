@@ -74,8 +74,8 @@ public class SignUpController implements Initializable {
                 pst.setString(6, "student");
                
                 pst.executeUpdate();
-                AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
-                            "register avec succee.");
+              //  AlertHelper.showAlert(Alert.AlertType.INFORMATION, window, "Information",
+               //             "register avec succee.");
                 Stage stage = (Stage) signupbtn.getScene().getWindow();
                     stage.close();
 
@@ -99,40 +99,40 @@ public class SignUpController implements Initializable {
 
         window = signupbtn.getScene().getWindow();
         if (txtemail.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Entree votre email.");
+            //AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                //    "Entree votre email.");
             txtemail.requestFocus();
         }  else if (txtmdp.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Entree votre mot de passe");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+            //        "Entree votre mot de passe");
             txtmdp.requestFocus();
             
         }else if (!txtmdp.getText().equals(txtmdp1.getText())) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Mot de passe different");
+           // AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                //    "Mot de passe different");
             txtmdp1.requestFocus();
         }
          else if (txtnom.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Entree votre nom");
+           // AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                //    "Entree votre nom");
             txtnom.requestFocus();
             
         }
           else if (txtprenom.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Entree votre prenom");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+              //      "Entree votre prenom");
             txtprenom.requestFocus();
             
         }
            else if (txttel.getText().equals("")) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Entree votre numero de telephone");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+            //        "Entree votre numero de telephone");
             txttel.requestFocus();
             
         }
         else if (txtmdp.getText().length() < 5 || txtmdp.getText().length() > 25) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "Mot de passe doit etre supperieure à 5 caracteres.");
+          //  AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+             //       "Mot de passe doit etre supperieure à 5 caracteres.");
             txtmdp.requestFocus();
         } else {
             return true;

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -32,7 +33,9 @@ public class ItemTestController implements Initializable {
     private Label labelDescriptionItem;
     @FXML
     private Label labeltime;
+    private Button btntest;
     Test t;
+    int hide;
 
     /**
      * Initializes the controller class.
@@ -42,7 +45,9 @@ public class ItemTestController implements Initializable {
         // TODO
         labelTitreItem.setText(t.getTitre());
         labelDescriptionItem.setText(t.getDescription());
-        
+        if (hide==1){
+                btntest.setVisible(false);
+        }
     }    
 
     @FXML
@@ -52,7 +57,8 @@ public class ItemTestController implements Initializable {
          cont.T = this.t;
        
 //        mainAnchor = loader.load();
-        
+       // System.out.println(cont.T.getId());
+       loader.setController(cont);
         Stage stage = new Stage();
         stage.setTitle("Quiz");
         stage.setScene(new Scene(loader.load()));

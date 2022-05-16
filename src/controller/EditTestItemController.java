@@ -5,12 +5,16 @@
 package controller;
 
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Enseignant;
@@ -31,6 +35,14 @@ public class EditTestItemController implements Initializable {
     private TextField titre;
     @FXML
     private TextField description;
+    @FXML
+    private TextField score;
+    @FXML
+    private Button upload;
+    @FXML
+    private DatePicker datedebut;
+    @FXML
+    private DatePicker datefin;
     
     Test t;
     serviceTest sT= new serviceTest();
@@ -55,10 +67,14 @@ public class EditTestItemController implements Initializable {
         Test tc = new Test();
         tc.setTitre(titre.getText());
         tc.setDescription(description.getText());
+        tc.setBeginAt(datedebut.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        tc.setEndAt(datefin.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        tc.setSuccess_score(parseInt(score.getText()));
         
         
         if(type==1){
             sT.add(tc);
+            System.out.println("test ajouter");
         }
         if(type==2){
             tc.setId(t.getId());
@@ -69,5 +85,6 @@ public class EditTestItemController implements Initializable {
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
+    
     
 }

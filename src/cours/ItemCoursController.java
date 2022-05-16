@@ -23,7 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import mediaplayer.MediaPlayerController;
+//import mediaplayer.MediaPlayerController;
 import model.Cours;
 import services.serviceEtudiantCours;
 
@@ -52,6 +52,7 @@ public class ItemCoursController implements Initializable {
         // TODO
         Date date = c.getDatecreate();  
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+                System.out.println(date);
                 String strDate = dateFormat.format(date); 
         labelTitreItem.setText(c.getTitre());
        labelDescriptionItem.setText(c.getDescription()); 

@@ -15,11 +15,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Universite.HomeController">
    <children>
       <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="224.0" layoutY="47.0" text="Ez-learning" textFill="WHITE">
+            <Label layoutX="224.0" layoutY="47.0" text="Universite" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font>
@@ -49,24 +49,6 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#listUserClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List utilisateur" textFill="#5b5858">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projects.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEtudiantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Etudiant" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -103,7 +85,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListRecruteurClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListCourClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Cours" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -118,7 +100,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Recruteur" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="****" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -156,7 +138,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ajoutCourCLicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Ajout Cours" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -171,7 +153,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Team" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -186,7 +168,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Parameters" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Log Out" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>

@@ -133,7 +133,7 @@ public class ItemController implements Initializable {
         }
         
         if (U.getRole() == Role.universite) {
-            Universite e = (Universite) U;
+           // Universite e = (Universite) U;
             File file = new File("src/dashboard/images/teacher.png");
             Img.setImage(new Image(file.toURI().toString()));
             LabelSection.setText("Universite");

@@ -92,7 +92,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        Scrollepane.gets
-        refreshNodes();
+        //refreshNodes();
     }
 
     private void refreshNodes() {
@@ -282,7 +282,7 @@ public class HomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
             ItemController cont = new ItemController();
             try {
-                cont.U = each;
+               // cont.U = each;
                 loader.setController(cont);
                 nodes[i] = (Node) loader.load();
                 pnl_scroll.getChildren().add(nodes[i]);
@@ -357,7 +357,7 @@ public class HomeController implements Initializable {
     private void ListTestClicked(ActionEvent event) {
         pnl_scroll.getChildren().clear();
         btnaddtest.setVisible(true);
-        List<Test> listT = sT.getAll();
+        List<Test> listT = sT.getAllStudent();
         System.out.println(listT);
         Node[] nodes = new Node[listT.size()];
         int i = 0;

@@ -28,7 +28,7 @@ import util.MyConnection;
  */
 public class serviceUniversite implements IUniversite {
 
-    
+
     public Connection myConnection = MyConnection.getInstance2();
        public     ObservableList<Universite>obList = FXCollections.observableArrayList();
 
@@ -50,16 +50,16 @@ public class serviceUniversite implements IUniversite {
         try {
             Statement st = myConnection.createStatement();
             ResultSet rs = st.executeQuery(request1);
-             while (rs.next()){
-               Universite U= new Universite();
-              /* U.setIdUni(rs.getInt("idUni"));
+            while (rs.next()) {
+                Universite U = new Universite();
+                U.setIdUni(rs.getString("idUni"));
                 U.setNom(rs.getString("nom"));
                 U.setEmail(rs.getString("email"));
                 U.setAdresse(rs.getString("adresse"));
                 U.setImguni(rs.getString("imgUni"));
-                U.setMdpuni(rs.getString("mdpUni"));*/
-               obList.add(U);
-             }
+                U.setMdpuni(rs.getString("mdpUni"));
+                obList.add(U);
+            }
         } catch (SQLException ex) {
      System.err.println(ex.getMessage());
         }
@@ -136,7 +136,7 @@ public class serviceUniversite implements IUniversite {
             Statement st = myConnection.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Universite e = new Universite(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                Universite e = new Universite(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5),
                         rs.getString(6), rs.getString(7));
                 list.add(e);

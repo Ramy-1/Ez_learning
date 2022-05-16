@@ -35,46 +35,28 @@
       <Label fx:id="labelformateur" layoutX="934.0" layoutY="279.0" text="Label" />
       <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="60.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="153.0">
                <children>
                   <Label fx:id="cours" text="22000" textFill="#2a73ff">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelcours" text="Total Orders" textFill="#e7e5e5" />
+                  <Label fx:id="labelcours" prefHeight="17.0" prefWidth="111.0" text="Nombre des cours Total" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="finish" text="1500" textFill="#26bfbc">
+                  <Label fx:id="testnumber" text="1500" textFill="#26bfbc">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelfinish" text="Total delivered" textFill="#e7e5e5" />
+                  <Label fx:id="labelfinish" text="Nombre des Tests" textFill="#e7e5e5" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label fx:id="test" text="1000" textFill="#fa5f7e">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labeltest" text="Peding Orders" textFill="#e7e5e5" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label text="780" textFill="#de0000">
-                     <font>
-                        <Font name="System Bold" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label text="Orders on Hold" textFill="#e7e5e5" />
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </HBox>
       <TextField fx:id="fieldSearch" layoutX="834.0" layoutY="35.0" style="-fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-background-color: transparent;" />

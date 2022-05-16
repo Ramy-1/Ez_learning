@@ -4,7 +4,7 @@
  */
 package cours;
 
-import com.jfoenix.controls.JFXRadioButton;
+//import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.Reponses;
 import model.ResultatReponse;
+import model.Test;
 import model.questions;
 import services.serviceReponsesQ;
 import services.serviceResultatReponse;
@@ -28,7 +34,7 @@ import services.serviceResultatReponse;
  */
 public class QuizItemController implements Initializable {
 
-    @FXML
+    /*@FXML
     private Text qNo;
     @FXML
     private Text questions;
@@ -47,94 +53,68 @@ public class QuizItemController implements Initializable {
     serviceReponsesQ srq= new serviceReponsesQ();
     int size=0;
     final int i=0;
-    serviceResultatReponse srr= new serviceResultatReponse();
+    serviceResultatReponse srr= new serviceResultatReponse();*/
+    @FXML
+    private Label txtTitre;
+    @FXML
+    private Label txtDescription;
+    @FXML
+    private Text qNo;
+    @FXML
+    private VBox vbox;
+    Test test;
+    questions q;
+    int i;
     serviceReponsesQ srQ= new serviceReponsesQ();
+    serviceResultatReponse srr =new serviceResultatReponse();
+    ToggleGroup toggleGroup = new ToggleGroup();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        int i=0;
-        questions.setText(q.getContenu());
+        
+        System.out.println(q.getContenu());
+        String titre = q.getContenu();
+        txtTitre.setText(q.getContenu());
+        txtDescription.setText(q.getDescription());
+        qNo.setText("Q."+i);
+        getReponsesByQuestion();
        
-            qNo.setText(String.valueOf(size));
-        
-        
-       List<Reponses> listr =srq.getReponseByQuestion(q.getId());
-        int size = listr.size();
-        
-        if(size==0){
-              b1.setVisible(false);
-              b2.setVisible(false);
-              b3.setVisible(false);
-              b4.setVisible(false);
-          }
-        
-       for(Reponses each : listr){
-           
-           System.out.println( );
-           /*btnadd.setOnAction(e -> {
-             
-            });*/
-          if(size==1){
-              b1.setText(listr.get(i).getContenu());
-              b2.setVisible(false);
-              b3.setVisible(false);
-              b4.setVisible(false);
-          }
-          if(size==2){
-              
-              b1.setText(listr.get(i).getContenu());
-              b2.setText(listr.get(i+1).getContenu());
-              b3.setVisible(false);
-              b4.setVisible(false);
-          }
-          if(size==3){
-               b1.setText(listr.get(i).getContenu());
-              b2.setText(listr.get(i+1).getContenu());
-              b3.setText(listr.get(i+2).getContenu());
-              b4.setVisible(false);
-          }
-          if(size==4){
-              b1.setText(listr.get(i).getContenu());
-              b2.setText(listr.get(i+1).getContenu());
-              b3.setText(listr.get(i+2).getContenu());
-              b4.setText(listr.get(i+3).getContenu());
-          }
-         
-       }
-    
-        
-    }    
-
-    @FXML
-    private void groupAction(ActionEvent event) {
     }
-    
-    @FXML
-    private void add(ActionEvent event) {
+    private void getReponsesByQuestion() {
+        System.out.println(q);
         List<Reponses> listr = srQ.getReponseByQuestion(q.getId());
+        System.out.println(q.getType());
         
+
         for(Reponses each: listr){
-            ResultatReponse rr= new ResultatReponse();
-        
-                rr.setReponseid(each.getId());
-                if(b1.isSelected()){
-                    rr.setNotereponse(each.getNote());
-                }
-                if(b2.isSelected()){
-                    rr.setNotereponse(each.getNote());
-                }
-                if(b3.isSelected()){
-                    rr.setNotereponse(each.getNote());
-                }
-                if(b4.isSelected()){
-                    rr.setNotereponse(each.getNote());
-                }
-                rr.setQuestion(each.getQuestion());
-                srr.add(rr);
+            String type = q.getType();
+            if("Multiple".equals(type)){
+                CheckBox chb=  new CheckBox(each.getContenu());
+                //chb.set
+          vbox.getChildren();
+          vbox.getChildren().add(chb);
+            }
+            else{
+                 ToggleGroup g = new ToggleGroup();
+               
+                RadioButton rb= new RadioButton(each.getContenu());
+                rb.setToggleGroup(toggleGroup);
+                vbox.getChildren().add(rb);
+            }
+          
         }
+    }
+    @FXML
+    private void Repondre(ActionEvent event) {
+        toggleGroup.getSelectedToggle();
+        RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
+        String toogleGroupValue = selectedRadioButton.getText();
+        System.out.println(toogleGroupValue);
+       Reponses rep= srQ.getReponseByQuestionAndContent(q.getId(), toogleGroupValue);
+       srr.AddReponse(rep.getId(), rep.getQuestion(), test.getId(), 1, rep.isCorrect(), rep.getNote());
     }
     
 }

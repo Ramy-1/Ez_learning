@@ -97,13 +97,13 @@ public class EditQuestionItemController implements Initializable {
         if(type==2){
             tc.setId(q.getId());
             sQ.update(tc);
-             AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "mod");
+            /* AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                    "mod");*/
         }
         if(type==1){
             sQ.add(tc);
-             AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                    "add");
+            /* AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
+                    "add");*/
         }
          
         final Node source = (Node) event.getSource();

@@ -34,6 +34,7 @@ import model.Universite;
 import model.User;
 import services.ServiceEns;
 import services.serviceCours;
+import services.serviceTest;
 
 /**
  * FXML Controller class
@@ -54,6 +55,10 @@ public class CourEtudiantController implements Initializable {
    @FXML
    public Label labelTitre;
    @FXML
+   public Label cours;
+   @FXML
+   public Label testnumber;
+   @FXML
    public Text labeldescription;
    @FXML
    public Label labelformateur;
@@ -66,15 +71,18 @@ public class CourEtudiantController implements Initializable {
    @FXML
    Button btnIt;
    
-   
-    
+   serviceCours sc=new serviceCours();
+    serviceTest st = new serviceTest();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pnl_scroll.setSpacing(5);
-       
+       int number = sc.getAll().size();
+       int numtest=st.getAll().size();
+       cours.setText(Integer.toString(number));
+       testnumber.setText(Integer.toString(numtest));
          List<Cours> listU = sC.getAll();
         // TODO
        // refreshNodes();

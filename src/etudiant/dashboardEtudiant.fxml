@@ -52,7 +52,7 @@
                         <Image url="@../icon/11.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" top="20.0" />
+                        <Insets left="20.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Button fx:id="btnAccuiel" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="51.0" prefWidth="71.0" style="-fx-cursor: hand;" text="Accuiel" textFill="WHITE">
@@ -69,7 +69,7 @@
                         <Image url="@../icon/12.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" top="20.0" />
+                        <Insets left="20.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Button fx:id="btnMesCours" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="82.0" style="-fx-cursor: hand;" text="Mes Cours" textFill="WHITE">
@@ -86,7 +86,7 @@
                         <Image url="@../icon/14.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
+                        <Insets left="20.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
                   <Button fx:id="btnCours" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" text="Cours" textFill="WHITE" />
@@ -99,7 +99,7 @@
                         <Image url="@../icon/13.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
+                        <Insets left="20.0" top="10.0" />
                      </HBox.margin>
                   </ImageView>
                   <Button fx:id="btnTest" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="74.0" text="Mes Test" textFill="WHITE" />
@@ -107,7 +107,18 @@
             </HBox>
             <HBox prefHeight="42.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnOffre" mnemonicParsing="false" text="Offre" />
+                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/17_s.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Button fx:id="btnReclamation" mnemonicParsing="false" text="Reclamation">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>

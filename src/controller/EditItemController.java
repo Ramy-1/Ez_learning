@@ -5,7 +5,7 @@
  */
 package controller;
 
-import com.jfoenix.controls.JFXComboBox;
+//import com.jfoenix.controls.JFXComboBox;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -85,11 +85,11 @@ public class EditItemController implements Initializable {
     private TextField psw;
     ObservableList types = FXCollections.observableArrayList(
             "Apple", "Banana", "Pear", "Strawberry", "Peach", "Orange", "Plum");
-    private JFXComboBox<String> typeUser = new JFXComboBox<String>(types);
+  //  private JFXComboBox<String> typeUser = new JFXComboBox<String>(types);
     int type = 0;
     @FXML
-    private JFXComboBox<?> type2;
-    @FXML
+  //  private JFXComboBox<?> type2;
+  //  @FXML
     private ComboBox<?> typeBox;
     Role roleEnum = Role.empty;
 

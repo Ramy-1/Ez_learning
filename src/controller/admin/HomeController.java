@@ -94,7 +94,7 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        Scrollepane.gets
-        refreshNodes();
+       // refreshNodes();
     }
 
     private void refreshNodes() {
@@ -426,6 +426,23 @@ public class HomeController implements Initializable {
         }
     }
 
+    @FXML
+    private void OffreClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void DemandeClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void AddOffreClicked(ActionEvent event) {
+    }
+@FXML
+    private void LogOutClcked(ActionEvent event) {
+        final Node source = (Node) event.getSource();
+        final Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 }
 
 

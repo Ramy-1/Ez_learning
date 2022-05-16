@@ -131,8 +131,8 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         int iduni = rs.getInt("idcat");
         boolean etat = rs.getBoolean("etat");
         if(iduni ==idcat) {
-                    Cours c = new Cours(titre, desc, duree, date,etat);
-        list.add(c);
+        /*            Cours c = new Cours(titre, desc, duree, date,etat);
+        list.add(c);*/
 
         }
         
@@ -350,8 +350,8 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
         int duree  = rs.getInt("duree");
         int iduni = rs.getInt("idcat");
         boolean etat = rs.getBoolean("etat");
-                    Cours c = new Cours(titre, desc, duree, date,etat);
-        list.add(c);
+         /*           Cours c = new Cours(titre, desc, duree, date,etat);
+        list.add(c);*/
         
 
         
@@ -371,11 +371,11 @@ String request2="DELETE FROM `cours` WHERE `id`='"+id+"'";
             Statement st = myConnection.createStatement();
         st.executeUpdate(request3);
         
-        if(c.isEtat() == true)
+        /* if(c.isEtat() == true)
         System.out.println("cours activé");
    
         else
-            System.out.println("cours desactivé");
+            System.out.println("cours desactivé");*/
      }
      catch(SQLException ex){
      System.err.println(ex.getMessage());

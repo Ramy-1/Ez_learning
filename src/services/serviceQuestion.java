@@ -139,7 +139,7 @@ public class serviceQuestion {
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                questions us = new questions(rs.getInt(1), rs.getString(2),  rs.getInt(3));
+                questions us = new questions(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
                 q = us;
             }
         } catch (SQLException ex) {
@@ -151,18 +151,40 @@ public class serviceQuestion {
         
         List<questions> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `questions` where testid ="+ id;
+            String req = "SELECT * FROM `questions` WHERE `test_id`="+ id;
             // Statement st = cnx.createStatement();
             Statement st = new MyConnection().getConnection().createStatement();
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                questions q = new questions(rs.getInt(1), rs.getString(2), rs.getInt(3));
+                questions q = new questions(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
                 list.add(q);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+        
+        return list;
+    }
+    
+    
+    public List getByTestIdStudent(int id) {
+        
+        List<questions> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `questions` WHERE `test_id`="+id;
+            // Statement st = cnx.createStatement();
+            Statement st = new MyConnection().getConnection().createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                questions q = new questions(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                list.add(q);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
         
         return list;
     }

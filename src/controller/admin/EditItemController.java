@@ -29,12 +29,15 @@ import model.Enseignant;
 import model.Etudiant;
 import model.Recruteur;
 import model.Role;
+import static model.Role.societe;
 import model.Universite;
 import model.User;
+import model.societe;
 import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import services.serviceSociete;
 import services.serviceUniversite;
 
 /**
@@ -91,15 +94,19 @@ public class EditItemController implements Initializable {
     private Label LabelScore;
 
     File file;
+    @FXML
+    private Label LabelBanq;
+    @FXML
+    private Label LablePhone;
 
     void roleController(Role r) {
         switch (r) {
             case etudiant:
-                file = new File("src/controler/admin/images/student.jpg");
+                file = new File("src/controller/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Etudiant e = new Etudiant(U);
-                e = new Etudiant(sE.getById(U.getId()));
+                e = new Etudiant((User) sE.getById(U.getId()));
 
                 LabelSection.setText("Section");
                 section.setText(e.getSection());
@@ -111,11 +118,11 @@ public class EditItemController implements Initializable {
                 break;
 
             case Recruteur:
-                file = new File("src/controler/admin/images/recruitment.png");
+                file = new File("src/controller/admin/images/recruitment.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Recruteur rec = new Recruteur(U);
-                rec = sR.getById(U.getId());
+                rec = (Recruteur) sR.getById(U.getId());
 
                 LabelSection.setText("Societe");
                 section.setText(rec.getsociete());
@@ -127,8 +134,8 @@ public class EditItemController implements Initializable {
             case enseignant:
                 Enseignant en = new Enseignant(U);
 
-                en = sEn.getById(U.getId());
-                file = new File("src/controler/admin/images/teacher.png");
+                en = (Enseignant) sEn.getById(U.getId());
+                file = new File("src/controller/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 LabelSection.setText("Section");
@@ -142,7 +149,7 @@ public class EditItemController implements Initializable {
 
             case admin:
 
-                file = new File("src/controler/adminimages/admin.png");
+                file = new File("src/controller/admin/images/admin.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 U.setRole(Role.admin);
@@ -152,15 +159,41 @@ public class EditItemController implements Initializable {
                 score.setVisible(false);
                 break;
 
-            // case universite:
-            // Universite e = (Universite) U;
-            // File file = new File("src//controler/adminimages/teacher.png");
-            // Img.setImage(new Image(file.toURI().toString()));
-            // LabelSection.setText("Universite");
-            // prenom.setVisible(false);
-            // LabelScore.setText("Universite");
-            // labelNom.setText("Titre");
-            // break;
+            case universite:
+//                Universite uni = Universite (U);
+                file = new File("src/controller/adminimages/teacher.png");
+                Img.setImage(new Image(file.toURI().toString()));
+//                LabelSection.setText("Universite");
+                prenom.setVisible(false);
+                carteBancaire.setVisible(false);
+                LabelSection.setVisible(false);
+                section.setVisible(false);
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+                phone.setVisible(false);
+
+//                LabelScore.setText("Universite");
+//                labelNom.setText("Titre");
+                break;
+            case societe:
+//                Universite uni = Universite (U);
+                file = new File("src/controller/adminimages/admin.png");
+                Img.setImage(new Image(file.toURI().toString()));
+//                LabelSection.setText("Universite");
+//                prenom.setVisible(false);
+//                carteBancaire.setVisible(false);
+                LabelSection.setVisible(false);
+                section.setVisible(false);
+                LabelScore.setVisible(false);
+                score.setVisible(false);
+//                phone.setVisible(false);
+                LablePhone.setText("idsoc");
+                LabelBanq.setText("img");
+                labelPrenom.setText("addresse");
+
+//                LabelScore.setText("Universite");
+//                labelNom.setText("Titre");
+                break;
             default:
                 System.out.println("empty");
                 break;
@@ -171,7 +204,7 @@ public class EditItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList types = FXCollections.observableArrayList("Etudiant", "Enseignant", "Recruteur", "Admin",
-                "universite");
+                "universite", "societe");
         typeBox.getItems().addAll(types);
 
         U.setRole(roleEnum);
@@ -187,14 +220,14 @@ public class EditItemController implements Initializable {
             email.setText(U.getEmail());
             carteBancaire.setText(U.getCarte_banq());
             psw.setText(U.getPwd());
-            U.setRole(roleEnum);
-            roleController(roleEnum);
+//            U.setRole(roleEnum);
+//            roleController(roleEnum);
             // section.setText(u.get);
             // score.setText(u.get);
         }
         // typeUser.setItems(types);
         typeBox.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
-            // System.out.println(newValue);
+            System.out.println(newValue);
             roleEnum = roleEnum.value(newValue.toString());
             System.out.println("role = " + roleEnum.toString());
             roleController(roleEnum);
@@ -248,7 +281,26 @@ public class EditItemController implements Initializable {
                     x.setRole(Role.admin);
                     sU.add(x);
                     break;
-
+                case universite:
+                    phone.setText("0");
+                    Universite un = new Universite(x);
+                    System.out.println("uni = " + un);
+                    sU.add(new User(un));
+                    serviceUniversite sUni = new serviceUniversite();
+                    sUni.ajouterUniversite(un);
+                    break;
+                case societe:
+                    societe s = new societe(x);
+                    System.out.println("s = " + s + "/  "
+                            + "x = " + x);
+                    sU.add(new User(s));
+                    s.setIdsoc(phone.getText());
+                    s.setAdresse(prenom.getText());
+                    s.setImgsoc(carteBancaire.getText());
+                    System.out.println("s = " + s);
+                    serviceSociete sS = new serviceSociete();
+                    sS.ajouterSociete(s);
+                    break;
                 default:
                     break;
             }
