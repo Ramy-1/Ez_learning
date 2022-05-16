@@ -5,7 +5,6 @@
  */
 package controller.admin;
 
-import TTS.TextToSpeech;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -46,12 +45,30 @@ import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 
+import services.servicereponse;
+import model.reponse;
 import services.serviceReclamation;
 import model.Reclamation;
 import model.societe;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import services.serviceSociete;
 import services.serviceUniversite;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 /**
  *
@@ -63,6 +80,8 @@ public class HomeController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
+
+    servicereponse sepr = new servicereponse();
 
     serviceReclamation srr = new serviceReclamation();
     serviceSociete ssoc = new serviceSociete();
@@ -384,6 +403,30 @@ public class HomeController implements Initializable {
 
     @FXML
     private void UniversiteClicked(ActionEvent event) {
+        pnl_scroll.getChildren().clear();
+
+        List<reponse> listRep = sepr.afficherReponse();
+        Node[] nodes = new Node[listRep.size()];
+        int i = 0;
+
+        for (reponse each : listRep) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseRec.fxml"));
+            ReclamationController cont = new ReclamationController();
+            try {
+//                cont.R = each;
+                loader.setController(cont);
+
+                nodes[i] = (Node) loader.load();
+
+                // nodes[i] = (Node)FXMLLoader.load(getClass().getResource("Item.fxml"));
+                pnl_scroll.getChildren().add(nodes[i]);
+
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+
     }
 
     @FXML
@@ -391,12 +434,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void SendEmailClicked(ActionEvent event) throws IOException {
-        pnl_scroll.getChildren().clear();
-
-        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/component/sendMail.fxml")));
-//        stage.setScene(scene);
-//        stage.show();
+    private void SendEmailClicked(ActionEvent event) {
     }
 
     @FXML
@@ -426,7 +464,6 @@ public class HomeController implements Initializable {
         }
     }
 
-
     @FXML
     private void LogOutClcked(ActionEvent event) {
         final Node source = (Node) event.getSource();
@@ -435,12 +472,41 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void EditProfile(ActionEvent event) {
-    }
+    private void MyTeam(ActionEvent event) throws Exception {
+        User u = new User();
+        u.main();
 
-    @FXML
-    private void Blindmode(ActionEvent event) {
-        TextToSpeech tts = new TextToSpeech();
-        tts.speak("Blind mode");
+        URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+
+        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(http.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            System.out.println(response.toString());
+        }
+        http.disconnect();
+
+//        
+//        String postUrl = "www.site.com";// put in your url
+//        Gson gson = new Gson();
+//        HttpClient httpClient = HttpClientBuilder.create().build();
+//        HttpPost post = new HttpPost(postUrl);
+//        StringEntity postingString = new StringEntity(gson.toJson(u));//gson.tojson() converts your pojo to json
+//        post.setEntity(postingString);
+//        post.setHeader("Content-type", "application/json");
+//        HttpResponse response = httpClient.execute(post);
     }
+}
+
+class pojo1 {
+
+    String name;
+    String age;
+    //generate setter and getters
 }

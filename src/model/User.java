@@ -15,6 +15,16 @@ import java.util.Scanner;
 import component.SendEmail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
 import services.ServiceUser;
 
 /**
@@ -31,7 +41,9 @@ public class User {
     protected String pwd;
     protected String carte_banq;
     protected Role role;
-
+    protected boolean is_blocked;
+    
+    
     ServiceUser sU = new ServiceUser();
 
     public User() {
@@ -40,6 +52,60 @@ public class User {
     public User(int id) {
         this.id = id;
         // this.role
+    }
+
+    public boolean isBlocked() {
+        return this.is_blocked;
+    }
+
+    public void Block() {
+        this.is_blocked = !this.is_blocked;
+    }
+
+    public void json() throws MalformedURLException, IOException {
+        // Create a neat value object to hold the URL
+        URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
+
+// Open a connection(?) on the URL(??) and cast the response(???)
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+// Now it's "open", we can set the request method, headers etc.
+        connection.setRequestProperty("accept", "application/json");
+
+// This line makes the request
+        InputStream responseStream = connection.getInputStream();
+
+// Manually converting the response body InputStream to APOD using Jackson
+        ObjectMapper mapper = new ObjectMapper();
+//        APOD apod = mapper.readValue(responseStream, APOD.class);
+
+// Finally we have the response
+//        System.out.println(apod.title);
+
+    }
+
+    public static void post(String url, String json) throws Exception {
+        String charset = "UTF-8";
+        URLConnection connection = new URL(url).openConnection();
+        connection.setDoOutput(true); // Triggers POST.
+        connection.setRequestProperty("Accept-Charset", charset);
+        connection.setRequestProperty("Content-Type", "application/json;charset=" + charset);
+
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(json.getBytes(charset));
+        }
+
+        InputStream response = connection.getInputStream();
+        System.out.println("ass");
+                System.out.println(response.toString());
+
+    }
+    
+
+    
+    public void main() throws Exception{
+        post("http://127.0.0.1:8000/user/listUserJSON",
+                   "{}");
     }
 
     public void resetPassword() {

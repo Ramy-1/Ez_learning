@@ -75,7 +75,7 @@ serviceSociete ssoc = new serviceSociete();
    updatelist();
     }
 private void updatelist (){
-        File path = new File("C:\\Users\\mrram\\Desktop\\Ez_learning\\src\\controller\\images\\"+Soc.getImgsoc());
+        File path = new File("C:\\Users\\Nabil\\Documents\\Ez_learning\\src\\controller\\images\\"+Soc.getImgsoc());
         Image image = new Image(path.toURI().toString());
         Img.setImage(image);
         nomsoc.setText(Soc.getNom());

@@ -28,13 +28,17 @@ public class FinalProject extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/Main.fxml"));
+//      Parent root = FXMLLoader.load(getClass().getResource("/main/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
+
+//        Parent root = FXMLLoader.load(getClass().getResource("/controller/Universite/Home.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/main/Main.fxml"));
 //                Parent root = FXMLLoader.load(getClass().getResource("/rania/InterfaceUnivEvenement.fxml"));
 
-//        Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/controller/Universite/Home.fxml"));
 
-//        Parent root = FXMLLoader.load(getClass().getResource("/controller/societe/Home.fxml"));
         Scene scene = new Scene(root);
 //        scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);

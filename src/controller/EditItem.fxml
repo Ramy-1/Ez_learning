@@ -33,11 +33,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="51.0" layoutY="186.0" text="Phone" textFill="#aeacac">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <Label fx:id="labelPrenom" layoutX="279.0" layoutY="113.0" text="Prenom" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
@@ -48,7 +43,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="576.0" layoutY="113.0" text="Carte bancaire" textFill="#aeacac">
+            <Label fx:id="LabelBanq" layoutX="576.0" layoutY="113.0" text="Carte bancaire" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
@@ -58,17 +53,12 @@
                   <Button layoutX="51.0" layoutY="23.0" mnemonicParsing="false" onAction="#confirmClicked" text="Confirm" />
                </children>
             </Pane>
-            <Label fx:id="labelsection" layoutX="614.0" layoutY="12.0" text="Section" textFill="#3a1c9d">
+            <Label fx:id="LabelSection" layoutX="614.0" layoutY="12.0" text="Section" textFill="#3a1c9d">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Separator layoutX="708.0" layoutY="19.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
-            <Label fx:id="labelscore" layoutX="725.0" layoutY="13.0" text="Score" textFill="#3a1c9d">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <Label layoutX="123.0" layoutY="51.0" text="ID: " textFill="#b2b0b0">
                <font>
                   <Font size="14.0" />
@@ -89,6 +79,16 @@
             <TextField fx:id="psw" layoutX="576.0" layoutY="206.0" />
             <JFXComboBox fx:id="type2" layoutX="278.0" layoutY="27.0" promptText="Type" />
             <ComboBox fx:id="typeBox" layoutX="279.0" layoutY="27.0" prefHeight="25.0" prefWidth="83.0" promptText="Type" />
+            <Label fx:id="LabelScore" layoutX="725.0" layoutY="13.0" text="Score" textFill="#3a1c9d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="LablePhone" layoutX="51.0" layoutY="186.0" text="Phone" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
