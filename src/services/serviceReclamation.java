@@ -114,4 +114,9 @@ public class serviceReclamation implements IReclamation {
             System.err.println(ex.getMessage());
         }    }
 
+public int calculreclamations() {
+        int c = afficherReclamation().size();
+        return c;
+    }
+
 }

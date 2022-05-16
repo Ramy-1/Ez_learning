@@ -220,12 +220,12 @@ public class EditItemController implements Initializable {
             role.setText("Add");
         }
         if (type == 2) {
-            nom.setText(U.getNom());
-            phone.setText(String.valueOf(U.getPhone()));
-            prenom.setText(U.getPrenom());
-            email.setText(U.getEmail());
-            carteBancaire.setText(U.getCarte_banq());
-            psw.setText(U.getPwd());
+//            nom.setText(U.getNom());
+//            phone.setText(String.valueOf(U.getPhone()));
+//            prenom.setText(U.getPrenom());
+//            email.setText(U.getEmail());
+//            carteBancaire.setText(U.getCarte_banq());
+//            psw.setText(U.getPwd());
 //            U.setRole(roleEnum);
 //            roleController(roleEnum);
             // section.setText(u.get);
@@ -246,12 +246,12 @@ public class EditItemController implements Initializable {
     @FXML
     private void confirmClicked(ActionEvent event) throws IOException {
         User x = new User();
-        x.setNom(nom.getText());
-        x.setPrenom(prenom.getText());
-        x.setPhone(Integer.parseInt(phone.getText()));
-        x.setEmail(email.getText());
-        x.setCarte_banq(carteBancaire.getText());
-        x.setPwd(psw.getText());
+//        x.setNom(nom.getText());
+//        x.setPrenom(prenom.getText());
+//        x.setPhone(Integer.parseInt(phone.getText()));
+//        x.setEmail(email.getText());
+//        x.setCarte_banq(carteBancaire.getText());
+//        x.setPwd(psw.getText());
         // System.out.println(x);
         if (type == 1) {
             // sU.add(x);
@@ -272,7 +272,7 @@ public class EditItemController implements Initializable {
                             + "section = " + section.getText());
 //                    Enseignant en = new Enseignant(x,score.getText(),section.getText());
                     Enseignant en = new Enseignant(x);
-                    en.setNom(x.getNom());
+                    en.setName(x.getName());
                     en.setSection(section.getText());
                     en.setUniversite(score.getText());
                     System.out.println("ens = " + en);
@@ -291,7 +291,7 @@ public class EditItemController implements Initializable {
                     phone.setText("0");
                     Universite un = new Universite(x);
                     System.out.println("uni = " + un);
-                    sU.add(new User(un));
+//                    sU.add(new User(un));
                     serviceUniversite sUni = new serviceUniversite();
                     sUni.ajouterUniversite(un);
                     break;
@@ -299,7 +299,7 @@ public class EditItemController implements Initializable {
                     societe s = new societe(x);
                     System.out.println("s = " + s + "/  "
                             + "x = " + x);
-                    sU.add(new User(s));
+//                    sU.add(new User(s));
                     s.setIdsoc(phone.getText());
                     s.setAdresse(prenom.getText());
                     s.setImgsoc(carteBancaire.getText());

@@ -96,12 +96,12 @@ public class ItemController implements Initializable {
 //        role.setText(U.getRole().toString());
 //        roleController(U.getRole());
 //        System.out.println(U);
-        nom.setText(U.getNom());
-        prenom.setText(U.getPrenom());
-        phone.setText(String.valueOf(U.getPhone()));
+        nom.setText(U.getName());
+        prenom.setText(U.getLast_name());
+//        phone.setText(String.valueOf(U.get()));
         role.setText(U.getRole().toString());
         mail.setText(U.getEmail());
-        cartbanq.setText(U.getCarte_banq());
+//        cartbanq.setText(U.getCarte_banq());
 
         System.out.println("id = " + U.getId() + " Role= " + U.getRole());
         switch (U.getRole()) {

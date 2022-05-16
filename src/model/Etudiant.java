@@ -23,7 +23,7 @@ public class Etudiant extends User {
 
     public Etudiant(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String section, int niveau, int score) {
-        super(id, nom, prenom, phone, email, pwd, carte_banq);
+//        super(id, nom, prenom, phone, email, pwd, carte_banq);
         this.section = section;
         this.niveau = niveau;
         this.score = score;
@@ -32,7 +32,7 @@ public class Etudiant extends User {
 
     public Etudiant(String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String section, int niveau, int score) {
-        super(nom, prenom, phone, email, pwd, carte_banq);
+//        super(nom, prenom, phone, email, pwd, carte_banq);
         this.section = section;
         this.niveau = niveau;
         this.score = score;
@@ -40,12 +40,12 @@ public class Etudiant extends User {
     }
 
     public Etudiant(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
-        super(nom, prenom, phone, email, pwd, carte_banq);
+//        super(nom, prenom, phone, email, pwd, carte_banq);
         this.role = Role.etudiant;
     }
 
     public Etudiant(User u) {
-        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
+//        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
         // return this;
     }
 

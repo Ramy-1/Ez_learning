@@ -61,20 +61,14 @@ public class ServiceUser implements IService<User> {
     @Override
     public void add(User u) {
         try {
-            String req = "INSERT INTO `user`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`, `role`) VALUES (?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `user` ( `email`, `password`, `name`, `last_name`, `is_blocked`) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, u.getNom());
-            ps.setString(2, u.getPrenom());
-            ps.setInt(3, u.getPhone());
-            ps.setString(4, u.getEmail());
-            try {
-                ps.setString(5, u.crypPassword(u.getPwd()));
-            } catch (NoSuchAlgorithmException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            ps.setString(6, u.getCarte_banq());
-            ps.setString(7, u.getRole().toString());
+            ps.setString(1, u.getEmail());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getName());
+            ps.setString(4, u.getLast_name());
+            
+        
 
             ps.executeUpdate();
             System.out.println("User Ajoutée");
@@ -94,8 +88,8 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7),rs.getString(8));
+                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(8),rs.getInt(8));
                 u = us;
             }
         } catch (SQLException ex) {
@@ -120,8 +114,8 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7),rs.getString(8));
+                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(8),rs.getInt(8));
                 u = us;
                 System.out.println(u);
             }
@@ -148,8 +142,8 @@ public class ServiceUser implements IService<User> {
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
-                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7),rs.getString(8));
+                User us = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(8),rs.getInt(8));
                 u = us;
                 System.out.println(u);
             }
@@ -169,8 +163,8 @@ public class ServiceUser implements IService<User> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7),rs.getString(8));
+                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8),rs.getInt(8),rs.getInt(8));
                 list.add(u);
             }
         } catch (SQLException ex) {
@@ -182,16 +176,14 @@ public class ServiceUser implements IService<User> {
     @Override
     public boolean update(User u) {
         System.out.println(u);
-        String req = "update user set nom = ? , prenom = ? , tel =? , email = ? , pwd = ? , carte_banq = ?  where id = ? ";
+        String req = "update user set  `id`=?,`email`=?,`roles`=?,`password`=?,`name`=?,`last_name`=?,`face_id`=?,`is_verified`=?,`is_blocked`=? WHERE id = ? ";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(7, u.getId());
-            ps.setString(1, u.getNom());
-            ps.setString(2, u.getPrenom());
-            ps.setInt(3, u.getPhone());
-            ps.setString(4, u.getEmail());
-            ps.setString(5, u.getPwd());
-            ps.setString(6, u.getCarte_banq());
+            ps.setInt(5, u.getId());
+            ps.setString(1, u.getEmail());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getName());
+            ps.setString(4, u.getLast_name());
 
             ps.executeUpdate();
             System.out.println("User modifier");

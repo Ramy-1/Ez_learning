@@ -22,12 +22,12 @@ public class ServiceRecruteur {
         try {
             String req = "INSERT INTO `Recruteur`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`,`role` ,`societe`) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, e.getNom());
-            ps.setString(2, e.getPrenom());
-            ps.setInt(3, e.getPhone());
-            ps.setString(4, e.getEmail());
-            ps.setString(5, e.getPwd());
-            ps.setString(6, e.getCarte_banq());
+//            ps.setString(1, e.getNom());
+//            ps.setString(2, e.getPrenom());
+//            ps.setInt(3, e.getPhone());
+//            ps.setString(4, e.getEmail());
+//            ps.setString(5, e.getPwd());
+//            ps.setString(6, e.getCarte_banq());
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getsociete());
 
@@ -107,12 +107,12 @@ public class ServiceRecruteur {
             PreparedStatement ps = cnx.prepareStatement(req);
             Recruteur e = u;
 
-            ps.setString(1, e.getNom());
-            ps.setString(2, e.getPrenom());
-            ps.setInt(3, e.getPhone());
-            ps.setString(4, e.getEmail());
-            ps.setString(5, e.getPwd());
-            ps.setString(6, e.getCarte_banq());
+//            ps.setString(1, e.getNom());
+//            ps.setString(2, e.getPrenom());
+//            ps.setInt(3, e.getPhone());
+//            ps.setString(4, e.getEmail());
+//            ps.setString(5, e.getPwd());
+//            ps.setString(6, e.getCarte_banq());
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getsociete());
             ps.setInt(9, e.getId());

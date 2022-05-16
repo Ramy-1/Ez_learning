@@ -12,10 +12,14 @@ package component;
 import com.mysql.cj.Session;
 import java.net.PasswordAuthentication;
 import java.util.*;
+
+import javax.mail.Session;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+
 //import modeles.User;
+
 
 import model.User;
 
@@ -34,9 +38,9 @@ public class SendEmail {
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
                 });
 
         try {

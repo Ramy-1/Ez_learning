@@ -28,7 +28,7 @@ public class servicereponse implements Ireponse {
 Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouterReponse(reponse rep) {
-         String request = "INSERT INTO `reponserec`(`idreclamation`, `description`, `daterep`, `reclamation_id`) VALUES ('"+rep.getIdreclamation()+"','"+rep.getDescription()+"','"+rep.getDaterep()+"','"+rep.getIdreclamation()+"')";
+         String request = "INSERT INTO `reponserec`(`idreclamation`, `description`,`daterep`) VALUES ('"+rep.getIdreclamation()+"','"+rep.getDescription()+"','"+rep.getDaterep()+"')";
         try {
             Statement st = cnx.createStatement();
              st.executeUpdate(request);
@@ -109,5 +109,8 @@ Connection cnx = DataSource.getInstance().getCnx();
      System.err.println(ex.getMessage());
      }     }
     
-    
+     public int calculreponserec(){
+    int c = afficherReponse().size();
+    return c ;
+    }
 }

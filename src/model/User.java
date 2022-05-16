@@ -17,33 +17,38 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedReader;
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Map;
+import jdk.nashorn.internal.parser.JSONParser;
 
 import services.ServiceUser;
 
 /**
  *
- * @author Faty
+ * @author Ramyy
  */
 public class User {
 
     protected int id;
-    protected String nom;
-    protected String prenom;
-    protected int phone;
     protected String email;
-    protected String pwd;
-    protected String carte_banq;
+    protected String roles;
+    protected String password;
+    protected String name;
+    protected String last_name;
+    protected String face_id;
     protected Role role;
+    protected boolean is_verified;
     protected boolean is_blocked;
-    
-    
+
     ServiceUser sU = new ServiceUser();
 
     public User() {
@@ -81,7 +86,6 @@ public class User {
 
 // Finally we have the response
 //        System.out.println(apod.title);
-
     }
 
     public static void post(String url, String json) throws Exception {
@@ -97,15 +101,13 @@ public class User {
 
         InputStream response = connection.getInputStream();
         System.out.println("ass");
-                System.out.println(response.toString());
+        System.out.println(response.toString());
 
     }
-    
 
-    
-    public void main() throws Exception{
+    public void main() throws Exception {
         post("http://127.0.0.1:8000/user/listUserJSON",
-                   "{}");
+                "{}");
     }
 
     public void resetPassword() {
@@ -122,95 +124,157 @@ public class User {
             System.out.println("Verifier");
             System.out.println("Donner le nouveaux mot de pass");
             String mdp = in.nextLine();
-            this.pwd = mdp;
+            this.password = mdp;
             sU.update(this);
         } else {
             System.out.println("Non Verifier");
         }
     }
 
-    public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
+    public boolean Login(String mail, String password) throws NoSuchAlgorithmException, IOException {
 
         User u = sU.getByMail(mail);
         System.out.println(crypPassword(password));
-        return crypPassword(password).equals(u.getPwd());
+//        return crypPassword(password).equals(u.getPwd());
+
+        URL url = new URL("http://127.0.0.1:8000/loginJson"
+                + "?email=" + mail
+                + "&password=" + password);
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+        System.out.println("URL== " + url);
+
+//        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(http.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            System.out.println(response.toString());
+            if (response.toString().contains("ADMIN")) {
+                System.out.println("admin");
+
+                return true;
+            }
+        }
+        http.disconnect();
+        return false;
     }
 
-    public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
-            String role) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.phone = phone;
+    public boolean SignUp() throws NoSuchAlgorithmException, IOException {
+//String name, String lastname, String mail, String password
+//        User u = sU.getByMail(mail);
+        System.out.println(crypPassword(password));
+//        return crypPassword(password).equals(u.getPwd());
+
+        URL url = new URL("http://127.0.0.1:8000/signupJSON"
+                + "?name=" + this.name
+                + "&lastName=" + this.last_name
+                + "&email=" + this.email
+                + "&password=" + this.password);
+
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+        System.out.println("URL== " + url);
+
+        http.disconnect();
+        return false;
+    }
+
+    public User(String email, String roles, String password, String name, String last_name, String face_id, String role, boolean is_verified, boolean is_blocked) {
         this.email = email;
-        this.pwd = pwd;
-        this.carte_banq = carte_banq;
+        this.roles = roles;
+        this.password = password;
+        this.name = name;
+        this.last_name = last_name;
+        this.face_id = face_id;
         this.role = Role.value(role);
+        this.is_verified = is_verified;
+        this.is_blocked = is_blocked;
     }
 
-    public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
+    public User(int id, String email, String roles, String password, String name, String last_name, String face_id, String role, int is_verified, int is_blocked) {
         this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.phone = phone;
         this.email = email;
-        this.pwd = pwd;
-        this.carte_banq = carte_banq;
+        this.roles = roles;
+        this.password = password;
+        this.name = name;
+        this.last_name = last_name;
+        this.face_id = face_id;
+        this.role = Role.value(role);
+        this.is_verified = is_verified == 1;
+        this.is_blocked = is_blocked == 1;
     }
 
-    public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq, String role) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.phone = phone;
-        this.email = email;
-        this.pwd = pwd;
-        this.carte_banq = carte_banq;
-        this.role = Role.valueOf(role);
+    public String getRoles() {
+        return roles;
     }
 
-    public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.phone = phone;
-        this.email = email;
-        this.pwd = pwd;
-        this.carte_banq = carte_banq;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
-    public User(Universite uni) {
-        this.id = uni.getId();
-        this.nom = uni.getNom();
-        this.prenom = "";
-        this.phone = 0;
-        this.email = uni.getEmail();
-        this.pwd = uni.getMdpuni();
-        this.carte_banq = "";
-        this.role = Role.universite;
+    public String getPassword() {
+        return password;
     }
 
-    public User(societe s) {
-        this.id = Integer.valueOf(s.getIdsoc());
-        this.nom = s.getNom();
-        this.prenom = "";
-        this.phone = 0;
-        this.email = s.getEmail();
-        this.pwd = s.getMdpsoc();
-        this.carte_banq = "";
-        this.role = Role.societe;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getFace_id() {
+        return face_id;
+    }
+
+    public void setFace_id(String face_id) {
+        this.face_id = face_id;
+    }
+
+    public boolean isIs_verified() {
+        return is_verified;
+    }
+
+    public void setIs_verified(boolean is_verified) {
+        this.is_verified = is_verified;
+    }
+
+    public boolean isIs_blocked() {
+        return is_blocked;
+    }
+
+    public void setIs_blocked(boolean is_blocked) {
+        this.is_blocked = is_blocked;
+    }
+
+    public ServiceUser getsU() {
+        return sU;
+    }
+
+    public void setsU(ServiceUser sU) {
+        this.sU = sU;
     }
 
     @Override
     public String toString() {
-        return "{"
-                + " id='" + getId() + "'"
-                + ", nom='" + getNom() + "'"
-                + ", prenom='" + getPrenom() + "'"
-                + ", phone='" + getPhone() + "'"
-                + ", email='" + getEmail() + "'"
-                + ", pwd='" + getPwd() + "'"
-                + ", carte_banq='" + getCarte_banq() + "'"
-                + ", role='" + getRole() + "'"
-                + "}";
+        return "User{" + "id=" + id + ", email=" + email + ", roles=" + roles + ", password=" + password + ", name=" + name + ", last_name=" + last_name + ", face_id=" + face_id + ", role=" + role + ", is_verified=" + is_verified + ", is_blocked=" + is_blocked + ", sU=" + sU + '}';
     }
 
     // public hashing()
@@ -251,52 +315,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNom() {
-        return this.nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return this.prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public int getPhone() {
-        return this.phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPwd() {
-        return this.pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getCarte_banq() {
-        return this.carte_banq;
-    }
-
-    public void setCarte_banq(String carte_banq) {
-        this.carte_banq = carte_banq;
     }
 
 }
