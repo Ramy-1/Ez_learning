@@ -15,11 +15,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Universite.HomeController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
       <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="224.0" layoutY="47.0" text="Universite" textFill="WHITE">
+            <Label layoutX="224.0" layoutY="47.0" text="Societe" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font>
@@ -49,7 +49,25 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEtudiantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Etudiant" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#listUserClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Recruteur" textFill="#5b5858">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/projects.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEtudiantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -67,10 +85,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListEnseignantClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Enseignant" textFill="#5b5858">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListRecruteurClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Offre" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -85,22 +100,7 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListCourClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="List Cours" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/reliabilty.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="****" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ListUniversiteClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Demand" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -138,54 +138,6 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#ajoutCourCLicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Ajout Cours" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8_Workflow_64px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/agencies.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Log Out" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8_Share_64px.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
          </children>
       </VBox>
       <Pane layoutX="71.0" layoutY="44.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
@@ -205,63 +157,7 @@
             <VBox fx:id="pnl_scroll" prefHeight="404.0" prefWidth="1023.0" spacing="20.0" style="-fx-background-color: #fff;" />
          </content>
       </ScrollPane>
-      <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
-         <children>
-            <Label fx:id="lbl_currentprojects" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Current Online(10)" textFill="#171717">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#RClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projections.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <Label fx:id="lbl_completed" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Revenue = $$$" textFill="#171717">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
-            <JFXButton onAction="#AddClicked" text="Add" />
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="217.0" layoutY="10.0" onAction="#RClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Reclamation" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projections.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-         </children>
-      </HBox>
+      <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0" />
       <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="1263.0" style="-fx-background-radius: 15 15 0 0;">
          <children>
             <Circle fx:id="mi" fill="#e3e244" onMouseClicked="#MiWindow" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-cursor: hand;">

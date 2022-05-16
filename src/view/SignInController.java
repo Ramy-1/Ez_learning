@@ -105,11 +105,85 @@ public class SignInController implements Initializable {
                 ServiceUser sU = new ServiceUser();
                 u = sU.getByMail(username.getText());
                 Role r = u.getRole();
-                r = Role.admin;
+//                r = Role.admin;
+                System.out.println("role = " + r);
+                Parent root;
+                Scene scene;
                 switch (r) {
                     case admin:
-                        Parent root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
-                        Scene scene = new Scene(root);
+//                        root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("/controller/admin/Home.fxml"));
+
+                        scene = new Scene(root);
+                        // scene.setFill(Color.TRANSPARENT);
+                        stage2.setScene(scene);
+                        // stage2.initStyle(StageStyle.UNDECORATED);
+                        // stage2.initStyle(StageStyle.TRANSPARENT);
+                        stage2.setTitle("Admin Panel");
+                        // drag it here
+                        root.setOnMousePressed(events -> {
+                            x = events.getSceneX();
+                            y = events.getSceneY();
+                        });
+                        root.setOnMouseDragged(events -> {
+
+                            stage2.setX(events.getScreenX() - x);
+
+                            stage2.setY(events.getScreenY() - y);
+
+                        });
+                        stage2.show();
+                        break;
+                    case societe:
+                        root = FXMLLoader.load(getClass().getResource("/controller/societe/Home.fxml"));
+                        scene = new Scene(root);
+                        // scene.setFill(Color.TRANSPARENT);
+                        stage2.setScene(scene);
+                        // stage2.initStyle(StageStyle.UNDECORATED);
+                        // stage2.initStyle(StageStyle.TRANSPARENT);
+                        stage2.setTitle("Admin Panel");
+                        // drag it here
+                        root.setOnMousePressed(events -> {
+                            x = events.getSceneX();
+                            y = events.getSceneY();
+                        });
+                        root.setOnMouseDragged(events -> {
+
+                            stage2.setX(events.getScreenX() - x);
+
+                            stage2.setY(events.getScreenY() - y);
+
+                        });
+                        stage2.show();
+                        break;
+
+                    case etudiant:
+//                        root = FXMLLoader.load(getClass().getResource("/controller/societe/Home.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("/etudiant/dashboardEtudiant.fxml"));
+
+                        scene = new Scene(root);
+                        // scene.setFill(Color.TRANSPARENT);
+                        stage2.setScene(scene);
+                        // stage2.initStyle(StageStyle.UNDECORATED);
+                        // stage2.initStyle(StageStyle.TRANSPARENT);
+                        stage2.setTitle("Admin Panel");
+                        // drag it here
+                        root.setOnMousePressed(events -> {
+                            x = events.getSceneX();
+                            y = events.getSceneY();
+                        });
+                        root.setOnMouseDragged(events -> {
+
+                            stage2.setX(events.getScreenX() - x);
+
+                            stage2.setY(events.getScreenY() - y);
+
+                        });
+                        stage2.show();
+                        break;
+                    case universite:
+                        root = FXMLLoader.load(getClass().getResource("/controller/Universite/Home.fxml"));
+                        scene = new Scene(root);
                         // scene.setFill(Color.TRANSPARENT);
                         stage2.setScene(scene);
                         // stage2.initStyle(StageStyle.UNDECORATED);
