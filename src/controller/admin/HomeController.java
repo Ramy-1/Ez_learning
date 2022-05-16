@@ -474,23 +474,23 @@ public class HomeController implements Initializable {
     @FXML
     private void MyTeam(ActionEvent event) throws Exception {
         User u = new User();
-        u.main();
+        u.Login("mouhamedrami@esprit.tn","123456");
 
-        URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
-        HttpURLConnection http = (HttpURLConnection) url.openConnection();
-//        http.setRequestProperty("Accept", "application/json");
-
-        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(http.getInputStream(), "utf-8"))) {
-            StringBuilder response = new StringBuilder();
-            String responseLine = null;
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
-            }
-            System.out.println(response.toString());
-        }
-        http.disconnect();
+//        URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
+//        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+////        http.setRequestProperty("Accept", "application/json");
+//
+//        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
+//        try (BufferedReader br = new BufferedReader(
+//                new InputStreamReader(http.getInputStream(), "utf-8"))) {
+//            StringBuilder response = new StringBuilder();
+//            String responseLine = null;
+//            while ((responseLine = br.readLine()) != null) {
+//                response.append(responseLine.trim());
+//            }
+//            System.out.println(response.toString());
+//        }
+//        http.disconnect();
 
 //        
 //        String postUrl = "www.site.com";// put in your url
@@ -502,11 +502,4 @@ public class HomeController implements Initializable {
 //        post.setHeader("Content-type", "application/json");
 //        HttpResponse response = httpClient.execute(post);
     }
-}
-
-class pojo1 {
-
-    String name;
-    String age;
-    //generate setter and getters
 }

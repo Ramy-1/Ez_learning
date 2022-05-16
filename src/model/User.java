@@ -17,8 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -129,11 +131,35 @@ public class User {
         }
     }
 
-    public boolean Login(String mail, String password) throws NoSuchAlgorithmException {
+    public boolean Login(String mail, String password) throws NoSuchAlgorithmException, IOException {
 
         User u = sU.getByMail(mail);
         System.out.println(crypPassword(password));
-        return crypPassword(password).equals(u.getPwd());
+//        return crypPassword(password).equals(u.getPwd());
+        
+        
+        
+        
+        URL url = new URL("http://127.0.0.1:8000/loginJson"
+                + "?email="+mail
+                +"&password="+ password);
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+System.out.println("URL== "+url);
+
+//        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(http.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            System.out.println(response.toString());
+        }
+        http.disconnect();
+        
+        return true;
     }
 
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,

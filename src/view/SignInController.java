@@ -209,7 +209,7 @@ public class SignInController implements Initializable {
                 }
             } else {
                 AlertHelper.showAlert(Alert.AlertType.ERROR, window, "Error",
-                        "3assbaa");
+                        "login incorrect");
             }
 
             // String query = "select * from user WHERE email = ? and pwd = ?";
