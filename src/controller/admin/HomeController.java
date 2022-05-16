@@ -5,7 +5,8 @@
  */
 package controller.admin;
 
-import TTS.TextToSpeech;
+
+//import TTS.TextToSpeech;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -438,9 +439,9 @@ public class HomeController implements Initializable {
     private void EditProfile(ActionEvent event) {
     }
 
-    @FXML
-    private void Blindmode(ActionEvent event) {
-        TextToSpeech tts = new TextToSpeech();
-        tts.speak("Blind mode");
-    }
+//    @FXML
+//    private void Blindmode(ActionEvent event) {
+//        TextToSpeech tts = new TextToSpeech();
+//        tts.speak("Blind mode");
+//    }
 }

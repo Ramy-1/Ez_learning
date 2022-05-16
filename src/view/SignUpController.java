@@ -4,7 +4,7 @@
  */
 package view;
 
-import co.yogesh.Captcha;
+//import co.yogesh.Captcha;
 
 import helper.AlertHelper;
 import static java.awt.SystemColor.window;
