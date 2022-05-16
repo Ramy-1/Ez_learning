@@ -61,7 +61,7 @@ public class DemandeController implements Initializable {
         titreoffre.setText(sO.getOffreById(D.getIdOffre()).getTitre());
         typeoffre.setText(sO.getOffreById(D.getIdOffre()).getType());
         
-        etudiantname.setText(sE.getById(D.getIdEtudiant()).getNom());
+        etudiantname.setText(sE.getById(D.getIdEtudiant()).getName());
         nivetudiant.setText(String.valueOf(sE.getById(D.getIdEtudiant()).getNiveau()+" eme"));
         
         descdemande.setText(D.getDescription());

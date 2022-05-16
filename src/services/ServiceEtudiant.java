@@ -40,12 +40,7 @@ public class ServiceEtudiant {
         try {
             String req = "INSERT INTO `etudiant`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`,`role`,`section`,`niveau`,`score`) VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, u.getNom());
-            ps.setString(2, u.getPrenom());
-            ps.setInt(3, u.getPhone());
-            ps.setString(4, u.getEmail());
-            ps.setString(5, u.getPwd());
-            ps.setString(6, u.getCarte_banq());
+            
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getSection());
             ps.setInt(9, e.getNiveau());
@@ -130,12 +125,6 @@ public class ServiceEtudiant {
             PreparedStatement ps = cnx.prepareStatement(req);
             Etudiant e = u;
 
-            ps.setString(1, e.getNom());
-            ps.setString(2, e.getPrenom());
-            ps.setInt(3, e.getPhone());
-            ps.setString(4, e.getEmail());
-            ps.setString(5, e.getPwd());
-            ps.setString(6, e.getCarte_banq());
             ps.setString(7, e.getRole().toString());
             ps.setString(8, e.getSection());
             ps.setInt(9, e.getNiveau());

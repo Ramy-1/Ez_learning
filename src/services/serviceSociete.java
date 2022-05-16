@@ -21,8 +21,7 @@ import util.MyConnection;
  * @author Nabil
  */
 public class serviceSociete implements ISociete {
-
-    Connection cnx = DataSource.getInstance().getCnx();
+Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouterSociete(societe S) {
      String request = "INSERT INTO `societe`(`idsoc`, `nom`, `email`, `adresse`, `imgsoc`, `mdpsoc`) VALUES ('"+S.getIdsoc()+"','"+S.getNom()+"','"+S.getEmail()+"','"+S.getAdresse()+"','"+S.getImgsoc()+"','"+S.getMdpsoc()+"')";

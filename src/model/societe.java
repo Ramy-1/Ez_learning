@@ -22,12 +22,12 @@ public class societe {
     }
 
     public societe(User u) {
-        this.idsoc = String.valueOf(u.getPhone());
-        this.nom = u.getNom();
+//        this.idsoc = String.valueOf(u.getPhone());
+//        this.nom = u.getNom();
         this.email = u.getEmail();
         this.adresse = "";
         this.imgsoc = "";
-        this.mdpsoc = u.getPwd();
+//        this.mdpsoc = u.getPwd();
     }
 
     public societe(String idsoc, String nom, String email, String adresse, String imgsoc, String mdpsoc) {

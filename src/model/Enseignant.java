@@ -21,7 +21,7 @@ public class Enseignant extends User {
 
     public Enseignant(String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String universite, String section) {
-        super(nom, prenom, phone, email, pwd, carte_banq);
+//        super(nom, prenom, phone, email, pwd, carte_banq);
         this.universite = universite;
         this.section = section;
         this.role = Role.enseignant;
@@ -29,14 +29,14 @@ public class Enseignant extends User {
     }
 
     public Enseignant(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
-        super(nom, prenom, phone, email, pwd, carte_banq);
+//        super(nom, prenom, phone, email, pwd, carte_banq);;
         this.role = Role.enseignant;
 
     }
 
     public Enseignant(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
             String universite, String section) {
-        super(id, nom, prenom, phone, email, pwd, carte_banq);
+//        super(id, nom, prenom, phone, email, pwd, carte_banq);
         this.universite = universite;
         this.section = section;
         this.role = Role.enseignant;
@@ -44,13 +44,13 @@ public class Enseignant extends User {
     }
 
     public Enseignant(User u) {
-        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
+//        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
         this.role = Role.enseignant;
         // return this;
     }
 
     public Enseignant(User u, String universite, String section) {
-        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
+//        this(u.nom, u.prenom, u.phone, u.email, u.pwd, u.carte_banq);
         this.universite = universite;
         this.section = section;
         this.role = Role.enseignant;

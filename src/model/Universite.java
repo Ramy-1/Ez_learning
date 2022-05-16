@@ -25,11 +25,11 @@ public class Universite {
     public Universite(User u) {
 //        this.idUni = u.getId();
         this.id = u.id;
-        this.nom = u.nom;
+//        this.nom = u.nom;
         this.email = u.email;
 //        this.adresse = adresse;
 //        this.imguni = imguni;
-        this.mdpuni = u.pwd;
+//        this.mdpuni = u.pwd;
     }
 
     public int getId() {

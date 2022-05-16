@@ -25,10 +25,10 @@ import util.DataSource;
  * @author Nabil
  */
 public class servicereponse implements Ireponse {
- Connection cnx = DataSource.getInstance().getCnx();
+Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void ajouterReponse(reponse rep) {
-         String request = "INSERT INTO `reponserec`(`idreclamation`, `description`, `daterep`, `reclamation_id`) VALUES ('"+rep.getIdreclamation()+"','"+rep.getDescription()+"','"+rep.getDaterep()+"','"+rep.getIdreclamation()+"')";
+         String request = "INSERT INTO `reponserec`(`idreclamation`, `description`,`daterep`) VALUES ('"+rep.getIdreclamation()+"','"+rep.getDescription()+"','"+rep.getDaterep()+"')";
         try {
             Statement st = cnx.createStatement();
              st.executeUpdate(request);
@@ -44,7 +44,7 @@ public class servicereponse implements Ireponse {
  List<reponse> ListRep = new ArrayList<>();
     String request1 = "SELECT * FROM `reponserec`";
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request1);
              while (rs.next()){
                reponse rep = new reponse();
@@ -65,7 +65,7 @@ public class servicereponse implements Ireponse {
  reponse re = new reponse();
     String request1 = "SELECT * FROM `reponserec` WHERE `idreponse` = "+id ;
         try {
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request1);
              while (rs.next()){
                reponse rep = new reponse();
@@ -85,7 +85,7 @@ public class servicereponse implements Ireponse {
     public void supprimerReponse(reponse rep) {
      String request2="DELETE FROM `reponserec` WHERE `idreclamation`='"+rep.getIdreclamation()+"'";
         try{
-              Statement st=new MyConnection().getCnx().createStatement();
+              Statement st=cnx.createStatement();
               st.executeUpdate(request2);
               
               System.out.println("REPONSE supprimé avec succès");
@@ -109,5 +109,8 @@ public class servicereponse implements Ireponse {
      System.err.println(ex.getMessage());
      }     }
     
-    
+     public int calculreponserec(){
+    int c = afficherReponse().size();
+    return c ;
+    }
 }

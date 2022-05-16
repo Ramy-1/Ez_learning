@@ -266,7 +266,7 @@ public class EditItemController implements Initializable {
                             + "section = " + section.getText());
 //                    Enseignant en = new Enseignant(x,score.getText(),section.getText());
                     Enseignant en = new Enseignant(x);
-                    en.setNom(x.getNom());
+                    en.setName(x.getName());
                     en.setSection(section.getText());
                     en.setUniversite(score.getText());
                     System.out.println("ens = " + en);
@@ -285,7 +285,7 @@ public class EditItemController implements Initializable {
                     phone.setText("0");
                     Universite un = new Universite(x);
                     System.out.println("uni = " + un);
-                    sU.add(new User(un));
+//                    sU.add(new User(un));
                     serviceUniversite sUni = new serviceUniversite();
                     sUni.ajouterUniversite(un);
                     break;
@@ -293,7 +293,7 @@ public class EditItemController implements Initializable {
                     societe s = new societe(x);
                     System.out.println("s = " + s + "/  "
                             + "x = " + x);
-                    sU.add(new User(s));
+//                    sU.add(new User(s));
                     s.setIdsoc(phone.getText());
                     s.setAdresse(prenom.getText());
                     s.setImgsoc(carteBancaire.getText());
