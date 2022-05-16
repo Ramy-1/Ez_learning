@@ -5,6 +5,7 @@
  */
 package controller.admin;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,8 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.societe;
 import services.serviceSociete;
@@ -48,17 +51,23 @@ public class UpsocieteController implements Initializable {
     private TextField adresse_societe;
     @FXML
     private PasswordField mdp_societe;
-
+    private String path;
+    @FXML
+    private TextField pathimg;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          File path = new File("C:\\Users\\mrram\\Desktop\\Ez_learning\\src\\controller\\images\\"+soc.getImgsoc());
+        Image image = new Image(path.toURI().toString());
+        Img.setImage(image);
        nom_societe.setText(soc.getNom());
        id_societe.setText(soc.getIdsoc());
        email_societe.setText(soc.getEmail());
        mdp_societe.setText(soc.getMdpsoc());
        adresse_societe.setText(soc.getAdresse());
+       pathimg.setText(soc.getImgsoc());
        System.out.println("affichage modification societe");
       
         
@@ -74,7 +83,8 @@ public class UpsocieteController implements Initializable {
        String mails = email_societe.getText();
        String mdps = mdp_societe.getText();
        String adrs = adresse_societe.getText();
-       societe nvsoc = new societe(ids, noms, mails, adrs, "default", mdps);
+       String img = pathimg.getText();
+       societe nvsoc = new societe(ids, noms, mails, adrs,img, mdps);
        ssoc.modifierSociete(nvsoc, ids);
        quittersession(event);
     }
@@ -88,4 +98,14 @@ public class UpsocieteController implements Initializable {
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void uploadlogo(ActionEvent event) {
+                FileChooser fc = new FileChooser();
+                fc.setTitle("choisissez le logo de la societe");
+                File file = fc.showOpenDialog(null);
+                pathimg.setText(file.getName());
+    }
+
+
 }

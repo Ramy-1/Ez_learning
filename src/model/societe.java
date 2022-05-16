@@ -38,7 +38,7 @@ public class societe {
         this.imgsoc = imgsoc;
         this.mdpsoc = mdpsoc;
     }
-    
+
 
     public int getIds() {
         return ids;

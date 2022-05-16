@@ -123,7 +123,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Send E-Mail" textFill="#5b5858">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#SendmailClicked" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Send E-Mail" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>

@@ -18,12 +18,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import static javafx.scene.input.KeyCode.U;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Enseignant;
 import model.Etudiant;
@@ -98,15 +100,18 @@ public class EditItemController implements Initializable {
     private Label LabelBanq;
     @FXML
     private Label LablePhone;
+    @FXML
+    private Button btnupload;
 
     void roleController(Role r) {
+        btnupload.setVisible(false);
         switch (r) {
             case etudiant:
                 file = new File("src/controller/admin/images/student.jpg");
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Etudiant e = new Etudiant(U);
-                e = new Etudiant(sE.getById(U.getId()));
+                e = new Etudiant((User) sE.getById(U.getId()));
 
                 LabelSection.setText("Section");
                 section.setText(e.getSection());
@@ -122,7 +127,7 @@ public class EditItemController implements Initializable {
                 Img.setImage(new Image(file.toURI().toString()));
 
                 Recruteur rec = new Recruteur(U);
-                rec = sR.getById(U.getId());
+                rec = (Recruteur) sR.getById(U.getId());
 
                 LabelSection.setText("Societe");
                 section.setText(rec.getsociete());
@@ -134,7 +139,7 @@ public class EditItemController implements Initializable {
             case enseignant:
                 Enseignant en = new Enseignant(U);
 
-                en = sEn.getById(U.getId());
+                en = (Enseignant) sEn.getById(U.getId());
                 file = new File("src/controller/admin/images/teacher.png");
                 Img.setImage(new Image(file.toURI().toString()));
 
@@ -190,6 +195,7 @@ public class EditItemController implements Initializable {
                 LablePhone.setText("idsoc");
                 LabelBanq.setText("img");
                 labelPrenom.setText("addresse");
+                btnupload.setVisible(true);
 
 //                LabelScore.setText("Universite");
 //                labelNom.setText("Titre");
@@ -315,6 +321,14 @@ public class EditItemController implements Initializable {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void uploadfile(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("choisissez le logo de la societe");
+        File file = fc.showOpenDialog(null);
+        carteBancaire.setText(file.getName());
     }
 
 }

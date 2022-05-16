@@ -4,6 +4,8 @@
  */
 package view;
 
+import co.yogesh.Captcha;
+
 import helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +63,7 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
     }
 
     private boolean isValidated() {
@@ -182,6 +185,7 @@ public class SignInController implements Initializable {
                         stage2.show();
                         break;
                     case universite:
+//                        root = FXMLLoader.load(getClass().getResource("/rania/InterfaceUnivEvenement.fxml"));
                         root = FXMLLoader.load(getClass().getResource("/controller/Universite/Home.fxml"));
                         scene = new Scene(root);
                         // scene.setFill(Color.TRANSPARENT);
