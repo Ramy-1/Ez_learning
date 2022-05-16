@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
+import java.io.CharArrayReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,6 +27,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Map;
+import jdk.nashorn.internal.parser.JSONParser;
 
 import services.ServiceUser;
 
@@ -156,10 +159,14 @@ System.out.println("URL== "+url);
                 response.append(responseLine.trim());
             }
             System.out.println(response.toString());
+            if (response.toString().contains("ADMIN")){
+                System.out.println("admin");
+                
+                return true;
+            }
         }
         http.disconnect();
-        
-        return true;
+        return false;
     }
 
     public User(int id, String nom, String prenom, int phone, String email, String pwd, String carte_banq,
