@@ -45,15 +45,30 @@ import services.ServiceEns;
 import services.ServiceEtudiant;
 import services.ServiceRecruteur;
 import services.ServiceUser;
+import com.google.gson.Gson;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 
 import services.servicereponse;
 import model.reponse;
 import services.serviceReclamation;
 import model.Reclamation;
 import model.societe;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import services.serviceSociete;
 import services.serviceUniversite;
-
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 /**
  *
@@ -65,11 +80,11 @@ public class HomeController implements Initializable {
     ServiceEtudiant sE = new ServiceEtudiant();
     ServiceEns sEn = new ServiceEns();
     ServiceRecruteur sR = new ServiceRecruteur();
-    
-       servicereponse sepr =new servicereponse();
 
-   serviceReclamation srr =new serviceReclamation();
-   serviceSociete ssoc = new serviceSociete();
+    servicereponse sepr = new servicereponse();
+
+    serviceReclamation srr = new serviceReclamation();
+    serviceSociete ssoc = new serviceSociete();
     serviceUniversite sUn = new serviceUniversite();
 
     @FXML
@@ -80,12 +95,12 @@ public class HomeController implements Initializable {
     private Label lbl_completed;
     @FXML
     private ScrollPane Scrollepane;
-    
+
     @FXML
     private Circle mi;
     @FXML
     private Circle re;
-    private double lastX,lastY,lastWidth,lastHeight;
+    private double lastX, lastY, lastWidth, lastHeight;
     @FXML
     private Circle close1;
 
@@ -246,7 +261,6 @@ public class HomeController implements Initializable {
 
     }
 
-
     private void boxifyVBoxes() {
         // styles used for vboxes
         Background focusBackground = new Background(new BackgroundFill(Color.BLUEVIOLET, CornerRadii.EMPTY, Insets.EMPTY));
@@ -271,7 +285,7 @@ public class HomeController implements Initializable {
 
         }
     }
-    
+
     private void ListUniversiteClicked(ActionEvent event) {
 //        pnl_scroll.getChildren().clear();
 //
@@ -298,72 +312,70 @@ public class HomeController implements Initializable {
 //            i++;
 //        }
     }
-    
-    @FXML
-    public void closeWindow(){
-          System.exit(0);
-    }
-    
-    @FXML
-    public void ReWindow(){
-        re.setOnMouseClicked(events -> {
-          Node n = (Node)events.getSource(); 
- 
-      Window w = n.getScene().getWindow(); 
- 
-      double currentX = w.getX(); 
-      double currentY = w.getY(); 
-      double currentWidth = w.getWidth(); 
-      double currentHeight = w.getHeight(); 
 
-      Screen screen = Screen.getPrimary(); 
-      Rectangle2D bounds = screen.getVisualBounds(); 
- 
-       if( currentX != bounds.getMinX() && 
-         currentY != bounds.getMinY() && 
-         currentWidth != bounds.getWidth() && 
-         currentHeight != bounds.getHeight() ) { 
- 
-         w.setX(bounds.getMinX()); 
-         w.setY(bounds.getMinY()); 
-         w.setWidth(bounds.getWidth()); 
-         w.setHeight(bounds.getHeight()); 
- 
-         lastX = currentX;  // save old dimensions 
-         lastY = currentY; 
-         lastWidth = currentWidth; 
-         lastHeight = currentHeight; 
-        
- 
-       } else { 
- 
-         // de-maximize the window (not same as minimize) 
- 
-         w.setX(lastX); 
-         w.setY(lastY); 
-         w.setWidth(lastWidth); 
-         w.setHeight(lastHeight); 
-          
-      }
-         });
-    }
     @FXML
-    public void MiWindow(){
-         mi.setOnMouseClicked(events -> {
-             Node n = (Node)events.getSource(); 
- 
-      Window w = n.getScene().getWindow(); 
-      
-          Stage stage = (Stage) w;
+    public void closeWindow() {
+        System.exit(0);
+    }
+
+    @FXML
+    public void ReWindow() {
+        re.setOnMouseClicked(events -> {
+            Node n = (Node) events.getSource();
+
+            Window w = n.getScene().getWindow();
+
+            double currentX = w.getX();
+            double currentY = w.getY();
+            double currentWidth = w.getWidth();
+            double currentHeight = w.getHeight();
+
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            if (currentX != bounds.getMinX()
+                    && currentY != bounds.getMinY()
+                    && currentWidth != bounds.getWidth()
+                    && currentHeight != bounds.getHeight()) {
+
+                w.setX(bounds.getMinX());
+                w.setY(bounds.getMinY());
+                w.setWidth(bounds.getWidth());
+                w.setHeight(bounds.getHeight());
+
+                lastX = currentX;  // save old dimensions 
+                lastY = currentY;
+                lastWidth = currentWidth;
+                lastHeight = currentHeight;
+
+            } else {
+
+                // de-maximize the window (not same as minimize) 
+                w.setX(lastX);
+                w.setY(lastY);
+                w.setWidth(lastWidth);
+                w.setHeight(lastHeight);
+
+            }
+        });
+    }
+
+    @FXML
+    public void MiWindow() {
+        mi.setOnMouseClicked(events -> {
+            Node n = (Node) events.getSource();
+
+            Window w = n.getScene().getWindow();
+
+            Stage stage = (Stage) w;
 
             stage.setIconified(true);
-         });
+        });
     }
-    
 
     @FXML
     private void RClicked(ActionEvent event) {
-   pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         List<Reclamation> listR = srr.afficherReclamation();
         Node[] nodes = new Node[listR.size()];
@@ -386,13 +398,12 @@ public class HomeController implements Initializable {
             }
             i++;
         }
-    
-    }
 
+    }
 
     @FXML
     private void UniversiteClicked(ActionEvent event) {
-     pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         List<reponse> listRep = sepr.afficherReponse();
         Node[] nodes = new Node[listRep.size()];
@@ -402,7 +413,7 @@ public class HomeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReponseRec.fxml"));
             ReclamationController cont = new ReclamationController();
             try {
-                cont.R = each;
+//                cont.R = each;
                 loader.setController(cont);
 
                 nodes[i] = (Node) loader.load();
@@ -415,9 +426,8 @@ public class HomeController implements Initializable {
             }
             i++;
         }
-    
-    }
 
+    }
 
     @FXML
     private void EvenementClicked(ActionEvent event) {
@@ -429,7 +439,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void Societeclick(ActionEvent event) {
-    pnl_scroll.getChildren().clear();
+        pnl_scroll.getChildren().clear();
 
         List<societe> listSoc = ssoc.afficherSociete();
         Node[] nodes = new Node[listSoc.size()];
@@ -455,22 +465,48 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void OffreClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void DemandeClicked(ActionEvent event) {
-    }
-
-    @FXML
-    private void AddOffreClicked(ActionEvent event) {
-    }
-@FXML
     private void LogOutClcked(ActionEvent event) {
         final Node source = (Node) event.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void MyTeam(ActionEvent event) throws Exception {
+        User u = new User();
+        u.main();
+
+        URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+
+        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(http.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            System.out.println(response.toString());
+        }
+        http.disconnect();
+
+//        
+//        String postUrl = "www.site.com";// put in your url
+//        Gson gson = new Gson();
+//        HttpClient httpClient = HttpClientBuilder.create().build();
+//        HttpPost post = new HttpPost(postUrl);
+//        StringEntity postingString = new StringEntity(gson.toJson(u));//gson.tojson() converts your pojo to json
+//        post.setEntity(postingString);
+//        post.setHeader("Content-type", "application/json");
+//        HttpResponse response = httpClient.execute(post);
+    }
 }
 
+class pojo1 {
 
+    String name;
+    String age;
+    //generate setter and getters
+}
