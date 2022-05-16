@@ -61,7 +61,7 @@ public class ServiceUser implements IService<User> {
     @Override
     public void add(User u) {
         try {
-            String req = "INSERT INTO `user`(`nom`, `prenom`, `tel`, `email`, `pwd`, `carte_banq`, `role`) VALUES (?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `user` (`id`, `email`, `roles`, `password`, `name`, `last_name`, `face_id`, `is_verified`, `is_blocked`) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, u.getNom());
             ps.setString(2, u.getPrenom());
@@ -182,7 +182,7 @@ public class ServiceUser implements IService<User> {
     @Override
     public boolean update(User u) {
         System.out.println(u);
-        String req = "update user set nom = ? , prenom = ? , tel =? , email = ? , pwd = ? , carte_banq = ?  where id = ? ";
+        String req = "update user set email=? ,  roles=?, password = ? , name = ? , last_name =? , face_id = ? , is_verified = ? , is_blocked = ?  where id = ? ";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(7, u.getId());

@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,6 +18,9 @@ import java.util.Scanner;
 import component.SendEmail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import services.ServiceUser;
 
 /**
@@ -32,6 +38,9 @@ public class User {
     protected String carte_banq;
     protected Role role;
 
+    protected boolean is_verified;
+    protected boolean is_blocked;
+
     ServiceUser sU = new ServiceUser();
 
     public User() {
@@ -40,6 +49,35 @@ public class User {
     public User(int id) {
         this.id = id;
         // this.role
+    }
+
+    public boolean isBlocked() {
+        return this.is_blocked;
+    }
+
+    public void Block() {
+        this.is_blocked = !this.is_blocked;
+    }
+
+    public json(){
+        // Create a neat value object to hold the URL
+URL url = new URL("http://127.0.0.1:8000/user/listUserJSON");
+
+// Open a connection(?) on the URL(??) and cast the response(???)
+HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+// Now it's "open", we can set the request method, headers etc.
+connection.setRequestProperty("accept", "application/json");
+
+// This line makes the request
+InputStream responseStream = connection.getInputStream();
+
+// Manually converting the response body InputStream to APOD using Jackson
+ObjectMapper mapper = new ObjectMapper();
+APOD apod = mapper.readValue(responseStream, APOD.class);
+
+// Finally we have the response
+System.out.println(apod.title);
     }
 
     public void resetPassword() {
@@ -99,7 +137,7 @@ public class User {
         this.email = email;
         this.pwd = pwd;
         this.carte_banq = carte_banq;
-        this.role = Role.valueOf(role);
+        this.role = Role.value(role);
     }
 
     public User(String nom, String prenom, int phone, String email, String pwd, String carte_banq) {
