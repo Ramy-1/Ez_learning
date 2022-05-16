@@ -8,6 +8,7 @@ import helper.AlertHelper;
 import static java.awt.SystemColor.window;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,18 +65,19 @@ public class SignUpController implements Initializable {
         // TODO
     }
 
-    public void Signup(ActionEvent event) throws IOException {
+    public void Signup(ActionEvent event) throws IOException, NoSuchAlgorithmException {
 
         if (this.isValidated()) {
             PreparedStatement ps;
             Etudiant e = new Etudiant();
 
-            e.setNom(txtnom.getText());
-            e.setPrenom(txtprenom.getText());
-            e.setEmail(txtemail.getText());
-            e.setPwd(txtmdp.getText());
-            e.setPhone(Integer.parseInt(txttel.getText()));
-            e.setRole(Role.etudiant);
+            User u = new User();
+            u.setName(txtnom.getText());
+            u.setLast_name(txtprenom.getText());
+            u.setEmail(txtemail.getText());
+            u.setPassword(txtmdp.getText());
+            u.setRole(Role.etudiant);
+            u.SignUp();
 
             ServiceEtudiant sE = new ServiceEtudiant();
 

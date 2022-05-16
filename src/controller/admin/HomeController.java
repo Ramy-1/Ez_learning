@@ -435,6 +435,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void SendEmailClicked(ActionEvent event) {
+        
     }
 
     @FXML

@@ -39,17 +39,16 @@ import services.ServiceUser;
 public class User {
 
     protected int id;
-    protected String  email;
-    protected String  roles;
-    protected String password ;
-    protected String name ;
-    protected String last_name ;
-    protected String face_id ;
+    protected String email;
+    protected String roles;
+    protected String password;
+    protected String name;
+    protected String last_name;
+    protected String face_id;
     protected Role role;
-    protected boolean is_verified ;
-    protected boolean is_blocked ;
-    
-    
+    protected boolean is_verified;
+    protected boolean is_blocked;
+
     ServiceUser sU = new ServiceUser();
 
     public User() {
@@ -87,7 +86,6 @@ public class User {
 
 // Finally we have the response
 //        System.out.println(apod.title);
-
     }
 
     public static void post(String url, String json) throws Exception {
@@ -103,15 +101,13 @@ public class User {
 
         InputStream response = connection.getInputStream();
         System.out.println("ass");
-                System.out.println(response.toString());
+        System.out.println(response.toString());
 
     }
-    
 
-    
-    public void main() throws Exception{
+    public void main() throws Exception {
         post("http://127.0.0.1:8000/user/listUserJSON",
-                   "{}");
+                "{}");
     }
 
     public void resetPassword() {
@@ -140,16 +136,13 @@ public class User {
         User u = sU.getByMail(mail);
         System.out.println(crypPassword(password));
 //        return crypPassword(password).equals(u.getPwd());
-        
-        
-        
-        
+
         URL url = new URL("http://127.0.0.1:8000/loginJson"
-                + "?email="+mail
-                +"&password="+ password);
+                + "?email=" + mail
+                + "&password=" + password);
         HttpURLConnection http = (HttpURLConnection) url.openConnection();
 //        http.setRequestProperty("Accept", "application/json");
-System.out.println("URL== "+url);
+        System.out.println("URL== " + url);
 
 //        System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
         try (BufferedReader br = new BufferedReader(
@@ -160,12 +153,32 @@ System.out.println("URL== "+url);
                 response.append(responseLine.trim());
             }
             System.out.println(response.toString());
-            if (response.toString().contains("ADMIN")){
+            if (response.toString().contains("ADMIN")) {
                 System.out.println("admin");
-                
+
                 return true;
             }
         }
+        http.disconnect();
+        return false;
+    }
+
+    public boolean SignUp() throws NoSuchAlgorithmException, IOException {
+//String name, String lastname, String mail, String password
+//        User u = sU.getByMail(mail);
+        System.out.println(crypPassword(password));
+//        return crypPassword(password).equals(u.getPwd());
+
+        URL url = new URL("http://127.0.0.1:8000/signupJSON"
+                + "?name=" + this.name
+                + "&lastName=" + this.last_name
+                + "&email=" + this.email
+                + "&password=" + this.password);
+
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+//        http.setRequestProperty("Accept", "application/json");
+        System.out.println("URL== " + url);
+
         http.disconnect();
         return false;
     }
@@ -191,8 +204,8 @@ System.out.println("URL== "+url);
         this.last_name = last_name;
         this.face_id = face_id;
         this.role = Role.value(role);
-        this.is_verified = is_verified==1;
-        this.is_blocked = is_blocked==1;
+        this.is_verified = is_verified == 1;
+        this.is_blocked = is_blocked == 1;
     }
 
     public String getRoles() {
@@ -264,10 +277,6 @@ System.out.println("URL== "+url);
         return "User{" + "id=" + id + ", email=" + email + ", roles=" + roles + ", password=" + password + ", name=" + name + ", last_name=" + last_name + ", face_id=" + face_id + ", role=" + role + ", is_verified=" + is_verified + ", is_blocked=" + is_blocked + ", sU=" + sU + '}';
     }
 
-    
-
-  
-
     // public hashing()
     public static String crypPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -313,7 +322,5 @@ System.out.println("URL== "+url);
     public void setEmail(String email) {
         this.email = email;
     }
-
-    
 
 }

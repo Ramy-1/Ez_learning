@@ -214,12 +214,12 @@ public class EditItemController implements Initializable {
             role.setText("Add");
         }
         if (type == 2) {
-            nom.setText(U.getNom());
-            phone.setText(String.valueOf(U.getPhone()));
-            prenom.setText(U.getPrenom());
-            email.setText(U.getEmail());
-            carteBancaire.setText(U.getCarte_banq());
-            psw.setText(U.getPwd());
+//            nom.setText(U.getNom());
+//            phone.setText(String.valueOf(U.getPhone()));
+//            prenom.setText(U.getPrenom());
+//            email.setText(U.getEmail());
+//            carteBancaire.setText(U.getCarte_banq());
+//            psw.setText(U.getPwd());
 //            U.setRole(roleEnum);
 //            roleController(roleEnum);
             // section.setText(u.get);
@@ -240,12 +240,12 @@ public class EditItemController implements Initializable {
     @FXML
     private void confirmClicked(ActionEvent event) throws IOException {
         User x = new User();
-        x.setNom(nom.getText());
-        x.setPrenom(prenom.getText());
-        x.setPhone(Integer.parseInt(phone.getText()));
-        x.setEmail(email.getText());
-        x.setCarte_banq(carteBancaire.getText());
-        x.setPwd(psw.getText());
+//        x.setNom(nom.getText());
+//        x.setPrenom(prenom.getText());
+//        x.setPhone(Integer.parseInt(phone.getText()));
+//        x.setEmail(email.getText());
+//        x.setCarte_banq(carteBancaire.getText());
+//        x.setPwd(psw.getText());
         // System.out.println(x);
         if (type == 1) {
             // sU.add(x);

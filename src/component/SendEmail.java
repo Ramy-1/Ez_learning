@@ -12,16 +12,17 @@ package component;
 //import com.mysql.cj.Session;
 import java.net.PasswordAuthentication;
 import java.util.*;
-/*import javax.mail.*;
+import javax.mail.Session;
+import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;*/
+import javax.activation.*;
 import model.User;
 
 public class SendEmail {
 
     public SendEmail(User u, String subject, String body) {
 
-      /*  final String username = "mouhamedrami.bendhia@esprit.tn";
+        final String username = "mouhamedrami.bendhia@esprit.tn";
         final String password = "jecwqayexfdpujsp";
 
         Properties prop = new Properties();
@@ -32,9 +33,9 @@ public class SendEmail {
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
                 });
 
         try {
@@ -53,7 +54,7 @@ public class SendEmail {
 
         } catch (MessagingException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 }
