@@ -68,12 +68,6 @@ public class ServiceRecruteur {
 
             String req = "SELECT * FROM `Recruteur` WHERE email = '" + mail + "'";
             Statement st = cnx.createStatement();
-
-            // String req = "SELECT * FROM `user` WHERE email = ? ";
-            // PreparedStatement ps = cnx.prepareStatement(req);
-            // ps.setString(1, mail);
-            // System.out.println(req);
-            // System.out.println("*******");
             ResultSet rs = st.executeQuery(req);
 
             while (rs.next()) {
@@ -146,4 +140,26 @@ public class ServiceRecruteur {
         }
         return false;
     }
+    public Recruteur getByMail(String mail) {
+        Recruteur u = new Recruteur();
+        try {
+            // String req = "SELECT * FROM `user` WHERE `email` = " + mail;
+
+            String req = "SELECT * FROM `Recruteur` WHERE email = '" + mail + "'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+            while (rs.next()) {
+                Recruteur e = new Recruteur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(9));
+                u = e;
+                System.out.println(u);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return u;
+    }
+
 }

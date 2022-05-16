@@ -113,8 +113,10 @@ public class serviceReclamation implements IReclamation {
         catch(SQLException ex){ 
             System.err.println(ex.getMessage());
         }    }
+
 public int calculreclamations() {
         int c = afficherReclamation().size();
         return c;
     }
+
 }

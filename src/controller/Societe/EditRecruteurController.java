@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<<< HEAD:src/controller/Societe/EditRecruteurController.java
 package controller.societe;
+========
+package controller;
+>>>>>>>> main:src/controller/EditItemController.java
 
 import com.jfoenix.controls.JFXComboBox;
 import java.io.File;
@@ -192,7 +196,10 @@ public class EditRecruteurController implements Initializable {
 
                 labelscore.setVisible(true);
                 score.setVisible(true);
-
+                prenom.setVisible(true);
+                labelPrenom.setVisible(true);
+                labelsection.setVisible(true);
+                section.setVisible(true);
                 // labelscore.setText("Score");
                 // labelscore.setText("Score");
                 // Etudiant e = (Etudiant) u;
@@ -206,9 +213,12 @@ public class EditRecruteurController implements Initializable {
                 File filee = new File("src/dashboard/images/recruitment.png");
                 Img.setImage(new Image(filee.toURI().toString()));
                 labelsection.setText("Societe");
-
+                labelsection.setVisible(true);
                 labelscore.setVisible(false);
                 score.setVisible(false);
+                prenom.setVisible(true);
+                labelPrenom.setVisible(true);
+                section.setVisible(true);
 
             }
             if (roleEnum == Role.enseignant) {
@@ -220,11 +230,19 @@ public class EditRecruteurController implements Initializable {
                 labelscore.setText("Universite");
 
                 labelscore.setVisible(true);
+<<<<<<<< HEAD:src/controller/Societe/EditRecruteurController.java
                 score.setVisible(true);
+========
+                score.setVisible(false);
+                prenom.setVisible(true);
+                labelPrenom.setVisible(true);
+                section.setVisible(true);
+>>>>>>>> main:src/controller/EditItemController.java
 
                 // score.setText(e.getUniversite());
             }
             if ((roleEnum) == Role.universite) {
+<<<<<<<< HEAD:src/controller/Societe/EditRecruteurController.java
                 // Universite uni = (Universite) U;
                 System.out.println("hello");
                 File filee = new File("src/dashboard/images/teacher.png");
@@ -235,6 +253,20 @@ public class EditRecruteurController implements Initializable {
                 labelNom.setText("Titre");
                 labelNom.setStyle("display:none;");
             }
+========
+           // Universite uni = (Universite) U;
+                
+            File file = new File("src/dashboard/images/teacher.png");
+            Img.setImage(new Image(file.toURI().toString()));
+            //LabelSection.setText("Universite");
+           prenom.setVisible(false);
+          //  LabelScore.setText("Universite");
+            labelNom.setText("Titre");
+            labelPrenom.setVisible(false);
+            labelsection.setVisible(false);
+            section.setVisible(false);
+        }
+>>>>>>>> main:src/controller/EditItemController.java
             if (roleEnum == Role.admin) {
                 File filee = new File("src/dashboard/images/admin.png");
                 Img.setImage(new Image(filee.toURI().toString()));
@@ -246,7 +278,8 @@ public class EditRecruteurController implements Initializable {
                 section.setVisible(false);
             }
             if (roleEnum == Role.empty) {
-
+                labelPrenom.setVisible(false);
+                labelNom.setVisible(false);
                 labelscore.setVisible(false);
                 labelsection.setVisible(false);
 

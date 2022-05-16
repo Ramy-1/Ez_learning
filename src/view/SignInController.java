@@ -4,6 +4,8 @@
  */
 package view;
 
+import co.yogesh.Captcha;
+
 import helper.AlertHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +63,7 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
     }
 
     private boolean isValidated() {
@@ -151,8 +154,29 @@ public class SignInController implements Initializable {
 
                     stage2.setY(events.getScreenY() - y);
 
+
                 });
                 stage2.show();
+
+                        });
+                        stage2.show();
+                        break;
+                    case universite:
+//                        root = FXMLLoader.load(getClass().getResource("/rania/InterfaceUnivEvenement.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("/controller/Universite/Home.fxml"));
+                        scene = new Scene(root);
+                        // scene.setFill(Color.TRANSPARENT);
+                        stage2.setScene(scene);
+                        // stage2.initStyle(StageStyle.UNDECORATED);
+                        // stage2.initStyle(StageStyle.TRANSPARENT);
+                        stage2.setTitle("Admin Panel");
+                        // drag it here
+                        root.setOnMousePressed(events -> {
+                            x = events.getSceneX();
+                            y = events.getSceneY();
+                        });
+                        root.setOnMouseDragged(events -> {
+
 
             }
         } else {

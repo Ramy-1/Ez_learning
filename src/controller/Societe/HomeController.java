@@ -328,7 +328,14 @@ public class HomeController implements Initializable {
 
 
     @FXML
+<<<<<<< HEAD
     private void SendEmailClicked(ActionEvent event) {
+=======
+    private void SendEmailClicked(ActionEvent event) throws IOException {
+        pnl_scroll.getChildren().clear();
+
+        pnl_scroll.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/component/sendMail.fxml")));
+>>>>>>> main
     }
 
     @FXML
